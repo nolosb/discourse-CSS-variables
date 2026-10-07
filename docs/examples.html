@@ -4,13 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Examples · Discourse CSS Variables</title>
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="docs.css?v=6">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} [hidden]{display:none!important}</style>
 </head>
 <body>
-<header class="topbar"><div class="in"><a class="site" href="index.html">Discourse CSS Variables</a><nav aria-label="Pages"><a href="index.html">Rules</a><a href="vocabulary.html">Vocabulary</a><a href="examples.html" aria-current="page">Examples</a><a href="playground.html">Playground</a><a href="open.html">Open questions</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div></header>
-<div class="solo"><main>
+<header class="topbar"><div class="in">
+  <a class="site" href="index.html">Discourse CSS Variables</a>
+  <nav class="tabs" aria-label="Pages"><a href="index.html">Rules</a><a href="vocabulary.html">Vocabulary</a><a href="examples.html" aria-current="page">Examples</a><a href="playground.html">Playground</a><a href="open.html">Open questions</a></nav>
+  <div class="tools"><code class="commit" title="Core commit the spec was checked against">68ad0815c02</code><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div>
+</div></header>
+<div class="body solo">
+<main>
 <h1>Examples</h1>
 <p class="lede">Proposed names with the current core variable each one replaces. Select a name to open it in the playground.</p>
 <div class="ex-tools">
@@ -21,9 +25,10 @@
 <div class="ex-list" id="ex-list"></div>
 
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
-</main></div>
-<script src="grammar.js"></script>
-<script src="examples.js"></script>
-<script src="site.js"></script>
+</main>
+</div>
+<script src="grammar.js?v=6"></script>
+<script src="examples.js?v=6"></script>
+<script src="site.js?v=6"></script>
 </body>
 </html>

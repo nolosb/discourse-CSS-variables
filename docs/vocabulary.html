@@ -4,21 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vocabulary · Discourse CSS Variables</title>
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="docs.css?v=6">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} [hidden]{display:none!important}</style>
 </head>
 <body>
-<header class="topbar"><div class="in"><a class="site" href="index.html">Discourse CSS Variables</a><nav aria-label="Pages"><a href="index.html">Rules</a><a href="vocabulary.html" aria-current="page">Vocabulary</a><a href="examples.html">Examples</a><a href="playground.html">Playground</a><a href="open.html">Open questions</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div></header>
-<div class="wrap">
-<nav class="index" aria-label="On this page">
-  <div id="nav-links"></div>
-</nav>
+<header class="topbar"><div class="in">
+  <a class="site" href="index.html">Discourse CSS Variables</a>
+  <nav class="tabs" aria-label="Pages"><a href="index.html">Rules</a><a href="vocabulary.html" aria-current="page">Vocabulary</a><a href="examples.html">Examples</a><a href="playground.html">Playground</a><a href="open.html">Open questions</a></nav>
+  <div class="tools"><code class="commit" title="Core commit the spec was checked against">68ad0815c02</code><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div>
+</div></header>
+<div class="body">
+<aside class="toc" aria-label="On this page">
+  <div class="toc-label">On this page</div>
+  <nav id="toc-links"></nav>
+  <div class="toc-src">Source of truth<a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md">naming-spec.md</a></div>
+</aside>
 <main>
+<div class="eyebrow">Naming scheme</div>
 <h1>Vocabulary</h1>
 <p class="lede">The closed word lists for every slot. A word that is not listed here does not belong in a name.</p>
 
-<h2 id="categories">Categories and properties</h2>
+<h2 id="overview"><span class="n">01</span>Overview</h2>
+<div class="formula">--d-sys-<span class="c-category">{category}</span>[-<span class="c-property">{property}</span>][-<span class="c-role">{role}</span>][-<span class="c-variant">{variant}</span>][-<span class="c-state">{state}</span>]</div>
+<div class="vgrid">
+<div class="vcol v-category"><a href="#categories"><b>category</b>9 words</a><div class="groups"><div><div class="words"><span>color</span><span>font</span><span>shadow</span><span>space</span><span>size</span><span>border</span><span>outline</span><span>opacity</span><span>motion</span></div></div></div></div>
+<div class="vcol v-property"><a href="#categories"><b>property</b>per category</a><div class="groups"><div><div class="g-label">color</div><div class="words"><span>text</span><span>icon</span><span>background</span><span>border</span><span>outline</span></div></div><div><div class="g-label">font</div><div class="words"><span>family</span><span>size</span><span>weight</span><span>line-height</span><span>letter-spacing</span></div></div><div><div class="g-label">space</div><div class="words"><span>gap</span><span>padding</span><span>margin</span></div></div><div><div class="g-label">size</div><div class="words"><span>icon</span><span>avatar</span><span>control</span><span>container</span></div></div><div><div class="g-label">border</div><div class="words"><span>radius</span><span>width</span><span>style</span></div></div><div><div class="g-label">outline</div><div class="words"><span>width</span><span>offset</span><span>style</span></div></div><div><div class="g-label">motion</div><div class="words"><span>duration</span><span>easing</span></div></div></div></div>
+<div class="vcol v-role"><a href="#roles"><b>role</b>7 groups</a><div class="groups"><div><div class="g-label">Prominence</div><div class="words"><span>default</span><span>muted</span><span>faint</span><span>strong</span></div></div><div><div class="g-label">Intent</div><div class="words"><span>accent</span><span>danger</span><span>success</span><span>warning</span><span>info</span><span>highlight</span><span>love</span></div></div><div><div class="g-label">Surface</div><div class="words"><span>raised</span><span>sunken</span><span>overlay</span><span>inverse</span><span>backdrop</span></div></div><div><div class="g-label">Purpose</div><div class="words"><span>link</span><span>input</span></div></div><div><div class="g-label">Shadow level</div><div class="words"><span>overflow</span><span>raised</span><span>overlay</span><span>dialog</span></div></div><div><div class="g-label">Type style</div><div class="words"><span>body</span><span>heading</span><span>prose</span><span>monospace</span><span>none</span></div></div><div><div class="g-label">Motion</div><div class="words"><span>standard</span><span>enter</span><span>exit</span></div></div></div></div>
+<div class="vcol v-variant"><a href="#variants"><b>variant</b>4 groups</a><div class="groups"><div><div class="g-label">size</div><div class="words"><span>3xs</span><span>2xs</span><span>xs</span><span>sm</span><span>md</span><span>lg</span><span>xl</span><span>2xl</span><span>3xl</span><span>4xl</span><span>5xl</span></div></div><div><div class="g-label">step</div><div class="words"><span>half</span><span>1</span><span>…</span><span>12</span></div></div><div><div class="g-label">strength</div><div class="words"><span>subtlest</span><span>subtle</span><span>bold</span></div></div><div><div class="g-label">weight</div><div class="words"><span>regular</span><span>medium</span><span>semibold</span><span>bold</span></div></div></div></div>
+<div class="vcol v-state"><a href="#states"><b>state</b>2 groups</a><div class="groups"><div><div class="g-label">Condition</div><div class="words"><span>selected</span><span>checked</span><span>current</span><span>expanded</span><span>disabled</span><span>invalid</span><span>visited</span><span>read</span></div></div><div><div class="g-label">Interaction</div><div class="words"><span>hovered</span><span>pressed</span><span>focused</span></div></div></div></div>
+</div>
+
+<h2 id="categories"><span class="n">02</span>Categories and properties</h2>
 <p>The category is the first word after the owner; the property says what inside the category the token sets. <code>shadow</code> and <code>opacity</code> have no property; the role follows the category directly.</p>
 <div class="tbl"><table class="wordlist">
 <thead><tr><th>Category</th><th>Properties</th><th>Components may also use</th></tr></thead>
@@ -26,7 +42,7 @@
 </table></div>
 <p>Component sizes use logical axes like CSS <code>inline-size</code> and <code>block-size</code>: in horizontal text <code>inline</code> is the width and <code>block</code> the height. <code>--d-comp-DModal-size-max-inline</code> is the modal's max width.</p>
 
-<h2 id="roles">Roles</h2>
+<h2 id="roles"><span class="n">03</span>Roles</h2>
 <p>A role says what a value is for. In <code>--d-sys-color-text-muted</code>, <code>muted</code> is the role. If a property has roles, the role is always written, and the neutral one is <code>default</code>. Properties that are pure scales (<code>font-size</code>, <code>space-*</code>, <code>border-radius</code>) have no role and go straight to the variant.</p>
 <h3 id="role-groups">Role groups</h3>
 <div class="tbl"><table class="wordlist">
@@ -42,7 +58,7 @@
 <tr><td>Components only</td><td>kinds (<code>primary</code>, <code>flat</code> …), axes (<code>inline</code>, <code>block-end</code> …)</td><td>The component's own variant, or which side a spacing value applies to. See below.</td></tr>
 </tbody></table></div>
 <p>If a property has roles, the role is always written, and the neutral one is <code>default</code>.</p>
-<p>A system token always describes a purpose or level, never a UI component: <code>shadow-overlay</code>, not <code>shadow-dropdown</code>. The one exception is <code>input</code>, because form fields share one look across every component that has them.</p>
+<p>A system token always describes a purpose or level, never a UI component: <code class="right">shadow-overlay</code>, not <code class="wrong">shadow-dropdown</code>. The one exception is <code>input</code>, because form fields share one look across every component that has them.</p>
 <p><b>Intent words today:</b> <code>accent</code> <code>danger</code> <code>success</code> <code>warning</code> <code>info</code> <code>highlight</code> <code>love</code>. <code>accent</code> replaces <code>tertiary</code>. <code>warning</code> and <code>info</code> have no color of their own in core yet. Today warnings borrow the highlight color (<code>--highlight-bg</code>) and info borrows the accent (<code>--tertiary-low</code>). Their tokens can start with those values and get their own colors when the base colors are redesigned.</p>
 
 
@@ -54,15 +70,15 @@
 <h3 id="component-roles">In components</h3>
 <p>Components put their <b>kind</b> in the role slot (DButton: <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code>, <code>transparent</code>), as in <code>--d-comp-DButton-color-background-primary-hovered</code>. Spacing tokens can put an <b>axis</b> there instead: <code>inline</code>, <code>block</code>, <code>inline-start</code>, <code>inline-end</code>, <code>block-start</code> or <code>block-end</code>, as in <code>--d-comp-SidebarSectionLink-space-padding-inline</code>.</p>
 
-<h2 id="variants">Variants</h2>
+<h2 id="variants"><span class="n">04</span>Variants</h2>
 <p>A variant is a step on a scale. There are four scales, and each property uses at most one of them.</p>
 <div class="tbl"><table class="wordlist">
 <thead><tr><th>Kind</th><th>Words</th><th>Used by</th><th>Rules</th></tr></thead>
 <tbody>
-<tr><td>size</td><td><code>3xs</code> <code>2xs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> <code>2xl</code> <code>3xl</code> <code>4xl</code> <code>5xl</code></td><td><code>font-size</code>, <code>size-*</code>, <code>border-radius</code>, <code>border-width</code>, <code>motion-duration</code></td><td>One scale for everything except spacing. <code>md</code> is the middle step. Never <code>large</code>, <code>small</code> or <code>default</code>. <code>border-radius</code> also takes <code>full</code>.</td></tr>
-<tr><td>step</td><td><code>half</code> <code>1</code> to <code>12</code></td><td><code>space-*</code></td><td>Counts 4px units: <code>2</code> is 8px, <code>5</code> is 20px. Spacing needs finer steps than size words give, like core's current <code>--space-N</code> and most larger systems. See <a href="#space-scale">Space scale</a>.</td></tr>
-<tr><td>strength</td><td><code>subtlest</code> <code>subtle</code> <code>bold</code></td><td><code>color-*</code>, after an intent role</td><td>Only follows an intent (<code>danger-subtle</code>, never <code>muted-subtle</code>). The base strength has no word.</td></tr>
-<tr><td>weight</td><td><code>regular</code> <code>medium</code> <code>semibold</code> <code>bold</code></td><td><code>font-weight</code></td><td>Named CSS weights.</td></tr>
+<tr><td class="key c-layer">size</td><td><code>3xs</code> <code>2xs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> <code>2xl</code> <code>3xl</code> <code>4xl</code> <code>5xl</code></td><td><code>font-size</code>, <code>size-*</code>, <code>border-radius</code>, <code>border-width</code>, <code>motion-duration</code></td><td>One scale for everything except spacing. <code>md</code> is the middle step. Never <code>large</code>, <code>small</code> or <code>default</code>. <code>border-radius</code> also takes <code>full</code>.</td></tr>
+<tr><td class="key c-layer">step</td><td><code>half</code> <code>1</code> to <code>12</code></td><td><code>space-*</code></td><td>Counts 4px units: <code>2</code> is 8px, <code>5</code> is 20px. Spacing needs finer steps than size words give, like core's current <code>--space-N</code> and most larger systems. See <a href="#space-scale">Space scale</a>.</td></tr>
+<tr><td class="key c-layer">strength</td><td><code>subtlest</code> <code>subtle</code> <code>bold</code></td><td><code>color-*</code>, after an intent role</td><td>Only follows an intent (<code>danger-subtle</code>, never <code>muted-subtle</code>). The base strength has no word.</td></tr>
+<tr><td class="key c-layer">weight</td><td><code>regular</code> <code>medium</code> <code>semibold</code> <code>bold</code></td><td><code>font-weight</code></td><td>Named CSS weights.</td></tr>
 </tbody></table></div>
 <h3 id="strength">Strength steps</h3>
 <p>Faintest to strongest:</p>
@@ -79,24 +95,24 @@
 <h3 id="space-scale">Space scale</h3>
 <p>Spacing counts 4px units, the same as core's <code>--space-N</code> today, so every current value keeps a step: <code>--d-sys-space-padding-5</code> is 20px.</p>
 <div class="tbl"><table>
-<thead><tr><th>Step</th><th class="num">px</th><th class="num">Uses today</th><th>Replaces</th></tr></thead>
+<thead><tr><th>Step</th><th class="num">px</th><th>Scale</th><th class="num">Uses today</th></tr></thead>
 <tbody>
-<tr><td><code>half</code></td><td class="num">2</td><td class="num">28</td><td><code>--space-half</code></td></tr>
-<tr><td><code>1</code></td><td class="num">4</td><td class="num">259</td><td><code>--space-1</code></td></tr>
-<tr><td><code>2</code></td><td class="num">8</td><td class="num">432</td><td><code>--space-2</code></td></tr>
-<tr><td><code>3</code></td><td class="num">12</td><td class="num">131</td><td><code>--space-3</code></td></tr>
-<tr><td><code>4</code></td><td class="num">16</td><td class="num">264</td><td><code>--space-4</code></td></tr>
-<tr><td><code>5</code></td><td class="num">20</td><td class="num">32</td><td><code>--space-5</code></td></tr>
-<tr><td><code>6</code></td><td class="num">24</td><td class="num">41</td><td><code>--space-6</code></td></tr>
-<tr><td><code>7</code></td><td class="num">28</td><td class="num">1</td><td><code>--space-7</code></td></tr>
-<tr><td><code>8</code></td><td class="num">32</td><td class="num">32</td><td><code>--space-8</code></td></tr>
-<tr><td><code>9</code></td><td class="num">36</td><td class="num">8</td><td><code>--space-9</code></td></tr>
-<tr><td><code>10</code></td><td class="num">40</td><td class="num">4</td><td><code>--space-10</code></td></tr>
-<tr><td><code>11</code></td><td class="num">44</td><td class="num">0</td><td><code>--space-11</code></td></tr>
-<tr><td><code>12</code></td><td class="num">48</td><td class="num">8</td><td><code>--space-12</code></td></tr>
+<tr><td class="code">half</td><td class="num">2</td><td><span class="bar" style="width:8px"></span></td><td class="num">28</td></tr>
+<tr><td class="code">1</td><td class="num">4</td><td><span class="bar" style="width:16px"></span></td><td class="num">259</td></tr>
+<tr><td class="code">2</td><td class="num">8</td><td><span class="bar" style="width:32px"></span></td><td class="num">432</td></tr>
+<tr><td class="code">3</td><td class="num">12</td><td><span class="bar" style="width:48px"></span></td><td class="num">131</td></tr>
+<tr><td class="code">4</td><td class="num">16</td><td><span class="bar" style="width:64px"></span></td><td class="num">264</td></tr>
+<tr><td class="code">5</td><td class="num">20</td><td><span class="bar" style="width:80px"></span></td><td class="num">32</td></tr>
+<tr><td class="code">6</td><td class="num">24</td><td><span class="bar" style="width:96px"></span></td><td class="num">41</td></tr>
+<tr><td class="code">7</td><td class="num">28</td><td><span class="bar" style="width:112px"></span></td><td class="num">1</td></tr>
+<tr><td class="code">8</td><td class="num">32</td><td><span class="bar" style="width:128px"></span></td><td class="num">32</td></tr>
+<tr><td class="code">9</td><td class="num">36</td><td><span class="bar" style="width:144px"></span></td><td class="num">8</td></tr>
+<tr><td class="code">10</td><td class="num">40</td><td><span class="bar" style="width:160px"></span></td><td class="num">4</td></tr>
+<tr><td class="code">11</td><td class="num">44</td><td><span class="bar" style="width:176px"></span></td><td class="num">0</td></tr>
+<tr><td class="code">12</td><td class="num">48</td><td><span class="bar" style="width:192px"></span></td><td class="num">8</td></tr>
 </tbody></table></div>
 
-<h2 id="states">States</h2>
+<h2 id="states"><span class="n">05</span>States</h2>
 <div class="tbl"><table class="wordlist">
 <thead><tr><th>Kind</th><th>Words</th><th>Notes</th></tr></thead>
 <tbody>
@@ -104,14 +120,15 @@
 <tr><td>Condition</td><td><code>selected</code> <code>checked</code> <code>current</code> <code>expanded</code> <code>disabled</code> <code>invalid</code> <code>visited</code> <code>read</code></td><td><code>disabled</code> is a state, not a role. <code>active</code> is not allowed; use <code>pressed</code>, <code>current</code> or <code>selected</code>.</td></tr>
 </tbody></table></div>
 
-<h2 id="color-values">Color values</h2>
-<p>A color token always holds a full color. There are no <code>-rgb</code> twins (<code>--secondary-rgb</code> and similar, which exist today only to add transparency). Apply transparency with <code>color-mix()</code>: <code>color-mix(in srgb, var(--d-sys-color-background-default) 80%, transparent)</code>.</p>
+<h2 id="color-values"><span class="n">06</span>Color values</h2>
+<p>A color token always holds a full color. There are no <code>-rgb</code> twins (<code>--secondary-rgb</code> and similar, which exist today only to add transparency). Apply transparency with <code>color-mix()</code>:</p>
+<div class="formula">color-mix(in srgb, var(--d-sys-color-background-default) 80%, transparent)</div>
 
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
 </main>
 </div>
-<script src="grammar.js"></script>
-<script src="examples.js"></script>
-<script src="site.js"></script>
+<script src="grammar.js?v=6"></script>
+<script src="examples.js?v=6"></script>
+<script src="site.js?v=6"></script>
 </body>
 </html>

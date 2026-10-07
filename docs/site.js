@@ -9,39 +9,50 @@ function segLine(segs) {
 }
 
 
-/* ---------- section index ---------- */
+/* ---------- section index with scroll-spy ---------- */
 (function () {
-  const box = document.getElementById("nav-links");
+  const box = document.getElementById("toc-links");
   if (!box) return;
-  box.innerHTML = [...document.querySelectorAll("main h2[id], main h3[id]")].map(el =>
-    `<a href="#${el.id}"${el.tagName === "H3" ? ' class="sub"' : ""}>${esc(el.textContent)}</a>`).join("");
+  const heads = [...document.querySelectorAll("main h2[id]")];
+  box.innerHTML = heads.map(h => {
+    const n = h.querySelector(".n");
+    const label = [...h.childNodes].filter(c => c !== n).map(c => c.textContent).join("").trim();
+    return `<a href="#${h.id}">${n ? `<span class="n">${esc(n.textContent)}</span>` : ""}<span>${esc(label)}</span></a>`;
+  }).join("");
+  const links = [...box.querySelectorAll("a")];
+  function spy() {
+    let i = 0;
+    heads.forEach((h, j) => { if (h.getBoundingClientRect().top < 140) i = j; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) i = heads.length - 1;
+    links.forEach((l, j) => l.classList.toggle("on", j === i));
+  }
+  window.addEventListener("scroll", spy, { passive: true });
+  window.addEventListener("resize", spy);
+  spy();
 })();
 
 /* ---------- anatomy ---------- */
 (function () {
-  if (!document.getElementById("anatomy-rows")) return;
+  const box = document.getElementById("anatomy-rows");
+  if (!box) return;
   const rows = [
-    [["--d-sys","prefix","prefix"],["font","category","category"],["line-height","property","property"],["body","role","role"]],
-    [["--d-sys","prefix","prefix"],["color","category","category"],["background","property","property"],["danger","role","role"],["bold","variant","variant"],["hovered","state","state"]],
+    [["--d-sys","prefix","prefix"],["color","category","category"],["background","property","property"],["danger","role","role"],["bold","variant","variant"]],
     [["--d-comp","prefix","prefix"],["DButton","owner","component"],["color","category","category"],["background","property","property"],["primary","kind","role · kind"],["hovered","state","state"]],
-    [["--d-comp","prefix","prefix"],["NavPills","owner","component"],["underline","part","part"],["size","category","category"],["block","property","property"]],
-    [["--d-comp","prefix","prefix"],["SidebarSectionLink","owner","component"],["space","category","category"],["padding","property","property"],["inline","axis","role · axis"]],
-    [["--tc","prefix","prefix"],["DiscoverySidebar","owner","owner"],["color","category","category"],["text","property","property"],["muted","role","role"]],
     [["--p","prefix","prefix"],["Chat","owner","owner"],["ChatComposer","component","component"],["color","category","category"],["border","property","property"],["focused","state","state"]]
   ];
-  document.getElementById("anatomy-rows").innerHTML = rows.map(r =>
+  box.innerHTML = rows.map(r =>
     '<div class="anat-row">' + segLine(r.map(([w, slot, label]) => ({ w, slot, label }))) + "</div>").join("");
 })();
 
 /* ---------- vocabulary tables ---------- */
 (function () {
   const code = a => a.map(x => `<code>${esc(x)}</code>`).join(" ");
-  const none = "<span style='color:var(--muted)'>none</span>";
+  const none = '<span class="muted">none</span>';
   const pb = document.getElementById("props-body");
   if (pb) pb.innerHTML = V.categories.map(c => {
     const ps = Object.keys(V.props[c]).filter(p => p);
     const extra = V.compExtraProps[c] || [];
-    return `<tr><td class="c-category mono">${c}</td><td>${ps.length ? code(ps) : none}</td><td>${extra.length ? code(extra) : ""}</td></tr>`;
+    return `<tr><td class="key c-category">${c}</td><td>${ps.length ? code(ps) : none}</td><td>${extra.length ? code(extra) : ""}</td></tr>`;
   }).join("");
   const rb = document.getElementById("roles-body");
   if (rb) {
@@ -49,7 +60,7 @@ function segLine(segs) {
     for (const c of V.categories) for (const p of Object.keys(V.props[c])) {
       const s = V.props[c][p];
       if (!s.roles.length) continue;
-      html += `<tr><td class="mono">${c}${p ? "-" + esc(p) : ""}</td><td>${code(s.roles)}${s.roleOptional ? " (optional; a state may follow directly)" : ""}</td></tr>`;
+      html += `<tr><td class="code">${c}${p ? "-" + esc(p) : ""}</td><td>${code(s.roles)}${s.roleOptional ? " (optional; a state may follow directly)" : ""}</td></tr>`;
     }
     rb.innerHTML = html;
   }
