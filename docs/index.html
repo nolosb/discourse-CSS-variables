@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Discourse CSS Variables</title>
+<link rel="stylesheet" href="site.css">
+<script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} [hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="topbar"><div class="in"><a class="site" href="index.html">Discourse CSS Variables</a><nav aria-label="Pages"><a href="index.html" aria-current="page">Rules</a><a href="vocabulary.html">Vocabulary</a><a href="examples.html">Examples</a><a href="playground.html">Playground</a><a href="open.html">Open questions</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div></header>
+<div class="wrap">
+<nav class="index" aria-label="On this page">
+  <div id="nav-links"></div>
+</nav>
+<main>
+<div class="meta">Naming scheme · draft · 6 Oct 2026</div>
+<h1>Rules</h1>
+<p class="lede">One naming system for every CSS custom property in core, themes and plugins. Each name says which layer it belongs to, who owns it and what it is for.</p>
+<p>Checked against core at <code>68ad0815c02</code>: 686 custom properties in core stylesheets, 192 more in bundled plugins.</p>
+<h2 id="layers">Layers and prefixes</h2>
+<div class="tbl"><table>
+<thead><tr><th>Layer</th><th>Prefix</th><th>Owner</th><th>Visibility</th></tr></thead>
+<tbody>
+<tr><td>System (semantic)</td><td><code>--d-sys-</code></td><td>Core</td><td>public</td></tr>
+<tr><td>Core component</td><td><code>--d-comp-</code></td><td><code>{Component}</code></td><td>public</td></tr>
+<tr><td>Theme</td><td><code>--t-</code></td><td><code>{ThemeName}</code></td><td>public</td></tr>
+<tr><td>Theme component</td><td><code>--tc-</code></td><td><code>{ComponentName}</code></td><td>public</td></tr>
+<tr><td>Plugin</td><td><code>--p-</code></td><td><code>{PluginName}</code></td><td>public</td></tr>
+<tr><td>Base (palette, raw scales)</td><td><span style="color:var(--muted)">open</span></td><td>Core</td><td>not public</td></tr>
+</tbody></table></div>
+<ul class="rules">
+  <li><code>--d-</code> belongs to core. Extensions may <b>set</b> public <code>--d-sys-</code> and <code>--d-comp-</code> tokens; that is the customization contract. They never <b>define</b> new names under <code>--d-</code>.</li>
+  <li>Every name in these layers is public: documented and stable. A rename goes through the renaming framework and the old name keeps resolving. The base layer is the only part that is not public.</li>
+</ul>
+
+<h2 id="anatomy">Anatomy</h2>
+<p>The order is fixed. Slots can be left out but never moved. PascalCase marks the owner; everything else is lowercase and drawn from closed lists.</p>
+<div class="anatomy" id="anatomy-rows"></div>
+
+<h2 id="grammar">Grammar</h2>
+<h3>Slots</h3>
+<div class="tbl"><table>
+<thead><tr><th>Slot</th><th>Casing</th><th>Hyphenated words</th><th>Required</th><th>Words</th></tr></thead>
+<tbody>
+<tr><td class="c-prefix">prefix</td><td>lowercase</td><td>no</td><td>yes</td><td>layer table</td></tr>
+<tr><td class="c-owner">Owner</td><td>PascalCase</td><td>no</td><td>yes, except in sys</td><td>derived from file path or extension name</td></tr>
+<tr><td class="c-owner">Component</td><td>PascalCase</td><td>no</td><td>no, extensions only</td><td>derived from the extension's component path</td></tr>
+<tr><td class="c-part">part</td><td>lowercase</td><td>no</td><td>no, max one, not in sys</td><td>free word that is on no other list</td></tr>
+<tr><td class="c-category">category</td><td>lowercase</td><td>no</td><td>yes</td><td>9 words</td></tr>
+<tr><td class="c-property">property</td><td>lowercase</td><td>yes (<code>line-height</code>, <code>max-inline</code>)</td><td>per category</td><td>per category</td></tr>
+<tr><td class="c-role">role</td><td>lowercase</td><td>yes (<code>inline-end</code>)</td><td>per property</td><td>per property; in components, the component's kind</td></tr>
+<tr><td class="c-variant">variant</td><td>lowercase</td><td>no</td><td>per property</td><td>size, step, strength or weight scale</td></tr>
+<tr><td class="c-state">state</td><td>lowercase</td><td>no</td><td>no, max two</td><td>11 words, condition before interaction</td></tr>
+</tbody></table></div>
+
+<h3>Rules</h3>
+<ul class="rules">
+  <li><code>property</code>, <code>role</code> and <code>variant</code> are only allowed where the vocabulary lists them for that category.</li>
+  <li>Two states go condition first, interaction second: <code>selected-hovered</code>, never <code>hovered-selected</code>.</li>
+  <li>A <code>part</code> may not be a word from any closed list, so <code>border</code> can never be a part.</li>
+  <li>Hyphenated entries such as <code>line-height</code> or <code>inline-end</code> fill one slot, so <code>font-line-height-body</code> has four segments but three slots.</li>
+  <li>If a property has roles, the role slot is always filled and the neutral role is spelled <code>default</code>. Scales have no role. Size scales use <code>md</code> as their middle step; spacing counts 4px steps.</li>
+</ul>
+
+<h2 id="components">Components</h2>
+<p><code>--d-comp-{Owner}[-{part}]-{category}[-{property}][-{role}][-{variant}][-{state}]</code></p>
+<h3>Owner comes from the file path</h3>
+<p>Class names in core are not reliable: <code>topic-list/item.gjs</code> exports <code>Item</code> and <code>header.gjs</code> exports <code>GlimmerHeader</code>. The path is unique and an agent can derive it: take the path under <code>app/components/</code> or <code>app/ui-kit/</code>, split on <code>/</code> and <code>-</code>, capitalize each word and join.</p>
+<div class="tbl"><table>
+<thead><tr><th>File</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td><code>ui-kit/d-button.gts</code></td><td class="c-owner mono">DButton</td></tr>
+<tr><td><code>ui-kit/d-toggle-switch.gjs</code></td><td class="c-owner mono">DToggleSwitch</td></tr>
+<tr><td><code>sidebar/section-link.gjs</code></td><td class="c-owner mono">SidebarSectionLink</td></tr>
+<tr><td><code>topic-list/item.gjs</code></td><td class="c-owner mono">TopicListItem</td></tr>
+<tr><td><code>header/home-logo.gjs</code></td><td class="c-owner mono">HeaderHomeLogo</td></tr>
+<tr><td><code>post/menu.gjs</code></td><td class="c-owner mono">PostMenu</td></tr>
+</tbody></table></div>
+<ul class="rules">
+  <li>The <code>D</code> comes from the <code>d-</code> file names in <code>ui-kit/</code>. Eight components outside ui-kit also start with <code>d-</code> (<code>d-navigation</code>, <code>d-section</code>, …), so <code>D</code> alone does not prove ui-kit.</li>
+  <li>Styles with no component file (global input styles, <code>.nav-pills</code>, tables) use a registered pattern name: <code>Input</code>, <code>NavPills</code>, <code>Table</code>.</li>
+  <li><b>Same shape as system tokens.</b> After the owner and an optional part, a component token follows the system grammar, so one can be read from the other: <code>--d-sys-color-text-muted</code> and <code>--d-comp-TopicListItem-color-text-muted</code>.</li>
+  <li><b>Kinds go in the role slot.</b> A component's kind takes the position of the role. DButton kinds are <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code> and <code>transparent</code>: <code>--d-comp-DButton-color-background-primary-hovered</code>.</li>
+  <li><b>Part</b> is one word for an element that has no component file (<code>DModal-header</code>, <code>PostMenu-button</code>). If the element has its own file, use that file's Owner.</li>
+  <li>A part is also used for a style the owner applies to many child components at once: <code>PostMenu-button</code> styles all 13 post menu buttons, which each have their own file. Use a child's own Owner only for tokens that apply to that one child.</li>
+  <li><b>Extra properties:</b> components can use a few words system tokens never use, such as logical sizes (<code>size-max-inline</code> for a max width) and spacing axes (<code>space-padding-inline</code>). See <a href="vocabulary.html#categories">Categories and properties</a> and <a href="vocabulary.html#component-roles">Roles in components</a>.</li>
+  <li>Role and variant may be left out when the component holds a single value: <code>--d-comp-DButton-border-radius</code>.</li>
+  <li><b>All component tokens are declared on <code>:root</code></b>, like system tokens. A theme can override any of them in one <code>:root</code> block, and an agent always knows where to look. Scoped overrides on component selectors stay allowed.</li>
+</ul>
+
+<h2 id="extensions">Extensions</h2>
+<p><code>--{t|tc|p}-{Owner}[-{Component}][-{part}]-{category}…</code></p>
+<ul class="rules">
+  <li><b>Owner</b>: PascalCase of the <code>name</code> in <code>about.json</code>, or of <code># name:</code> in <code>plugin.rb</code> with a leading <code>discourse-</code> removed. <code>Horizon</code>, <code>DiscoverySidebar</code>, <code>Chat</code>, <code>Reactions</code>, <code>Ai</code>.</li>
+  <li><b>Component</b> (optional): the extension's own component, derived from its path like core: <code>--p-Chat-ChatComposer-color-background</code>.</li>
+  <li><b>Bundled plugins</b> are plugins. Chat's <code>--d-chat-input-bg-color</code> becomes <code>--p-Chat-ChatComposer-color-background</code>.</li>
+  <li>Extensions read public <code>--d-sys-</code> and <code>--d-comp-</code> tokens and may override them, globally or in a scope.</li>
+</ul>
+
+<footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
+</main>
+</div>
+<script src="grammar.js"></script>
+<script src="examples.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vocabulary · Discourse CSS Variables</title>
+<link rel="stylesheet" href="site.css">
+<script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} [hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="topbar"><div class="in"><a class="site" href="index.html">Discourse CSS Variables</a><nav aria-label="Pages"><a href="index.html">Rules</a><a href="vocabulary.html" aria-current="page">Vocabulary</a><a href="examples.html">Examples</a><a href="playground.html">Playground</a><a href="open.html">Open questions</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div></header>
+<div class="wrap">
+<nav class="index" aria-label="On this page">
+  <div id="nav-links"></div>
+</nav>
+<main>
+<h1>Vocabulary</h1>
+<p class="lede">The closed word lists for every slot. A word that is not listed here does not belong in a name.</p>
+
+<h2 id="categories">Categories and properties</h2>
+<p>The category is the first word after the owner; the property says what inside the category the token sets. <code>shadow</code> and <code>opacity</code> have no property; the role follows the category directly.</p>
+<div class="tbl"><table class="wordlist">
+<thead><tr><th>Category</th><th>Properties</th><th>Components may also use</th></tr></thead>
+<tbody id="props-body"></tbody>
+</table></div>
+<p>Component sizes use logical axes like CSS <code>inline-size</code> and <code>block-size</code>: in horizontal text <code>inline</code> is the width and <code>block</code> the height. <code>--d-comp-DModal-size-max-inline</code> is the modal's max width.</p>
+
+<h2 id="roles">Roles</h2>
+<p>A role says what a value is for. In <code>--d-sys-color-text-muted</code>, <code>muted</code> is the role. If a property has roles, the role is always written, and the neutral one is <code>default</code>. Properties that are pure scales (<code>font-size</code>, <code>space-*</code>, <code>border-radius</code>) have no role and go straight to the variant.</p>
+<h3 id="role-groups">Role groups</h3>
+<div class="tbl"><table class="wordlist">
+<thead><tr><th>Group</th><th>Words</th><th>Used for</th></tr></thead>
+<tbody>
+<tr><td>Prominence</td><td><code>default</code> <code>muted</code> <code>faint</code> <code>strong</code></td><td>How prominent neutral text, icons and borders are. One value serves all quieter text, such as meta text, captions and hints.</td></tr>
+<tr><td>Intent</td><td><code>accent</code> <code>danger</code> <code>success</code> <code>warning</code> <code>info</code> <code>highlight</code> <code>love</code></td><td>Meaning. The only roles that take <a href="#variants">strength variants</a> (<code>danger-subtle</code>).</td></tr>
+<tr><td>Surface</td><td><code>raised</code> <code>sunken</code> <code>overlay</code> <code>inverse</code> <code>backdrop</code></td><td>Background levels and special surfaces: <code>inverse</code> for flipped light/dark areas, <code>backdrop</code> behind modals.</td></tr>
+<tr><td>Purpose</td><td><code>link</code> <code>input</code></td><td>Specific jobs that need their own value.</td></tr>
+<tr><td>Shadow level</td><td><code>overflow</code> <code>raised</code> <code>overlay</code> <code>dialog</code></td><td>Elevation, lightest to strongest: an edge where content scrolls under (header, footer nav), lifted off the page (cards), floating above content (dropdowns, tooltips), blocking the page (modals).</td></tr>
+<tr><td>Type style</td><td><code>body</code> <code>heading</code> <code>prose</code> <code>monospace</code> <code>none</code></td><td>Font family, line height and letter spacing per kind of text.</td></tr>
+<tr><td>Motion</td><td><code>standard</code> <code>enter</code> <code>exit</code></td><td>Easing curves.</td></tr>
+<tr><td>Components only</td><td>kinds (<code>primary</code>, <code>flat</code> …), axes (<code>inline</code>, <code>block-end</code> …)</td><td>The component's own variant, or which side a spacing value applies to. See below.</td></tr>
+</tbody></table></div>
+<p>If a property has roles, the role is always written, and the neutral one is <code>default</code>.</p>
+<p>A system token always describes a purpose or level, never a UI component: <code>shadow-overlay</code>, not <code>shadow-dropdown</code>. The one exception is <code>input</code>, because form fields share one look across every component that has them.</p>
+<p><b>Intent words today:</b> <code>accent</code> <code>danger</code> <code>success</code> <code>warning</code> <code>info</code> <code>highlight</code> <code>love</code>. <code>accent</code> replaces <code>tertiary</code>. <code>warning</code> and <code>info</code> have no color of their own in core yet. Today warnings borrow the highlight color (<code>--highlight-bg</code>) and info borrows the accent (<code>--tertiary-low</code>). Their tokens can start with those values and get their own colors when the base colors are redesigned.</p>
+
+
+<h3 id="roles-by-property">Roles by property</h3>
+<div class="tbl"><table class="wordlist">
+<thead><tr><th>Property</th><th>Roles</th></tr></thead>
+<tbody id="roles-body"></tbody>
+</table></div>
+<h3 id="component-roles">In components</h3>
+<p>Components put their <b>kind</b> in the role slot (DButton: <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code>, <code>transparent</code>), as in <code>--d-comp-DButton-color-background-primary-hovered</code>. Spacing tokens can put an <b>axis</b> there instead: <code>inline</code>, <code>block</code>, <code>inline-start</code>, <code>inline-end</code>, <code>block-start</code> or <code>block-end</code>, as in <code>--d-comp-SidebarSectionLink-space-padding-inline</code>.</p>
+
+<h2 id="variants">Variants</h2>
+<p>A variant is a step on a scale. There are four scales, and each property uses at most one of them.</p>
+<div class="tbl"><table class="wordlist">
+<thead><tr><th>Kind</th><th>Words</th><th>Used by</th><th>Rules</th></tr></thead>
+<tbody>
+<tr><td>size</td><td><code>3xs</code> <code>2xs</code> <code>xs</code> <code>sm</code> <code>md</code> <code>lg</code> <code>xl</code> <code>2xl</code> <code>3xl</code> <code>4xl</code> <code>5xl</code></td><td><code>font-size</code>, <code>size-*</code>, <code>border-radius</code>, <code>border-width</code>, <code>motion-duration</code></td><td>One scale for everything except spacing. <code>md</code> is the middle step. Never <code>large</code>, <code>small</code> or <code>default</code>. <code>border-radius</code> also takes <code>full</code>.</td></tr>
+<tr><td>step</td><td><code>half</code> <code>1</code> to <code>12</code></td><td><code>space-*</code></td><td>Counts 4px units: <code>2</code> is 8px, <code>5</code> is 20px. Spacing needs finer steps than size words give, like core's current <code>--space-N</code> and most larger systems. See <a href="#space-scale">Space scale</a>.</td></tr>
+<tr><td>strength</td><td><code>subtlest</code> <code>subtle</code> <code>bold</code></td><td><code>color-*</code>, after an intent role</td><td>Only follows an intent (<code>danger-subtle</code>, never <code>muted-subtle</code>). The base strength has no word.</td></tr>
+<tr><td>weight</td><td><code>regular</code> <code>medium</code> <code>semibold</code> <code>bold</code></td><td><code>font-weight</code></td><td>Named CSS weights.</td></tr>
+</tbody></table></div>
+<h3 id="strength">Strength steps</h3>
+<p>Faintest to strongest:</p>
+<div class="tbl"><table>
+<thead><tr><th>Step</th><th>Looks like</th><th>Example</th><th>Today</th></tr></thead>
+<tbody>
+<tr><td><code>subtlest</code></td><td>faintest tint</td><td><code>--d-sys-color-background-accent-subtlest</code></td><td><code>--tertiary-very-low</code></td></tr>
+<tr><td><code>subtle</code></td><td>light tint, e.g. a banner background</td><td><code>--d-sys-color-background-danger-subtle</code></td><td><code>--danger-low</code></td></tr>
+<tr><td></td><td>the standard intent color, no suffix</td><td><code>--d-sys-color-background-danger</code></td><td><code>--danger</code></td></tr>
+<tr><td><code>bold</code></td><td>strongest, solid fill</td><td><code>--d-sys-color-background-accent-bold</code></td><td><code>--token-color-background-accent-bolder</code></td></tr>
+</tbody></table></div>
+<p>Only accent has a near-complete ramp in core today. Danger and success have about two steps, love has one. <code>warning</code> and <code>info</code> have no ramp of their own; they borrow highlight and accent steps. The grid stays complete so names are predictable, but a token is only published when it has a value.</p>
+
+<h3 id="space-scale">Space scale</h3>
+<p>Spacing counts 4px units, the same as core's <code>--space-N</code> today, so every current value keeps a step: <code>--d-sys-space-padding-5</code> is 20px.</p>
+<div class="tbl"><table>
+<thead><tr><th>Step</th><th class="num">px</th><th class="num">Uses today</th><th>Replaces</th></tr></thead>
+<tbody>
+<tr><td><code>half</code></td><td class="num">2</td><td class="num">28</td><td><code>--space-half</code></td></tr>
+<tr><td><code>1</code></td><td class="num">4</td><td class="num">259</td><td><code>--space-1</code></td></tr>
+<tr><td><code>2</code></td><td class="num">8</td><td class="num">432</td><td><code>--space-2</code></td></tr>
+<tr><td><code>3</code></td><td class="num">12</td><td class="num">131</td><td><code>--space-3</code></td></tr>
+<tr><td><code>4</code></td><td class="num">16</td><td class="num">264</td><td><code>--space-4</code></td></tr>
+<tr><td><code>5</code></td><td class="num">20</td><td class="num">32</td><td><code>--space-5</code></td></tr>
+<tr><td><code>6</code></td><td class="num">24</td><td class="num">41</td><td><code>--space-6</code></td></tr>
+<tr><td><code>7</code></td><td class="num">28</td><td class="num">1</td><td><code>--space-7</code></td></tr>
+<tr><td><code>8</code></td><td class="num">32</td><td class="num">32</td><td><code>--space-8</code></td></tr>
+<tr><td><code>9</code></td><td class="num">36</td><td class="num">8</td><td><code>--space-9</code></td></tr>
+<tr><td><code>10</code></td><td class="num">40</td><td class="num">4</td><td><code>--space-10</code></td></tr>
+<tr><td><code>11</code></td><td class="num">44</td><td class="num">0</td><td><code>--space-11</code></td></tr>
+<tr><td><code>12</code></td><td class="num">48</td><td class="num">8</td><td><code>--space-12</code></td></tr>
+</tbody></table></div>
+
+<h2 id="states">States</h2>
+<div class="tbl"><table class="wordlist">
+<thead><tr><th>Kind</th><th>Words</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Interaction</td><td><code>hovered</code> <code>pressed</code> <code>focused</code></td><td>Past participle. The rest state is never written.</td></tr>
+<tr><td>Condition</td><td><code>selected</code> <code>checked</code> <code>current</code> <code>expanded</code> <code>disabled</code> <code>invalid</code> <code>visited</code> <code>read</code></td><td><code>disabled</code> is a state, not a role. <code>active</code> is not allowed; use <code>pressed</code>, <code>current</code> or <code>selected</code>.</td></tr>
+</tbody></table></div>
+
+<h2 id="color-values">Color values</h2>
+<p>A color token always holds a full color. There are no <code>-rgb</code> twins (<code>--secondary-rgb</code> and similar, which exist today only to add transparency). Apply transparency with <code>color-mix()</code>: <code>color-mix(in srgb, var(--d-sys-color-background-default) 80%, transparent)</code>.</p>
+
+<footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
+</main>
+</div>
+<script src="grammar.js"></script>
+<script src="examples.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

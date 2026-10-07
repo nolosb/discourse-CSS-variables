@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Playground · Discourse CSS Variables</title>
+<link rel="stylesheet" href="site.css">
+<script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} [hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="topbar"><div class="in"><a class="site" href="index.html">Discourse CSS Variables</a><nav aria-label="Pages"><a href="index.html">Rules</a><a href="vocabulary.html">Vocabulary</a><a href="examples.html">Examples</a><a href="playground.html" aria-current="page">Playground</a><a href="open.html">Open questions</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Color theme">Theme: system</button></div></header>
+<div class="solo"><main>
+<h1 id="parser">Playground</h1>
+<p class="lede">Type or paste any variable name. The checker splits it into blocks, checks it against the grammar and suggests what can come next.</p>
+<div class="parser">
+  <label for="p-in">Variable name</label>
+  <div class="combo">
+    <input id="p-in" type="text" spellcheck="false" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="p-suggest" value="--d-comp-DButton-color-background-danger-hovered">
+    <ul class="suggest" id="p-suggest" role="listbox" aria-label="Suggestions" hidden></ul>
+  </div>
+  <div class="hint">Type to get suggestions for the next block. ↑ ↓ to move, Enter or Tab to accept, Esc to close.</div>
+  <div class="tries" id="p-tries"></div>
+  <div class="p-out" id="p-out" aria-live="polite"></div>
+</div>
+
+<footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
+</main></div>
+<script src="grammar.js"></script>
+<script src="examples.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
