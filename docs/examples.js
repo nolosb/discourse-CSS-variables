@@ -145,6 +145,7 @@ const EX = [
     ["--d-comp-DButton-color-text-flat-disabled", "--d-button-flat-text-color--disabled"],
     ["--d-comp-DButton-color-background-flat-focused", "--d-button-flat-bg-color--focus"],
     ["--d-comp-DButton-color-text-transparent", "--d-button-transparent-text-color"],
+    ["--d-comp-DButton-color-icon-close-hovered", "--d-button-flat-close-icon-color--hover"],
     ["--d-comp-DButton-border-radius", "--d-button-border-radius"],
     ["--d-comp-DButton-motion-transition", "--d-button-transition"]
   ]],

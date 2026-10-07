@@ -263,9 +263,16 @@ registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed
   be read from the other: `--d-sys-color-text-muted` and
   `--d-comp-TopicListItem-color-text-muted`.
 - **Kinds go in the role slot.** A component's kind takes the position of the role
-  (DButton: `default`, `primary`, `danger`, `success`, `flat`, `transparent`):
+  (DButton: `default`, `primary`, `danger`, `success`, `flat`, `transparent`, `close`):
   `--d-comp-DButton-color-background-primary-hovered`. Omitted when the component has no
-  kinds. Survey systems put the kind right after the component instead, but there a kind
+  kinds.
+- **One role word.** The role slot holds one word, so a kind replaces the role and never
+  combines with it: no `DButton-color-text-primary-muted`. Each kind has one color per
+  property. If an element inside the component needs its own color (a count next to the
+  label), it is a part: `--d-comp-DButton-count-color-text-primary`.
+- A modifier that gives a kind its own full set of colors is a kind of its own:
+  `.btn-flat.close` becomes the `close` kind (`--d-comp-DButton-color-icon-close-hovered`),
+  not a part, because it is not an element inside the button. Survey systems put the kind right after the component instead, but there a kind
   cannot be told apart from a part.
 - **Part** (bounded flexibility): one lowercase word for an element inside the component
   that has no component file of its own (`DModal-header`, `PostMenu-button`). If the
@@ -494,6 +501,7 @@ value keeps a step.
 --d-comp-DButton-color-background-danger-hovered     (--d-button-danger-bg-color--hover)
 --d-comp-DButton-color-text-flat-disabled            (--d-button-flat-text-color--disabled)
 --d-comp-DButton-color-border-success                (--d-button-success-border)
+--d-comp-DButton-color-icon-close-hovered            (--d-button-flat-close-icon-color--hover)
 --d-comp-DButton-border-radius                       (--d-button-border-radius)
 --d-comp-DButton-motion-transition                   (--d-button-transition)
 ```

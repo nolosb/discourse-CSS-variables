@@ -125,7 +125,7 @@ function parseToken(raw) {
     if (ALL_CLOSED.has(words[i])) { out.errors.push(`"${words[i]}" is a vocabulary word and cannot be a part. A category must come first.`); push(words[i], "error", "part?"); }
     else {
       push(words[i], "part");
-      if (["primary","secondary","default","flat","transparent"].includes(words[i]))
+      if (["primary","secondary","default","flat","transparent","close"].includes(words[i]))
         out.notes.push(`"${words[i]}" reads as a part here. If it is the component's kind, it belongs in the role slot after the property.`);
     }
     i++;

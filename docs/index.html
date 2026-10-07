@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=6">
+<link rel="stylesheet" href="docs.css?v=7">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -95,7 +95,9 @@
   <li>The <code>D</code> comes from the <code>d-</code> file names in <code>ui-kit/</code>. Eight components outside ui-kit also start with <code>d-</code> (<code>d-navigation</code>, <code>d-section</code>, …), so <code>D</code> alone does not prove ui-kit.</li>
   <li>Styles with no component file (global input styles, <code>.nav-pills</code>, tables) use a registered pattern name: <code>Input</code>, <code>NavPills</code>, <code>Table</code>.</li>
   <li><b>Same shape as system tokens.</b> After the owner and an optional part, a component token follows the system grammar, so one can be read from the other: <code>--d-sys-color-text-muted</code> and <code>--d-comp-TopicListItem-color-text-muted</code>.</li>
-  <li><b>Kinds go in the role slot.</b> A component's kind takes the position of the role. DButton kinds are <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code> and <code>transparent</code>: <code>--d-comp-DButton-color-background-primary-hovered</code>.</li>
+  <li><b>Kinds go in the role slot.</b> A component's kind takes the position of the role. DButton kinds are <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code>, <code>transparent</code> and <code>close</code>: <code>--d-comp-DButton-color-background-primary-hovered</code>.</li>
+  <li><b>One role word.</b> A kind replaces the role and never combines with it, so there is no <code>DButton-color-text-primary-muted</code>. Each kind has one color per property. If an element inside the component needs its own color (a count next to the label), it is a part: <code>--d-comp-DButton-count-color-text-primary</code>.</li>
+  <li>A modifier that gives a kind its own full set of colors is a kind of its own: <code>.btn-flat.close</code> becomes the <code>close</code> kind (<code>--d-comp-DButton-color-icon-close-hovered</code>), not a part, because it is not an element inside the button.</li>
   <li><b>Part</b> is one word for an element that has no component file (<code>DModal-header</code>, <code>PostMenu-button</code>). If the element has its own file, use that file's Owner.</li>
   <li>A part is also used for a style the owner applies to many child components at once: <code>PostMenu-button</code> styles all 13 post menu buttons, which each have their own file. Use a child's own Owner only for tokens that apply to that one child.</li>
   <li><b>Extra properties:</b> components can use a few words system tokens never use, such as logical sizes (<code>size-max-inline</code> for a max width) and spacing axes (<code>space-padding-inline</code>). See <a href="vocabulary.html#categories">Categories and properties</a> and <a href="vocabulary.html#component-roles">Roles in components</a>.</li>
@@ -115,8 +117,8 @@
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=6"></script>
-<script src="examples.js?v=6"></script>
-<script src="site.js?v=6"></script>
+<script src="grammar.js?v=7"></script>
+<script src="examples.js?v=7"></script>
+<script src="site.js?v=7"></script>
 </body>
 </html>

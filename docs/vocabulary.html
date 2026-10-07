@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vocabulary · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=6">
+<link rel="stylesheet" href="docs.css?v=7">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -68,7 +68,7 @@
 <tbody id="roles-body"></tbody>
 </table></div>
 <h3 id="component-roles">In components</h3>
-<p>Components put their <b>kind</b> in the role slot (DButton: <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code>, <code>transparent</code>), as in <code>--d-comp-DButton-color-background-primary-hovered</code>. Spacing tokens can put an <b>axis</b> there instead: <code>inline</code>, <code>block</code>, <code>inline-start</code>, <code>inline-end</code>, <code>block-start</code> or <code>block-end</code>, as in <code>--d-comp-SidebarSectionLink-space-padding-inline</code>.</p>
+<p>Components put their <b>kind</b> in the role slot (DButton: <code>default</code>, <code>primary</code>, <code>danger</code>, <code>success</code>, <code>flat</code>, <code>transparent</code>, <code>close</code>), as in <code>--d-comp-DButton-color-background-primary-hovered</code>. The kind replaces the role; the slot never holds two words. Spacing tokens can put an <b>axis</b> there instead: <code>inline</code>, <code>block</code>, <code>inline-start</code>, <code>inline-end</code>, <code>block-start</code> or <code>block-end</code>, as in <code>--d-comp-SidebarSectionLink-space-padding-inline</code>.</p>
 
 <h2 id="variants"><span class="n">04</span>Variants</h2>
 <p>A variant is a step on a scale. There are four scales, and each property uses at most one of them.</p>
@@ -127,8 +127,8 @@
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=6"></script>
-<script src="examples.js?v=6"></script>
-<script src="site.js?v=6"></script>
+<script src="grammar.js?v=7"></script>
+<script src="examples.js?v=7"></script>
+<script src="site.js?v=7"></script>
 </body>
 </html>
