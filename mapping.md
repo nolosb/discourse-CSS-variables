@@ -4,12 +4,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 114 | Same value, one target. |
+| [rename](#rename) | 115 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
-| [split](#split) | 23 | Target depends on each use; candidates in notes. |
+| [split](#split) | 29 | Target depends on each use; candidates in notes. |
 | [drop](#drop) | 33 | Unused, or `-rgb` twins. |
-| [base](#base) | 33 | Stays in the base layer. |
-| [open](#open) | 21 | Not covered by the scheme yet. |
+| [base](#base) | 34 | Stays in the base layer. |
+| [open](#open) | 13 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -122,6 +122,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--content-border-color` | `--d-sys-color-border-default` | color_definitions.scss | 320 | `var(--primary-low)` | 320 uses. |
 | `--table-border-color` | `--d-comp-Table-color-border` | color_definitions.scss | 7 | `var(--content-border-color)` |  |
 | `--title-color` | `--d-sys-color-text-default` | color_definitions.scss | 1 | `var(--primary)` | Same value as --primary; 1 use. |
+| `--title-color--header` | `--d-comp-Header-color-text-default` | color_definitions.scss | 1 | `var(--header_primary)` | Same value as --header_primary. |
 | `--shadow-modal` | `--d-sys-shadow-dialog` | color_definitions.scss | 1 | `0 8px 60px rgba(0, 0, 0, #{$shadow-opacity-modal})` |  |
 | `--shadow-card` | `--d-sys-shadow-raised` | color_definitions.scss | 18 | `0 4px 14px rgba(0, 0, 0, #{$shadow-opacity-card})` |  |
 | `--shadow-dropdown` | `--d-sys-shadow-overlay` | color_definitions.scss | 30 | `0 2px 12px 0 rgba(0, 0, 0, #{$shadow-opacity-dropdown})` | menu-panel.scss redefines it locally with another value. |
@@ -168,6 +169,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--danger` |  | color_definitions.scss | 254 | `#{$danger}` | Target depends on each use: color-text-danger, color-icon-danger, color-background-danger, color-border-danger. Stays as a base alias. |
 | `--success` |  | color_definitions.scss | 138 | `#{$success}` | Target depends on each use: color-text-success, color-icon-success, color-background-success, color-border-success. Stays as a base alias. |
 | `--love` |  | color_definitions.scss | 16 | `#{$love}` | Target depends on each use: color-icon-love, color-background-love. Stays as a base alias. |
+| `--header_background` |  | color_definitions.scss | 12 | `#{$header_background}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-background; footer nav, crawler layout, publish page, mini profiler and avatar rings copy the header and read that token. |
+| `--header_primary` |  | color_definitions.scss | 11 | `#{$header_primary}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-text-default, --d-comp-Header-color-icon-default-hovered. |
+| `--header_primary-low` |  | color_definitions.scss | 6 | `#{$header_primary-low}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-border-default; tagging and the mini profiler also use it as a background. |
+| `--header_primary-low-mid` |  | color_definitions.scss | 6 | `#{$header_primary-low-mid}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-icon-default, --d-comp-Header-color-border-strong. |
+| `--header_primary-medium` |  | color_definitions.scss | 10 | `#{$header_primary-medium}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-text-faint, --d-comp-Header-color-icon-default-pressed. |
+| `--header_primary-high` |  | color_definitions.scss | 11 | `#{$header_primary-high}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-text-muted. |
 | `--primary-very-low` |  | color_definitions.scss | 249 | `#{$primary-very-low}` | Target depends on each use: color-background-sunken, color-border-muted. Stays as a base alias. |
 | `--primary-low` |  | color_definitions.scss | 448 | `#{$primary-low}` | Target depends on each use: color-border-default, color-background-default-pressed. Stays as a base alias. |
 | `--primary-low-mid` |  | color_definitions.scss | 187 | `#{$primary-low-mid}` | Target depends on each use: color-text-default-disabled, color-border-strong, color-icon-faint. Stays as a base alias. |
@@ -230,6 +237,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 |---|---|---|---:|---|---|
 | `--scheme-type` |  | color_definitions.scss | 1 | `#{schemeType()}` | color-scheme keyword, not a design token. |
 | `--highlight` |  | color_definitions.scss | 8 | `#{$highlight}` | Raw highlight color; backgrounds use --highlight-bg. |
+| `--header_primary-very-high` |  | color_definitions.scss | 1 | `#{$header_primary-very-high}` | Header color scheme step, stays as a base alias; no header use, only the styleguide. |
 | `--primary-50` |  | color_definitions.scss | 19 | `#{$primary-50}` | Numbered ramp; system tokens point at it. |
 | `--primary-100` |  | color_definitions.scss | 32 | `#{$primary-100}` | Numbered ramp; system tokens point at it. |
 | `--primary-200` |  | color_definitions.scss | 32 | `#{$primary-200}` | Numbered ramp; system tokens point at it. |
@@ -267,13 +275,6 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
 | `--quaternary` |  | color_definitions.scss | 5 | `#{$quaternary}` | No intent for it; 5 uses. |
-| `--header_background` |  | color_definitions.scss | 12 | `#{$header_background}` | Header color scheme; needs its own decision. |
-| `--header_primary` |  | color_definitions.scss | 11 | `#{$header_primary}` | Header color scheme; needs its own decision. |
-| `--header_primary-low` |  | color_definitions.scss | 6 | `#{$header_primary-low}` | Header color scheme; needs its own decision. |
-| `--header_primary-low-mid` |  | color_definitions.scss | 6 | `#{$header_primary-low-mid}` | Header color scheme; needs its own decision. |
-| `--header_primary-medium` |  | color_definitions.scss | 10 | `#{$header_primary-medium}` | Header color scheme; needs its own decision. |
-| `--header_primary-high` |  | color_definitions.scss | 11 | `#{$header_primary-high}` | Header color scheme; needs its own decision. |
-| `--header_primary-very-high` |  | color_definitions.scss | 1 | `#{$header_primary-very-high}` | Header color scheme; needs its own decision. |
 | `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | No intent for it; 1 use. |
 | `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
@@ -284,6 +285,5 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--bronze` |  | color_definitions.scss | 2 | `#{$bronze}` | Badge tier color: needs an owner and tier words. |
 | `--d-badge-card-background-color` |  | color_definitions.scss | 1 | `var(--secondary)` | Used in user-badges.scss; no badge-card component file. Owner? |
 | `--mention-background-color` |  | color_definitions.scss | 1 | `var(--primary-low)` | Mixin for mentions in cooked content; needs a pattern owner (Mention?). |
-| `--title-color--header` |  | color_definitions.scss | 1 | `var(--header_primary)` | Header title color, value from the header color scheme; owner Header? |
 | `--float-kit-arrow-stroke-color` |  | color_definitions.scss | 0 | `var(--primary-low)` | Used in an SVG icon and set by user-tips; owner of the float-kit arrow? |
 | `--float-kit-arrow-fill-color` |  | color_definitions.scss | 0 | `var(--secondary)` | Used in an SVG icon; owner of the float-kit arrow? |
