@@ -247,4 +247,17 @@ code.new { color: var(--accent-dark); background: var(--accent-tint); }
 .ex .bad-flag { color: var(--bad); font-size: 12px; }
 @media (max-width: 640px) { .ex { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- vocabulary.json ---------- */
+.body.wide { max-width: none; }
+.body.wide main { max-width: none; }
+.json { font: 13px/1.6 var(--f-mono); color: var(--text-2); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.json .j-line { display: inline-block; scroll-margin-top: calc(var(--header-h) + 16px); }
+.json .j-key { color: var(--accent-dark); }
+.json .j-str { color: var(--text); }
+.json .j-lit { color: var(--s-variant); }
+.words-line code { display: inline-block; margin: 0 6px 6px 0; }
+td.key a { color: inherit; }
+.load-error { background: var(--bad-bg); border-color: var(--bad); }
+.load-error .label { color: var(--bad); }
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

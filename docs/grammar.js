@@ -1,8 +1,9 @@
 /* Grammar, vocabulary, name parser and suggestions for Discourse CSS variables. */
 // Word lists come from vocabulary.json; loadVocabulary() turns them into V.
-let V = null, MULTI = null, ALL_CLOSED = null;
+let V = null, VOC = null, VOCABULARY_TEXT = "", MULTI = null, ALL_CLOSED = null;
 
 function loadVocabulary(voc) {
+  VOC = voc;
   const props = {}, compExtraProps = {};
   for (const [c, def] of Object.entries(voc.categories)) {
     const norm = d => ({ roles: d.roles || [], variant: d.variant || null, extraVariants: d.extraVariants, roleOptional: d.roleOptional });
@@ -33,10 +34,15 @@ function loadVocabulary(voc) {
   MULTI = new Set([...all].filter(w => w.includes("-")));
 }
 
-const VOCABULARY_URL = "vocabulary.json?v=11";
+const VOCABULARY_URL = "vocabulary.json?v=12";
 const vocabularyReady = typeof fetch === "function"
-  ? fetch(VOCABULARY_URL).then(r => r.json()).then(loadVocabulary)
-      .catch(e => { console.error(`Could not load ${VOCABULARY_URL}. Serve docs/ over HTTP (python3 -m http.server).`, e); throw e; })
+  ? fetch(VOCABULARY_URL).then(r => r.text()).then(t => { VOCABULARY_TEXT = t; loadVocabulary(JSON.parse(t)); })
+      .catch(e => {
+        console.error(`Could not load ${VOCABULARY_URL}.`, e);
+        const main = typeof document !== "undefined" && document.querySelector("main");
+        if (main) main.insertAdjacentHTML("afterbegin", '<div class="callout load-error"><span class="label">vocabulary.json</span><p>The word lists could not be loaded. Browsers block this when a page is opened from disk; run <code>python3 -m http.server</code> in <code>docs/</code> and open <code>http://localhost:8000</code>.</p></div>');
+        throw e;
+      })
   : Promise.resolve();
 
 // Kinds and parts are listed per component: the core Owner, or Owner-Component in

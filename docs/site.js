@@ -44,9 +44,36 @@ function segLine(segs) {
     '<div class="anat-row">' + segLine(r.map(([w, slot, label]) => ({ w, slot, label }))) + "</div>").join("");
 })();
 
-/* ---------- vocabulary tables ---------- */
+/* ---------- vocabulary.json, shown as it is ---------- */
+vocabularyReady.then(function () {
+  const pre = document.getElementById("json-view");
+  if (!pre) return;
+  const keys = [];
+  pre.innerHTML = VOCABULARY_TEXT.replace(/\n$/, "").split("\n").map(line => {
+    const top = line.match(/^  "([^"]+)":/);
+    let html = esc(line)
+      .replace(/(&quot;(?:[^&]|&(?!quot;))*?&quot;)(\s*:)/g, '<span class="j-key">$1</span>$2')
+      .replace(/(:\s*|\[|,\s*|^\s*)(&quot;(?:[^&]|&(?!quot;))*?&quot;)/g, '$1<span class="j-str">$2</span>')
+      .replace(/\b(true|false|null)\b/g, '<span class="j-lit">$1</span>');
+    if (top) { keys.push(top[1]); return `<span class="j-line" id="k-${esc(top[1])}">${html}</span>`; }
+    return `<span class="j-line">${html}</span>`;
+  }).join("\n");
+  const toc = document.getElementById("toc-links");
+  if (toc) toc.innerHTML = keys.map(k => `<a href="#k-${esc(k)}"><span>${esc(k)}</span></a>`).join("");
+});
+
+/* ---------- word lists read from vocabulary.json ---------- */
 vocabularyReady.then(function () {
   const code = a => a.map(x => `<code>${esc(x)}</code>`).join(" ");
+  const at = path => path.split(".").reduce((o, k) => (o == null ? o : o[k]), VOC);
+  document.querySelectorAll("[data-words]").forEach(el => {
+    const v = at(el.dataset.words);
+    el.innerHTML = code(Array.isArray(v) ? v : Object.keys(v || {}));
+  });
+  document.querySelectorAll("[data-owner-table]").forEach(el => {
+    const map = VOC[el.dataset.ownerTable] || {};
+    el.innerHTML = Object.entries(map).map(([o, words]) => `<tr><td class="key c-owner">${esc(o)}</td><td>${code(words)}</td></tr>`).join("");
+  });
   const none = '<span class="muted">none</span>';
   const pb = document.getElementById("props-body");
   if (pb) pb.innerHTML = V.categories.map(c => {
