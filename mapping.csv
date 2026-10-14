@@ -1,39 +1,39 @@
 old_name,new_name,type,defined_in,value,uses,notes
 --d-button-border-radius,--d-comp-DButton-border-radius,rename,buttons.scss,var(--d-border-radius),43,
 --d-button-transition,--d-comp-DButton-motion-transition,rename,buttons.scss,none,8,
---d-button-border,,open,buttons.scss,1px solid transparent,11,Border shorthand (1px solid transparent); the grammar has no shorthand token. Split into border-width and color-border?
+--d-button-border,--d-comp-DButton-border-width,merge,buttons.scss,1px solid transparent,11,"Split: width becomes border-width (1px); the color becomes --d-comp-DButton-color-border (transparent), which the kind tokens default to. Style (solid) stays in the CSS."
 --d-button-default-text-color,--d-comp-DButton-color-text-default,rename,buttons.scss,var(--primary),6,
 --d-button-default-text-color--hover,--d-comp-DButton-color-text-default-hovered,rename,buttons.scss,var(--secondary),7,
 --d-button-default-bg-color,--d-comp-DButton-color-background-default,rename,buttons.scss,var(--primary-low),4,
 --d-button-default-bg-color--hover,--d-comp-DButton-color-background-default-hovered,rename,buttons.scss,var(--primary-medium),4,
 --d-button-default-icon-color,--d-comp-DButton-color-icon-default,rename,buttons.scss,var(--primary-high),6,
 --d-button-default-icon-color--hover,--d-comp-DButton-color-icon-default-hovered,rename,buttons.scss,var(--primary-low),2,
---d-button-default-border,--d-comp-DButton-color-border-default,open,buttons.scss,var(--d-button-border),5,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
---d-button-default-border--hover,--d-comp-DButton-color-border-default-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-default-border,--d-comp-DButton-color-border-default,merge,buttons.scss,var(--d-button-border),5,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
+--d-button-default-border--hover,--d-comp-DButton-color-border-default-hovered,merge,buttons.scss,var(--d-button-border),1,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
 --d-button-primary-text-color,--d-comp-DButton-color-text-primary,rename,buttons.scss,var(--secondary),5,
 --d-button-primary-text-color--hover,--d-comp-DButton-color-text-primary-hovered,rename,buttons.scss,var(--secondary),3,
 --d-button-primary-bg-color,--d-comp-DButton-color-background-primary,rename,buttons.scss,var(--tertiary),2,
 --d-button-primary-bg-color--hover,--d-comp-DButton-color-background-primary-hovered,rename,buttons.scss,var(--tertiary-hover),3,
 --d-button-primary-icon-color,--d-comp-DButton-color-icon-primary,rename,buttons.scss,var(--secondary),2,
 --d-button-primary-icon-color--hover,--d-comp-DButton-color-icon-primary-hovered,rename,buttons.scss,var(--secondary),2,
---d-button-primary-border,--d-comp-DButton-color-border-primary,open,buttons.scss,var(--d-button-border),2,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
---d-button-primary-border--hover,--d-comp-DButton-color-border-primary-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-primary-border,--d-comp-DButton-color-border-primary,merge,buttons.scss,var(--d-button-border),2,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
+--d-button-primary-border--hover,--d-comp-DButton-color-border-primary-hovered,merge,buttons.scss,var(--d-button-border),1,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
 --d-button-danger-text-color,--d-comp-DButton-color-text-danger,rename,buttons.scss,var(--secondary),1,
 --d-button-danger-text-color--hover,--d-comp-DButton-color-text-danger-hovered,rename,buttons.scss,var(--secondary),1,
 --d-button-danger-bg-color,--d-comp-DButton-color-background-danger,rename,buttons.scss,var(--danger),1,
 --d-button-danger-bg-color--hover,--d-comp-DButton-color-background-danger-hovered,rename,buttons.scss,var(--danger-hover),2,
 --d-button-danger-icon-color,--d-comp-DButton-color-icon-danger,rename,buttons.scss,var(--danger-low),1,
 --d-button-danger-icon-color--hover,--d-comp-DButton-color-icon-danger-hovered,rename,buttons.scss,var(--danger-low),1,
---d-button-danger-border,--d-comp-DButton-color-border-danger,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
---d-button-danger-border--hover,--d-comp-DButton-color-border-danger-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-danger-border,--d-comp-DButton-color-border-danger,merge,buttons.scss,var(--d-button-border),1,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
+--d-button-danger-border--hover,--d-comp-DButton-color-border-danger-hovered,merge,buttons.scss,var(--d-button-border),1,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
 --d-button-success-text-color,--d-comp-DButton-color-text-success,rename,buttons.scss,var(--secondary),1,
 --d-button-success-text-color--hover,--d-comp-DButton-color-text-success-hovered,rename,buttons.scss,var(--secondary),1,
 --d-button-success-bg-color,--d-comp-DButton-color-background-success,rename,buttons.scss,var(--success),1,
 --d-button-success-bg-color--hover,--d-comp-DButton-color-background-success-hovered,rename,buttons.scss,var(--success-hover),1,
 --d-button-success-icon-color,--d-comp-DButton-color-icon-success,rename,buttons.scss,var(--success-low),1,
 --d-button-success-icon-color--hover,--d-comp-DButton-color-icon-success-hovered,rename,buttons.scss,var(--success-low),1,
---d-button-success-border,--d-comp-DButton-color-border-success,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
---d-button-success-border--hover,--d-comp-DButton-color-border-success-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-success-border,--d-comp-DButton-color-border-success,merge,buttons.scss,var(--d-button-border),1,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
+--d-button-success-border--hover,--d-comp-DButton-color-border-success-hovered,merge,buttons.scss,var(--d-button-border),1,"Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color."
 --d-button-flat-text-color,--d-comp-DButton-color-text-flat,rename,buttons.scss,var(--tertiary),0,
 --d-button-flat-text-color--hover,--d-comp-DButton-color-text-flat-hovered,rename,buttons.scss,var(--primary),1,
 --d-button-flat-icon-color,--d-comp-DButton-color-icon-flat,rename,buttons.scss,var(--primary-low-mid),1,
@@ -178,20 +178,20 @@ old_name,new_name,type,defined_in,value,uses,notes
 --tertiary-or-white,,drop,color_definitions.scss,#{$tertiary-or-white},0,Unused light/dark chooser.
 --facebook-or-white,,drop,color_definitions.scss,#{$facebook-or-white},0,Unused light/dark chooser.
 --twitter-or-white,,drop,color_definitions.scss,#{$twitter-or-white},0,Unused light/dark chooser.
---hljs-attr,,open,color_definitions.scss,#{$hljs-attr},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-attribute,,open,color_definitions.scss,#{$hljs-attribute},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-addition,,open,color_definitions.scss,#{$hljs-addition},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-bg,,open,color_definitions.scss,#{$hljs-bg},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---inline-code-bg,,open,color_definitions.scss,#{$inline-code-bg},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-comment,,open,color_definitions.scss,#{$hljs-comment},3,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-deletion,,open,color_definitions.scss,#{$hljs-deletion},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-keyword,,open,color_definitions.scss,#{$hljs-keyword},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-title,,open,color_definitions.scss,#{$hljs-title},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-name,,open,color_definitions.scss,#{$hljs-name},3,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-punctuation,,open,color_definitions.scss,#{$hljs-punctuation},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-symbol,,open,color_definitions.scss,#{$hljs-symbol},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-variable,,open,color_definitions.scss,#{$hljs-variable},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
---hljs-string,,open,color_definitions.scss,#{$hljs-string},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-attr,--d-comp-CodeBlock-attr-color-text,rename,color_definitions.scss,#{$hljs-attr},2,highlight.js token type as a part of CodeBlock.
+--hljs-attribute,--d-comp-CodeBlock-attribute-color-text,rename,color_definitions.scss,#{$hljs-attribute},2,highlight.js token type as a part of CodeBlock.
+--hljs-addition,--d-comp-CodeBlock-addition-color-text,rename,color_definitions.scss,#{$hljs-addition},1,highlight.js token type as a part of CodeBlock.
+--hljs-bg,--d-comp-CodeBlock-color-background,rename,color_definitions.scss,#{$hljs-bg},1,Code block background (pattern CodeBlock).
+--inline-code-bg,--d-comp-InlineCode-color-background,rename,color_definitions.scss,#{$inline-code-bg},1,Inline code background (pattern InlineCode).
+--hljs-comment,--d-comp-CodeBlock-comment-color-text,rename,color_definitions.scss,#{$hljs-comment},3,highlight.js token type as a part of CodeBlock.
+--hljs-deletion,--d-comp-CodeBlock-deletion-color-text,rename,color_definitions.scss,#{$hljs-deletion},1,highlight.js token type as a part of CodeBlock.
+--hljs-keyword,--d-comp-CodeBlock-keyword-color-text,rename,color_definitions.scss,#{$hljs-keyword},1,highlight.js token type as a part of CodeBlock.
+--hljs-title,--d-comp-CodeBlock-title-color-text,rename,color_definitions.scss,#{$hljs-title},2,highlight.js token type as a part of CodeBlock.
+--hljs-name,--d-comp-CodeBlock-name-color-text,rename,color_definitions.scss,#{$hljs-name},3,highlight.js token type as a part of CodeBlock.
+--hljs-punctuation,--d-comp-CodeBlock-punctuation-color-text,rename,color_definitions.scss,#{$hljs-punctuation},1,highlight.js token type as a part of CodeBlock.
+--hljs-symbol,--d-comp-CodeBlock-symbol-color-text,rename,color_definitions.scss,#{$hljs-symbol},1,highlight.js token type as a part of CodeBlock.
+--hljs-variable,--d-comp-CodeBlock-variable-color-text,rename,color_definitions.scss,#{$hljs-variable},1,highlight.js token type as a part of CodeBlock.
+--hljs-string,--d-comp-CodeBlock-string-color-text,rename,color_definitions.scss,#{$hljs-string},2,highlight.js token type as a part of CodeBlock.
 --google,,open,color_definitions.scss,#{$google},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
 --google-hover,,open,color_definitions.scss,#{$google-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
 --instagram,,open,color_definitions.scss,#{$instagram},0,Login provider brand color: LoginButtons component token? Brand names are not roles.

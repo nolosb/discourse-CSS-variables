@@ -4,12 +4,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 100 | Same value, one target. |
-| [merge](#merge) | 14 | One target, the value changes: needs a visual check. |
+| [rename](#rename) | 114 | Same value, one target. |
+| [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
 | [split](#split) | 23 | Target depends on each use; candidates in notes. |
 | [drop](#drop) | 18 | Unused, or `-rgb` twins. |
 | [base](#base) | 28 | Stays in the base layer. |
-| [open](#open) | 49 | The spec does not cover it yet. |
+| [open](#open) | 26 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -103,6 +103,20 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--success-medium` | `--d-sys-color-background-success-subtle` | color_definitions.scss | 7 | `#{$success-medium}` | 50%. |
 | `--success-hover` | `--d-sys-color-background-success-hovered` | color_definitions.scss | 4 | `#{$success-hover}` |  |
 | `--love-low` | `--d-sys-color-background-love-subtlest` | color_definitions.scss | 4 | `#{$love-low}` |  |
+| `--hljs-attr` | `--d-comp-CodeBlock-attr-color-text` | color_definitions.scss | 2 | `#{$hljs-attr}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-attribute` | `--d-comp-CodeBlock-attribute-color-text` | color_definitions.scss | 2 | `#{$hljs-attribute}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-addition` | `--d-comp-CodeBlock-addition-color-text` | color_definitions.scss | 1 | `#{$hljs-addition}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-bg` | `--d-comp-CodeBlock-color-background` | color_definitions.scss | 1 | `#{$hljs-bg}` | Code block background (pattern CodeBlock). |
+| `--inline-code-bg` | `--d-comp-InlineCode-color-background` | color_definitions.scss | 1 | `#{$inline-code-bg}` | Inline code background (pattern InlineCode). |
+| `--hljs-comment` | `--d-comp-CodeBlock-comment-color-text` | color_definitions.scss | 3 | `#{$hljs-comment}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-deletion` | `--d-comp-CodeBlock-deletion-color-text` | color_definitions.scss | 1 | `#{$hljs-deletion}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-keyword` | `--d-comp-CodeBlock-keyword-color-text` | color_definitions.scss | 1 | `#{$hljs-keyword}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-title` | `--d-comp-CodeBlock-title-color-text` | color_definitions.scss | 2 | `#{$hljs-title}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-name` | `--d-comp-CodeBlock-name-color-text` | color_definitions.scss | 3 | `#{$hljs-name}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-punctuation` | `--d-comp-CodeBlock-punctuation-color-text` | color_definitions.scss | 1 | `#{$hljs-punctuation}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-symbol` | `--d-comp-CodeBlock-symbol-color-text` | color_definitions.scss | 1 | `#{$hljs-symbol}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-variable` | `--d-comp-CodeBlock-variable-color-text` | color_definitions.scss | 1 | `#{$hljs-variable}` | highlight.js token type as a part of CodeBlock. |
+| `--hljs-string` | `--d-comp-CodeBlock-string-color-text` | color_definitions.scss | 2 | `#{$hljs-string}` | highlight.js token type as a part of CodeBlock. |
 | `--d-link-color` | `--d-sys-color-text-link` | color_definitions.scss | 3 | `var(--tertiary)` |  |
 | `--title-color--read` | `--d-comp-TopicListItem-color-text-read` | color_definitions.scss | 3 | `var(--primary-medium)` |  |
 | `--content-border-color` | `--d-sys-color-border-default` | color_definitions.scss | 320 | `var(--primary-low)` | 320 uses. |
@@ -120,6 +134,15 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
+| `--d-button-border` | `--d-comp-DButton-border-width` | buttons.scss | 11 | `1px solid transparent` | Split: width becomes border-width (1px); the color becomes --d-comp-DButton-color-border (transparent), which the kind tokens default to. Style (solid) stays in the CSS. |
+| `--d-button-default-border` | `--d-comp-DButton-color-border-default` | buttons.scss | 5 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-default-border--hover` | `--d-comp-DButton-color-border-default-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-primary-border` | `--d-comp-DButton-color-border-primary` | buttons.scss | 2 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-primary-border--hover` | `--d-comp-DButton-color-border-primary-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-danger-border` | `--d-comp-DButton-color-border-danger` | buttons.scss | 1 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-danger-border--hover` | `--d-comp-DButton-color-border-danger-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-success-border` | `--d-comp-DButton-color-border-success` | buttons.scss | 1 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
+| `--d-button-success-border--hover` | `--d-comp-DButton-color-border-success-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Holds only the color now: defaults to var(--d-comp-DButton-color-border). The CSS composes width, solid and this color. |
 | `--token-color-surface-hovered` | `--d-sys-color-background-default-hovered` | tokens.scss | 18 | `var(--primary-100)` | Merges with --d-hover (different value). |
 | `--token-color-background-accent-subtler` | `--d-sys-color-background-accent-subtle` | tokens.scss | 2 | `var(--tertiary-400)` | tertiary-400, 74%: falls in the subtle band. |
 | `--d-hover` | `--d-sys-color-background-default-hovered` | color_definitions.scss | 53 | `#{$hover}` | Merges with --token-color-surface-hovered (different value). |
@@ -223,35 +246,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
-| `--d-button-border` |  | buttons.scss | 11 | `1px solid transparent` | Border shorthand (1px solid transparent); the grammar has no shorthand token. Split into border-width and color-border? |
-| `--d-button-default-border` | `--d-comp-DButton-color-border-default` | buttons.scss | 5 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-default-border--hover` | `--d-comp-DButton-color-border-default-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-primary-border` | `--d-comp-DButton-color-border-primary` | buttons.scss | 2 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-primary-border--hover` | `--d-comp-DButton-color-border-primary-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-danger-border` | `--d-comp-DButton-color-border-danger` | buttons.scss | 1 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-danger-border--hover` | `--d-comp-DButton-color-border-danger-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-success-border` | `--d-comp-DButton-color-border-success` | buttons.scss | 1 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
-| `--d-button-success-border--hover` | `--d-comp-DButton-color-border-success-hovered` | buttons.scss | 1 | `var(--d-button-border)` | Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border. |
 | `--quaternary` |  | color_definitions.scss | 5 | `#{$quaternary}` | No intent for it; 5 uses. |
 | `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | No intent for it; 1 use. |
 | `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |
 | `--wiki` |  | color_definitions.scss | 2 | `#{$wiki}` | Wiki post color in topic-post.scss; needs an owner (Post?). |
-| `--hljs-attr` |  | color_definitions.scss | 2 | `#{$hljs-attr}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-attribute` |  | color_definitions.scss | 2 | `#{$hljs-attribute}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-addition` |  | color_definitions.scss | 1 | `#{$hljs-addition}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-bg` |  | color_definitions.scss | 1 | `#{$hljs-bg}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--inline-code-bg` |  | color_definitions.scss | 1 | `#{$inline-code-bg}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-comment` |  | color_definitions.scss | 3 | `#{$hljs-comment}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-deletion` |  | color_definitions.scss | 1 | `#{$hljs-deletion}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-keyword` |  | color_definitions.scss | 1 | `#{$hljs-keyword}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-title` |  | color_definitions.scss | 2 | `#{$hljs-title}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-name` |  | color_definitions.scss | 3 | `#{$hljs-name}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-punctuation` |  | color_definitions.scss | 1 | `#{$hljs-punctuation}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-symbol` |  | color_definitions.scss | 1 | `#{$hljs-symbol}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-variable` |  | color_definitions.scss | 1 | `#{$hljs-variable}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
-| `--hljs-string` |  | color_definitions.scss | 2 | `#{$hljs-string}` | Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list. |
 | `--google` |  | color_definitions.scss | 0 | `#{$google}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
 | `--google-hover` |  | color_definitions.scss | 0 | `#{$google-hover}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
 | `--instagram` |  | color_definitions.scss | 0 | `#{$instagram}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |

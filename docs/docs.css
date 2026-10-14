@@ -166,6 +166,7 @@ td.key.c-prefix, td.key.c-owner, td.key.c-part, td.key.c-category, td.key.c-prop
 /* ---------- components ---------- */
 .formula { font-family: var(--f-mono); font-size: 14px; color: var(--text); background: var(--tint); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; white-space: nowrap; overflow-x: auto; margin: 0 0 24px; }
 .formula .opt { color: var(--text-2); }
+li .formula { margin: 8px 0; }
 
 .callout { display: flex; gap: 14px; padding: 16px; margin: 0 0 20px; background: var(--accent-tint); border: 1px solid var(--accent-tint-2); border-radius: 4px; font-size: 15px; line-height: 1.55; }
 .callout .label { font-family: var(--f-mono); font-size: 13px; font-weight: 700; color: var(--accent-dark); white-space: nowrap; padding-top: 1px; }

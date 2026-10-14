@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Slots · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=14">
+<link rel="stylesheet" href="docs.css?v=16">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -205,14 +205,18 @@
 <ul>
   <li>A color token always holds a full color. There are no <code>-rgb</code> twins (<code>--secondary-rgb</code> and similar, which exist today only to add transparency). Apply transparency with <code>color-mix()</code>: <code>color-mix(in srgb, var(--d-sys-color-background-default) 80%, transparent)</code>.</li>
   <li>Light and dark are never in a name. Values use <code>light-dark()</code> or are swapped per color scheme: <code>--d-sys-color-text-default</code> is one name in both modes.</li>
-  <li>A shadow token names the job, not the technique: <code>shadow-overflow</code> holds a 1px hairline even though it is drawn with <code>box-shadow</code>.</li>
+  <li><b>One value per token, never a shorthand.</b> A border is split into a width and a color, and the CSS puts them together:
+    <div class="formula">border: var(--d-comp-DButton-border-width) solid var(--d-comp-DButton-color-border-primary);</div>
+    Overrides almost always change only the color, so a theme sets one color token and never repeats <code>1px solid</code>. A shorthand token built from the parts would break scoped overrides: a <code>var()</code> inside a custom property is resolved where that property is declared, and tokens are declared on <code>:root</code>, so changing a part inside <code>.sidebar</code> would not reach the shorthand.</li>
+  <li>Per-kind tokens default to a shared one, so a theme can change one kind or all of them: <code>--d-comp-DButton-color-border-primary</code> is <code>var(--d-comp-DButton-color-border)</code> until it is set.</li>
+  <li>Shadows are the one exception: a <code>box-shadow</code> stays one token, because offset, blur and color only work together. A shadow token names the job, not the technique: <code>shadow-overflow</code> holds a 1px hairline even though it is drawn with <code>box-shadow</code>.</li>
 </ul>
 
 <footer>Word lists: <a href="index.html"><code>vocabulary.json</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=14"></script>
-<script src="examples.js?v=14"></script>
-<script src="site.js?v=14"></script>
+<script src="grammar.js?v=16"></script>
+<script src="examples.js?v=16"></script>
+<script src="site.js?v=16"></script>
 </body>
 </html>
