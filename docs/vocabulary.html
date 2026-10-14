@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Vocabulary · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=8">
+<link rel="stylesheet" href="docs.css?v=9">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -52,7 +52,7 @@
 <tr><td>Intent</td><td><code>accent</code> <code>danger</code> <code>success</code> <code>warning</code> <code>info</code> <code>highlight</code> <code>love</code></td><td>Meaning. The only system roles that take <a href="#variants">strength variants</a> (<code>danger-subtle</code>); in components, kinds take them too.</td></tr>
 <tr><td>Surface</td><td><code>raised</code> <code>sunken</code> <code>overlay</code> <code>inverse</code> <code>backdrop</code></td><td>Background levels and special surfaces: <code>inverse</code> for flipped light/dark areas, <code>backdrop</code> behind modals.</td></tr>
 <tr><td>Purpose</td><td><code>link</code> <code>input</code></td><td>Specific jobs that need their own value.</td></tr>
-<tr><td>Shadow level</td><td><code>overflow</code> <code>raised</code> <code>overlay</code> <code>dialog</code></td><td>Elevation, lightest to strongest: an edge where content scrolls under (header, footer nav), lifted off the page (cards), floating above content (dropdowns, tooltips), blocking the page (modals).</td></tr>
+<tr><td>Shadow level</td><td><code>overflow</code> <code>raised</code> <code>overlay</code> <code>dialog</code></td><td>Elevation, lightest to strongest: an edge where content scrolls under (header, footer nav; one value, the header's 1px hairline), lifted off the page (cards), floating above content (dropdowns, tooltips), blocking the page (modals).</td></tr>
 <tr><td>Type style</td><td><code>body</code> <code>heading</code> <code>prose</code> <code>monospace</code> <code>none</code></td><td>Font family, line height and letter spacing per kind of text.</td></tr>
 <tr><td>Motion</td><td><code>standard</code> <code>enter</code> <code>exit</code></td><td>Easing curves.</td></tr>
 <tr><td>Components only</td><td>kinds (<code>primary</code>, <code>flat</code> …), axes (<code>inline</code>, <code>block-end</code> …)</td><td>The component's own variant, or which side a spacing value applies to. See below.</td></tr>
@@ -142,8 +142,8 @@
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=8"></script>
-<script src="examples.js?v=8"></script>
-<script src="site.js?v=8"></script>
+<script src="grammar.js?v=9"></script>
+<script src="examples.js?v=9"></script>
+<script src="site.js?v=9"></script>
 </body>
 </html>

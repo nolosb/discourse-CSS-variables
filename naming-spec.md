@@ -451,11 +451,16 @@ registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed
 
 **Shadow**
 ```
---d-sys-shadow-overflow  (shadow-header, shadow-footer-nav): an edge where content scrolls under
+--d-sys-shadow-overflow  (shadow-header, shadow-footer-nav, shadow-docked-composer): an edge where content scrolls under
 --d-sys-shadow-raised    (shadow-card): lifted off the page
 --d-sys-shadow-overlay   (shadow-dropdown, shadow-menu-panel): floating above content
 --d-sys-shadow-dialog    (shadow-modal, shadow-composer): blocks the page
 ```
+
+A shadow token names the job, not the technique: `overflow` takes one value, the header's
+1px hairline (`0 0 0 1px` in the default border color), even though it is drawn with
+`box-shadow`. The footer nav (soft 2px blur today) and the docked composer (`0 4px 30px`)
+move to that value. `--shadow-focus-danger` is unused and gets no new name.
 
 **Space** (4px steps, same counting as core's `--space-N` today)
 ```
@@ -591,4 +596,5 @@ Only questions the draft does not answer yet.
 |---|---|---|
 | Base layer | Which prefix the palette and raw scales get, and whether they are exposed as custom properties at all. | Whatever it becomes, `--primary` and the other old names keep resolving as aliases. |
 | Runtime values | JavaScript writes about 15 variables while the page runs: layout measurements (`--header-offset`, `--composer-height`), per-element values (`--slider-x`) and category colors (`--category-badge-color`). They are not design decisions and themes cannot override them, so they stay outside the token scheme. | A dedicated prefix such as `--d-rt-` would only be needed to recognize them without the list. |
+| Footer nav shadow | `shadow-overflow` takes the header's hairline, so the footer nav loses its soft 2px blur. | Accept the hairline, or give the footer nav a component token with its own value. |
 | Component kinds | The checker accepts any word as a component kind (`DButton` `primary`), so typos pass. | List each component's kinds in `vocabulary.json` for the checker and lint rule. |

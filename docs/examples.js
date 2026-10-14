@@ -89,7 +89,7 @@ const EX = [
     ["--d-sys-font-letter-spacing-heading", "new"]
   ]],
   ["System · shadow, space, size", [
-    ["--d-sys-shadow-overflow", "--shadow-header, --shadow-footer-nav"],
+    ["--d-sys-shadow-overflow", "--shadow-header, --shadow-footer-nav, --shadow-docked-composer"],
     ["--d-sys-shadow-raised", "--shadow-card"],
     ["--d-sys-shadow-overlay", "--shadow-dropdown, --shadow-menu-panel"],
     ["--d-sys-shadow-dialog", "--shadow-modal, --shadow-composer"],
