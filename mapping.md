@@ -6,9 +6,9 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 |---|---:|---|
 | [rename](#rename) | 122 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
+| [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
 | [split](#split) | 35 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
 | [drop](#drop) | 33 | Removed: unused, an `-rgb` twin, or replaced by another token (see notes). |
-| [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
 | [open](#open) | 0 | Not covered by the scheme yet. |
 
 ## rename
@@ -166,6 +166,45 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--shadow-footer-nav` | `--d-sys-shadow-overflow` | color_definitions.scss | 3 | `0 0 2px 0 rgba(0, 0, 0, #{$shadow-opacity-footer-nav})` | Loses its 2px blur; open question. |
 | `--shadow-docked-composer` | `--d-sys-shadow-overflow` | color_definitions.scss | 1 | `0 4px 30px rgb(0, 0, 0, 0.15)` | Defined in core, used only by the AI plugin. |
 
+## base
+
+| Old | New | File | Uses | Value | Notes |
+|---|---|---|---:|---|---|
+| `--scheme-type` |  | color_definitions.scss | 1 | `#{schemeType()}` | color-scheme keyword, not a design token. |
+| `--header_primary-very-high` |  | color_definitions.scss | 1 | `#{$header_primary-very-high}` | Header color scheme step, stays as a base alias; no header use, only the styleguide. |
+| `--primary-50` |  | color_definitions.scss | 19 | `#{$primary-50}` | Numbered ramp; system tokens point at it. |
+| `--primary-100` |  | color_definitions.scss | 32 | `#{$primary-100}` | Numbered ramp; system tokens point at it. |
+| `--primary-200` |  | color_definitions.scss | 32 | `#{$primary-200}` | Numbered ramp; system tokens point at it. |
+| `--primary-300` |  | color_definitions.scss | 54 | `#{$primary-300}` | Numbered ramp; system tokens point at it. |
+| `--primary-400` |  | color_definitions.scss | 15 | `#{$primary-400}` | Numbered ramp; system tokens point at it. |
+| `--primary-500` |  | color_definitions.scss | 34 | `#{$primary-500}` | Numbered ramp; system tokens point at it. |
+| `--primary-600` |  | color_definitions.scss | 7 | `#{$primary-600}` | Numbered ramp; system tokens point at it. |
+| `--primary-700` |  | color_definitions.scss | 20 | `#{$primary-700}` | Numbered ramp; system tokens point at it. |
+| `--primary-800` |  | color_definitions.scss | 14 | `#{$primary-800}` | Numbered ramp; system tokens point at it. |
+| `--primary-900` |  | color_definitions.scss | 13 | `#{$primary-900}` | Numbered ramp; system tokens point at it. |
+| `--secondary-low` |  | color_definitions.scss | 7 | `#{$secondary-low}` | Uses need mapping per use. |
+| `--secondary-medium` |  | color_definitions.scss | 7 | `#{$secondary-medium}` | Uses need mapping per use. |
+| `--secondary-high` |  | color_definitions.scss | 11 | `#{$secondary-high}` | Uses need mapping per use. |
+| `--secondary-very-high` |  | color_definitions.scss | 5 | `#{$secondary-very-high}` | Uses need mapping per use. |
+| `--tertiary-25` |  | color_definitions.scss | 2 | `#{$tertiary-25}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-50` |  | color_definitions.scss | 8 | `#{$tertiary-50}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-100` |  | color_definitions.scss | 7 | `#{$tertiary-100}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-200` |  | color_definitions.scss | 5 | `#{$tertiary-200}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-300` |  | color_definitions.scss | 4 | `#{$tertiary-300}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-400` |  | color_definitions.scss | 7 | `#{$tertiary-400}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-500` |  | color_definitions.scss | 3 | `#{$tertiary-500}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-600` |  | color_definitions.scss | 3 | `#{$tertiary-600}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-700` |  | color_definitions.scss | 2 | `#{$tertiary-700}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-800` |  | color_definitions.scss | 3 | `#{$tertiary-800}` | Numbered ramp; system tokens point at it. |
+| `--tertiary-900` |  | color_definitions.scss | 2 | `#{$tertiary-900}` | Numbered ramp; system tokens point at it. |
+| `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | Only the styleguide uses it. |
+| `--blend-primary-secondary-5` |  | color_definitions.scss | 4 | `#{$blend-primary-secondary-5}` | Uses need mapping per use. |
+| `--facebook` |  | color_definitions.scss | 1 | `#{$facebook}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--cas` |  | color_definitions.scss | 2 | `#{$cas}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--twitter` |  | color_definitions.scss | 4 | `#{$twitter}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--github` |  | color_definitions.scss | 2 | `#{$github}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--discord` |  | color_definitions.scss | 3 | `#{$discord}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+
 ## split
 
 | Old | New | File | Uses | Value | Notes |
@@ -243,45 +282,6 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--discourse_id-icon-hover` |  | color_definitions.scss | 1 | `var(--d-button-primary-icon-color--hover)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
 | `--discourse_id-border` |  | color_definitions.scss | 1 | `var(--d-button-border)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
 | `--shadow-focus-danger` |  | color_definitions.scss | 0 | `0 0 6px 0 var(--danger)` | Unused. |
-
-## base
-
-| Old | New | File | Uses | Value | Notes |
-|---|---|---|---:|---|---|
-| `--scheme-type` |  | color_definitions.scss | 1 | `#{schemeType()}` | color-scheme keyword, not a design token. |
-| `--header_primary-very-high` |  | color_definitions.scss | 1 | `#{$header_primary-very-high}` | Header color scheme step, stays as a base alias; no header use, only the styleguide. |
-| `--primary-50` |  | color_definitions.scss | 19 | `#{$primary-50}` | Numbered ramp; system tokens point at it. |
-| `--primary-100` |  | color_definitions.scss | 32 | `#{$primary-100}` | Numbered ramp; system tokens point at it. |
-| `--primary-200` |  | color_definitions.scss | 32 | `#{$primary-200}` | Numbered ramp; system tokens point at it. |
-| `--primary-300` |  | color_definitions.scss | 54 | `#{$primary-300}` | Numbered ramp; system tokens point at it. |
-| `--primary-400` |  | color_definitions.scss | 15 | `#{$primary-400}` | Numbered ramp; system tokens point at it. |
-| `--primary-500` |  | color_definitions.scss | 34 | `#{$primary-500}` | Numbered ramp; system tokens point at it. |
-| `--primary-600` |  | color_definitions.scss | 7 | `#{$primary-600}` | Numbered ramp; system tokens point at it. |
-| `--primary-700` |  | color_definitions.scss | 20 | `#{$primary-700}` | Numbered ramp; system tokens point at it. |
-| `--primary-800` |  | color_definitions.scss | 14 | `#{$primary-800}` | Numbered ramp; system tokens point at it. |
-| `--primary-900` |  | color_definitions.scss | 13 | `#{$primary-900}` | Numbered ramp; system tokens point at it. |
-| `--secondary-low` |  | color_definitions.scss | 7 | `#{$secondary-low}` | Uses need mapping per use. |
-| `--secondary-medium` |  | color_definitions.scss | 7 | `#{$secondary-medium}` | Uses need mapping per use. |
-| `--secondary-high` |  | color_definitions.scss | 11 | `#{$secondary-high}` | Uses need mapping per use. |
-| `--secondary-very-high` |  | color_definitions.scss | 5 | `#{$secondary-very-high}` | Uses need mapping per use. |
-| `--tertiary-25` |  | color_definitions.scss | 2 | `#{$tertiary-25}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-50` |  | color_definitions.scss | 8 | `#{$tertiary-50}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-100` |  | color_definitions.scss | 7 | `#{$tertiary-100}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-200` |  | color_definitions.scss | 5 | `#{$tertiary-200}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-300` |  | color_definitions.scss | 4 | `#{$tertiary-300}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-400` |  | color_definitions.scss | 7 | `#{$tertiary-400}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-500` |  | color_definitions.scss | 3 | `#{$tertiary-500}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-600` |  | color_definitions.scss | 3 | `#{$tertiary-600}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-700` |  | color_definitions.scss | 2 | `#{$tertiary-700}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-800` |  | color_definitions.scss | 3 | `#{$tertiary-800}` | Numbered ramp; system tokens point at it. |
-| `--tertiary-900` |  | color_definitions.scss | 2 | `#{$tertiary-900}` | Numbered ramp; system tokens point at it. |
-| `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | Only the styleguide uses it. |
-| `--blend-primary-secondary-5` |  | color_definitions.scss | 4 | `#{$blend-primary-secondary-5}` | Uses need mapping per use. |
-| `--facebook` |  | color_definitions.scss | 1 | `#{$facebook}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
-| `--cas` |  | color_definitions.scss | 2 | `#{$cas}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
-| `--twitter` |  | color_definitions.scss | 4 | `#{$twitter}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
-| `--github` |  | color_definitions.scss | 2 | `#{$github}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
-| `--discord` |  | color_definitions.scss | 3 | `#{$discord}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
 
 ## open
 
