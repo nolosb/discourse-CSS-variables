@@ -110,7 +110,7 @@ Combination rules the EBNF does not express:
    it is a `part`.
 4. The remaining segments are matched left to right against the lists allowed for that
    category. Role and variant lists do not overlap: `muted`/`faint` are neutral roles,
-   `subtle`/`subtlest` are only strength variants after an intent.
+   `subtle`/`subtlest` are only strength variants after an intent or a component kind.
 
 ## 4 · Vocabulary (system tier)
 
@@ -160,7 +160,7 @@ Roles fall into these groups:
 | Group | Words | Used for |
 |---|---|---|
 | Prominence | `default` `muted` `faint` `strong` | how prominent neutral text, icons and borders are |
-| Intent | `accent` `danger` `success` `warning` `info` `highlight` `love` | meaning; the only roles that take strength variants |
+| Intent | `accent` `danger` `success` `warning` `info` `highlight` `love` | meaning; the only system roles that take strength variants |
 | Surface | `raised` `sunken` `overlay` `inverse` `backdrop` | background levels and special surfaces |
 | Purpose | `link` `input` | specific jobs that need their own value |
 | Shadow level | `overflow` `raised` `overlay` `dialog` | elevation, lightest to strongest |
@@ -188,7 +188,7 @@ similar, which exist today only to add transparency). Apply transparency with
 |---|---|---|
 | size | `3xs` `2xs` `xs` `sm` `md` `lg` `xl` `2xl` `3xl` `4xl` `5xl` | font-size, size, border-radius (plus `full`), border-width, motion-duration |
 | step | `half` `1` … `12` | space (counts 4px units: `2` = 8px, `5` = 20px) |
-| strength | `subtlest` `subtle` `bold` | intent roles on `color-*` |
+| strength | `subtlest` `subtle` `bold` | intent roles and component kinds on `color-*` |
 | weight | `regular` `medium` `semibold` `bold` | font-weight only |
 
 Rules (proposed): one size scale for everything except spacing, short form only (`lg`, never
@@ -266,6 +266,9 @@ registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed
   (DButton: `default`, `primary`, `danger`, `success`, `flat`, `transparent`, `close`):
   `--d-comp-DButton-color-background-primary-hovered`. Omitted when the component has no
   kinds.
+- **Kinds take strength.** A strength variant may follow a kind as it follows an intent:
+  `--d-comp-DButton-color-background-primary-subtle`. Prominence roles (`muted`, `faint`,
+  `strong`) still never take strength. Settled 2026-10-14.
 - **One role word.** The role slot holds one word, so a kind replaces the role and never
   combines with it: no `DButton-color-text-primary-muted`. Each kind has one color per
   property. If an element inside the component needs its own color (a count next to the

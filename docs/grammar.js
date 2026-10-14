@@ -69,6 +69,12 @@ const ALL_CLOSED = (() => {
   return s;
 })();
 
+// Strength follows an intent or a component kind. In components "default" is
+// also DButton's default kind, so it takes strength there too.
+function takesStrength(role, isKind, isComp) {
+  return V.intents.includes(role) || isKind || (isComp && role === "default");
+}
+
 function variantWords(kind) {
   return kind === "size" ? V.sizes : kind === "step" ? V.steps : kind === "strength" ? V.strength : kind === "weight" ? V.weights : [];
 }
@@ -157,13 +163,13 @@ function parseToken(raw) {
   }
 
   // role slot
-  let role = null, w = words[i];
+  let role = null, isKind = false, w = words[i];
   const isState = x => V.condition.includes(x) || V.interaction.includes(x);
   const vwords = variantWords(spec.variant).concat(spec.extraVariants || []);
   if (w && spec.roles.includes(w) && !(spec.roles.length === 0)) { role = w; push(w, "role"); i++; }
   else if (w && isComp && cat === "space" && V.axes.includes(w)) { role = w; push(w, "axis", "role · axis"); i++; }
   else if (w && isComp && !isState(w) && !vwords.includes(w) && !V.sizes.includes(w)) {
-    role = w; push(w, "kind", "role · kind");
+    role = w; isKind = true; push(w, "kind", "role · kind");
     out.notes.push(`"${w}" is read as a component kind. Kinds must be registered for this component in vocabulary.json.`);
     i++;
   }
@@ -173,8 +179,8 @@ function parseToken(raw) {
   w = words[i];
   let variant = null;
   if (w && vwords.includes(w)) {
-    if (spec.variant === "strength" && !V.intents.includes(role)) {
-      out.errors.push(`Strength "${w}" only follows an intent role (${V.intents.join(", ")}).`);
+    if (spec.variant === "strength" && !takesStrength(role, isKind, isComp)) {
+      out.errors.push(`Strength "${w}" only follows an intent role (${V.intents.join(", ")}) or a component kind.`);
       push(w, "error", "variant?");
     } else push(w, "variant");
     variant = w; i++;
@@ -255,7 +261,7 @@ function nextOptions(base, layer, names) {
   const stateSegs = segs.filter(s => s.slot === "state");
   const variantsFor = role => {
     let w = variantWords(spec.variant).concat(spec.extraVariants || []);
-    if (spec.variant === "strength" && !V.intents.includes(role)) w = [];
+    if (spec.variant === "strength" && !takesStrength(role, roleSeg && roleSeg.slot === "kind", isComp)) w = [];
     return opt(w, "variant");
   };
   if (last.slot === "category" || last.slot === "property") {
