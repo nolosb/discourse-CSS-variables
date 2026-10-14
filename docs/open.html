@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open questions · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=9">
+<link rel="stylesheet" href="docs.css?v=10">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -23,14 +23,13 @@
 <tr><td>Base layer</td><td>Which prefix the palette and raw scales get, and whether they are exposed as custom properties at all.</td><td>Whatever it becomes, <code>--primary</code> and the other old names keep resolving as aliases.</td></tr>
 <tr><td>Runtime values</td><td>JavaScript writes about 15 variables while the page runs: layout measurements (<code>--header-offset</code>, <code>--composer-height</code>), per-element values (<code>--slider-x</code>) and category colors (<code>--category-badge-color</code>). They are not design decisions and themes cannot override them, so they stay outside the token scheme.</td><td>A dedicated prefix such as <code>--d-rt-</code> would only be needed to recognize them without the list.</td></tr>
 <tr><td>Footer nav shadow</td><td><code>shadow-overflow</code> takes the header's hairline, so the footer nav loses its soft 2px blur.</td><td>Accept the hairline, or give the footer nav a component token with its own value.</td></tr>
-<tr><td>Component kinds</td><td>The checker accepts any word as a component kind (<code>DButton</code> <code>primary</code>), so typos pass.</td><td>List each component's kinds in a shared vocabulary file the checker and lint rule read.</td></tr>
 </tbody></table></div>
 
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=9"></script>
-<script src="examples.js?v=9"></script>
-<script src="site.js?v=9"></script>
+<script src="grammar.js?v=10"></script>
+<script src="examples.js?v=10"></script>
+<script src="site.js?v=10"></script>
 </body>
 </html>

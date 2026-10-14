@@ -12,7 +12,7 @@ Verified against core at `68ad0815c02` (Oct 2026): 686 custom properties defined
 1. **Consistency for agents.** One grammar for every token. An agent can build a name
    from intent ("muted text", "DButton primary background on hover") without searching.
 2. **Performance for agents.** A small, closed vocabulary that fits in a few hundred lines
-   of context (`vocabulary.json`) and is cheap to validate.
+   of context (`docs/vocabulary.json`) and is cheap to validate.
 3. **Transparency for reviewers.** A name shows its layer, its owner, its purpose and
    whether it is public, so a change can be judged without opening core CSS.
 
@@ -267,7 +267,7 @@ non-ui-kit components also start with `d-` (`d-navigation`, `d-section`,
 
 Styles with no component file (global `input` styling, `.nav-pills`, tables) use a
 registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed in
-`vocabulary.json` with `kind: "pattern"`.
+`patterns` in `docs/vocabulary.json`.
 
 ### 5.2 Component tail
 
@@ -282,7 +282,8 @@ registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed
 - **Kinds go in the role slot.** A component's kind takes the position of the role
   (DButton: `default`, `primary`, `danger`, `success`, `flat`, `transparent`, `close`):
   `--d-comp-DButton-color-background-primary-hovered`. Omitted when the component has no
-  kinds.
+  kinds. Each component's kinds are listed under `kinds` in `docs/vocabulary.json`
+  (extensions as `Owner-Component`); the checker rejects a kind that is not listed.
 - **Kinds take strength.** A strength variant may follow a kind as it follows an intent:
   `--d-comp-DButton-color-background-primary-subtle`. Prominence roles (`muted`, `faint`,
   `strong`) still never take strength. Settled 2026-10-14.
@@ -597,4 +598,3 @@ Only questions the draft does not answer yet.
 | Base layer | Which prefix the palette and raw scales get, and whether they are exposed as custom properties at all. | Whatever it becomes, `--primary` and the other old names keep resolving as aliases. |
 | Runtime values | JavaScript writes about 15 variables while the page runs: layout measurements (`--header-offset`, `--composer-height`), per-element values (`--slider-x`) and category colors (`--category-badge-color`). They are not design decisions and themes cannot override them, so they stay outside the token scheme. | A dedicated prefix such as `--d-rt-` would only be needed to recognize them without the list. |
 | Footer nav shadow | `shadow-overflow` takes the header's hairline, so the footer nav loses its soft 2px blur. | Accept the hairline, or give the footer nav a component token with its own value. |
-| Component kinds | The checker accepts any word as a component kind (`DButton` `primary`), so typos pass. | List each component's kinds in `vocabulary.json` for the checker and lint rule. |

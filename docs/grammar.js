@@ -1,78 +1,53 @@
 /* Grammar, vocabulary, name parser and suggestions for Discourse CSS variables. */
-const V = {
-  categories: ["color","font","shadow","space","size","border","outline","opacity","motion"],
-  sizes: ["3xs","2xs","xs","sm","md","lg","xl","2xl","3xl","4xl","5xl"],
-  steps: ["half","1","2","3","4","5","6","7","8","9","10","11","12"],
-  strength: ["subtlest","subtle","bold"],
-  weights: ["regular","medium","semibold","bold"],
-  intents: ["accent","danger","success","warning","info","highlight","love"],
-  condition: ["selected","checked","current","expanded","disabled","invalid","visited","read"],
-  interaction: ["hovered","pressed","focused"],
-  axes: ["inline","block","inline-start","inline-end","block-start","block-end"],
-  // category -> property -> { roles, variant: "size"|"strength"|"weight"|null }
-  props: {
-    color: {
-      text:       { roles: ["default","muted","faint","inverse","link","accent","danger","success","warning","info"], variant: "strength" },
-      icon:       { roles: ["default","muted","faint","inverse","accent","danger","success","warning","info","love"], variant: "strength" },
-      background: { roles: ["default","raised","sunken","overlay","input","inverse","backdrop","highlight","accent","danger","success","warning","info","love"], variant: "strength" },
-      border:     { roles: ["default","muted","strong","input","accent","danger","success","warning"], variant: "strength" },
-      outline:    { roles: ["default","danger"], variant: null }
-    },
-    font: {
-      family:           { roles: ["body","heading","monospace"], variant: null },
-      size:             { roles: [], variant: "size" },
-      weight:           { roles: [], variant: "weight" },
-      "line-height":    { roles: ["none","heading","body","prose"], variant: null },
-      "letter-spacing": { roles: ["default","heading"], variant: null }
-    },
-    shadow: { "": { roles: ["overflow","raised","overlay","dialog"], variant: null } },
-    space: {
-      gap:     { roles: [], variant: "step" },
-      padding: { roles: [], variant: "step" },
-      margin:  { roles: [], variant: "step" }
-    },
-    size: {
-      icon:      { roles: [], variant: "size" },
-      avatar:    { roles: [], variant: "size" },
-      control:   { roles: [], variant: "size" },
-      container: { roles: [], variant: "size" }
-    },
-    border: {
-      radius: { roles: [], variant: "size", extraVariants: ["full"] },
-      width:  { roles: [], variant: "size" },
-      style:  { roles: ["default"], variant: null }
-    },
-    outline: {
-      width:  { roles: ["default"], variant: null },
-      offset: { roles: ["default"], variant: null },
-      style:  { roles: ["default"], variant: null }
-    },
-    opacity: { "": { roles: ["backdrop"], variant: null, roleOptional: true } },
-    motion: {
-      duration: { roles: [], variant: "size" },
-      easing:   { roles: ["standard","enter","exit"], variant: null }
-    }
-  },
-  compExtraProps: {
-    size: ["inline","block","min-inline","max-inline","min-block","max-block"],
-    motion: ["transition"],
-    font: ["align"]
+// Word lists come from vocabulary.json; loadVocabulary() turns them into V.
+let V = null, MULTI = null, ALL_CLOSED = null;
+
+function loadVocabulary(voc) {
+  const props = {}, compExtraProps = {};
+  for (const [c, def] of Object.entries(voc.categories)) {
+    const norm = d => ({ roles: d.roles || [], variant: d.variant || null, extraVariants: d.extraVariants, roleOptional: d.roleOptional });
+    props[c] = {};
+    if (def.properties) for (const [p, d] of Object.entries(def.properties)) props[c][p] = norm(d);
+    else props[c][""] = norm(def);
+    if (def.componentProperties) compExtraProps[c] = def.componentProperties;
   }
-};
-const MULTI = new Set(["line-height","letter-spacing","min-inline","max-inline","min-block","max-block",
-  "inline-start","inline-end","block-start","block-end"]);
+  V = {
+    categories: Object.keys(voc.categories),
+    sizes: voc.variants.size,
+    steps: voc.variants.step,
+    strength: voc.variants.strength,
+    weights: voc.variants.weight,
+    intents: voc.intents,
+    condition: voc.states.condition,
+    interaction: voc.states.interaction,
+    axes: voc.axes,
+    props,
+    compExtraProps,
+    kinds: voc.kinds || {}
+  };
+  const all = new Set([...V.categories, ...V.sizes, ...V.steps, ...V.strength, ...V.weights, ...V.condition, ...V.interaction, ...V.axes]);
+  for (const c in V.props) for (const p in V.props[c]) { if (p) all.add(p); V.props[c][p].roles.forEach(r => all.add(r)); }
+  for (const c in V.compExtraProps) V.compExtraProps[c].forEach(p => all.add(p));
+  ALL_CLOSED = all;
+  MULTI = new Set([...all].filter(w => w.includes("-")));
+}
 
-const ALL_CLOSED = (() => {
-  const s = new Set([...V.categories, ...V.sizes, ...V.steps, ...V.strength, ...V.weights, ...V.condition, ...V.interaction, ...V.axes]);
-  for (const c in V.props) for (const p in V.props[c]) { if (p) s.add(p); V.props[c][p].roles.forEach(r => s.add(r)); }
-  for (const c in V.compExtraProps) V.compExtraProps[c].forEach(p => s.add(p));
-  return s;
-})();
+const VOCABULARY_URL = "vocabulary.json?v=10";
+const vocabularyReady = typeof fetch === "function"
+  ? fetch(VOCABULARY_URL).then(r => r.json()).then(loadVocabulary)
+      .catch(e => { console.error(`Could not load ${VOCABULARY_URL}. Serve docs/ over HTTP (python3 -m http.server).`, e); throw e; })
+  : Promise.resolve();
 
-// Strength follows an intent or a component kind. In components "default" is
-// also DButton's default kind, so it takes strength there too.
-function takesStrength(role, isKind, isComp) {
-  return V.intents.includes(role) || isKind || (isComp && role === "default");
+// Kinds are registered per component: the core Owner, or Owner-Component in extensions.
+function kindsOf(segs) {
+  const owner = segs.find(s => s.slot === "owner"), comp = segs.find(s => s.slot === "component");
+  if (!owner) return { key: null, kinds: [] };
+  const key = comp ? owner.w + "-" + comp.w : owner.w;
+  return { key, kinds: V.kinds[key] || [] };
+}
+
+function takesStrength(role, isKind) {
+  return V.intents.includes(role) || isKind;
 }
 
 function variantWords(kind) {
@@ -131,7 +106,7 @@ function parseToken(raw) {
     if (ALL_CLOSED.has(words[i])) { out.errors.push(`"${words[i]}" is a vocabulary word and cannot be a part. A category must come first.`); push(words[i], "error", "part?"); }
     else {
       push(words[i], "part");
-      if (["primary","secondary","default","flat","transparent","close"].includes(words[i]))
+      if (kindsOf(out.segs).kinds.includes(words[i]))
         out.notes.push(`"${words[i]}" reads as a part here. If it is the component's kind, it belongs in the role slot after the property.`);
     }
     i++;
@@ -166,12 +141,15 @@ function parseToken(raw) {
   let role = null, isKind = false, w = words[i];
   const isState = x => V.condition.includes(x) || V.interaction.includes(x);
   const vwords = variantWords(spec.variant).concat(spec.extraVariants || []);
-  if (w && spec.roles.includes(w) && !(spec.roles.length === 0)) { role = w; push(w, "role"); i++; }
-  else if (w && isComp && cat === "space" && V.axes.includes(w)) { role = w; push(w, "axis", "role · axis"); i++; }
+  const reg = isComp ? kindsOf(out.segs) : { key: null, kinds: [] };
+  if (w && isComp && cat === "space" && V.axes.includes(w)) { role = w; push(w, "axis", "role · axis"); i++; }
+  else if (w && reg.kinds.includes(w)) { role = w; isKind = true; push(w, "kind", "role · kind"); i++; }
+  else if (w && spec.roles.includes(w)) { role = w; push(w, "role"); i++; }
   else if (w && isComp && !isState(w) && !vwords.includes(w) && !V.sizes.includes(w)) {
-    role = w; isKind = true; push(w, "kind", "role · kind");
-    out.notes.push(`"${w}" is read as a component kind. Kinds must be registered for this component in vocabulary.json.`);
-    i++;
+    out.errors.push(reg.kinds.length
+      ? `"${w}" is not a kind of ${reg.key}. Kinds: ${reg.kinds.join(", ")}.`
+      : `"${w}" is not a role here, and ${reg.key || "this component"} has no kinds in vocabulary.json.`);
+    push(w, "error", "kind?"); i++;
   }
   if (!role && spec.roles.length && !isComp && !spec.roleOptional) out.errors.push(`A role is required here: ${spec.roles.join(", ")}.`);
 
@@ -179,7 +157,7 @@ function parseToken(raw) {
   w = words[i];
   let variant = null;
   if (w && vwords.includes(w)) {
-    if (spec.variant === "strength" && !takesStrength(role, isKind, isComp)) {
+    if (spec.variant === "strength" && !takesStrength(role, isKind)) {
       out.errors.push(`Strength "${w}" only follows an intent role (${V.intents.join(", ")}) or a component kind.`);
       push(w, "error", "variant?");
     } else push(w, "variant");
@@ -261,11 +239,11 @@ function nextOptions(base, layer, names) {
   const stateSegs = segs.filter(s => s.slot === "state");
   const variantsFor = role => {
     let w = variantWords(spec.variant).concat(spec.extraVariants || []);
-    if (spec.variant === "strength" && !takesStrength(role, roleSeg && roleSeg.slot === "kind", isComp)) w = [];
+    if (spec.variant === "strength" && !takesStrength(role, roleSeg && roleSeg.slot === "kind")) w = [];
     return opt(w, "variant");
   };
   if (last.slot === "category" || last.slot === "property") {
-    const kinds = isComp ? nextSegOf(["kind", "role"]) : [];
+    const kinds = isComp ? kindsOf(segs).kinds : [];
     let o = isComp ? opt(kinds, "kind", "role · kind") : [];
     o = o.concat(opt(spec.roles.filter(r => !kinds.includes(r)), "role"));
     if (isComp && cat === "space") o = o.concat(opt(V.axes, "axis", "role · axis"));

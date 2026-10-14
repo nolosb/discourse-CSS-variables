@@ -45,7 +45,7 @@ function segLine(segs) {
 })();
 
 /* ---------- vocabulary tables ---------- */
-(function () {
+vocabularyReady.then(function () {
   const code = a => a.map(x => `<code>${esc(x)}</code>`).join(" ");
   const none = '<span class="muted">none</span>';
   const pb = document.getElementById("props-body");
@@ -64,10 +64,10 @@ function segLine(segs) {
     }
     rb.innerHTML = html;
   }
-})();
+});
 
 /* ---------- parser UI ---------- */
-(function () {
+vocabularyReady.then(function () {
   if (!document.getElementById("p-in")) return;
   const input = document.getElementById("p-in");
   const outEl = document.getElementById("p-out");
@@ -142,11 +142,11 @@ function segLine(segs) {
   }
   window.addEventListener("hashchange", fromHash);
   fromHash();
-})();
+});
 
 
 
-(function () {
+vocabularyReady.then(function () {
   if (!document.getElementById("ex-list")) return;
   const groups = ["All", "System", "Component", "Extension"];
   let active = "All";
@@ -180,7 +180,7 @@ function segLine(segs) {
   list.addEventListener("click", e => { const b = e.target.closest("a.n"); if (b) { try { sessionStorage.setItem("dcv-check", b.textContent); } catch (err) {} } });
   q.addEventListener("input", render);
   render();
-})();
+});
 
 
 /* ---------- theme toggle ---------- */
