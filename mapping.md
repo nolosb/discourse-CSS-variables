@@ -7,9 +7,9 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | [rename](#rename) | 114 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
 | [split](#split) | 23 | Target depends on each use; candidates in notes. |
-| [drop](#drop) | 18 | Unused, or `-rgb` twins. |
-| [base](#base) | 28 | Stays in the base layer. |
-| [open](#open) | 26 | Not covered by the scheme yet. |
+| [drop](#drop) | 33 | Unused, or `-rgb` twins. |
+| [base](#base) | 33 | Stays in the base layer. |
+| [open](#open) | 21 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -194,6 +194,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--token-color-background-accent-subtler-pressed` |  | tokens.scss | 0 | `var(--tertiary-600)` | Unused; subtler merges into subtle. |
 | `--token-color-background-accent-bolder-hovered` |  | tokens.scss | 0 | `var(--tertiary-high)` | Unused; value --tertiary-high is lighter than the base. |
 | `--token-color-background-accent-bolder-pressed` |  | tokens.scss | 0 | `var(--tertiary-very-high)` | Unused; --tertiary-very-high is never defined. |
+| `--header_background-rgb` |  | color_definitions.scss | 2 | `#{hexToRGB($header_background)}` | No -rgb twins: uses become color-mix(). |
 | `--always-black-rgb` |  | color_definitions.scss | 13 | `0, 0, 0` | No -rgb twins: uses become color-mix() on the matching color token. |
 | `--primary-rgb` |  | color_definitions.scss | 15 | `#{hexToRGB($primary)}` | No -rgb twins: uses become color-mix() on the matching color token. |
 | `--primary-low-rgb` |  | color_definitions.scss | 3 | `#{hexToRGB($primary-low)}` | No -rgb twins: uses become color-mix() on the matching color token. |
@@ -207,6 +208,20 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--tertiary-or-white` |  | color_definitions.scss | 0 | `#{$tertiary-or-white}` | Unused light/dark chooser. |
 | `--facebook-or-white` |  | color_definitions.scss | 0 | `#{$facebook-or-white}` | Unused light/dark chooser. |
 | `--twitter-or-white` |  | color_definitions.scss | 0 | `#{$twitter-or-white}` | Unused light/dark chooser. |
+| `--google` |  | color_definitions.scss | 0 | `#{$google}` | Unused brand color. |
+| `--google-hover` |  | color_definitions.scss | 0 | `#{$google-hover}` | Unused brand color. |
+| `--instagram` |  | color_definitions.scss | 0 | `#{$instagram}` | Unused brand color. |
+| `--instagram-hover` |  | color_definitions.scss | 0 | `#{$instagram-hover}` | Unused brand color. |
+| `--facebook-hover` |  | color_definitions.scss | 0 | `#{$facebook-hover}` | Unused brand color. |
+| `--github-hover` |  | color_definitions.scss | 0 | `#{$github-hover}` | Unused brand color. |
+| `--discord-hover` |  | color_definitions.scss | 0 | `#{$discord-hover}` | Unused brand color. |
+| `--discourse_id-text` |  | color_definitions.scss | 1 | `var(--d-button-primary-text-color)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
+| `--discourse_id-text-hover` |  | color_definitions.scss | 1 | `var(--d-button-primary-text-color--hover)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
+| `--discourse_id-background` |  | color_definitions.scss | 2 | `var(--d-button-primary-bg-color)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
+| `--discourse_id-background-hover` |  | color_definitions.scss | 1 | `var(--d-button-primary-bg-color--hover)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
+| `--discourse_id-icon` |  | color_definitions.scss | 1 | `var(--d-button-primary-icon-color)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
+| `--discourse_id-icon-hover` |  | color_definitions.scss | 1 | `var(--d-button-primary-icon-color--hover)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
+| `--discourse_id-border` |  | color_definitions.scss | 1 | `var(--d-button-border)` | Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different. |
 | `--shadow-focus-danger` |  | color_definitions.scss | 0 | `0 0 6px 0 var(--danger)` | Unused. |
 
 ## base
@@ -241,29 +256,29 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--tertiary-800` |  | color_definitions.scss | 3 | `#{$tertiary-800}` | Numbered ramp; system tokens point at it. |
 | `--tertiary-900` |  | color_definitions.scss | 2 | `#{$tertiary-900}` | Numbered ramp; system tokens point at it. |
 | `--blend-primary-secondary-5` |  | color_definitions.scss | 4 | `#{$blend-primary-secondary-5}` | Uses need mapping per use. |
+| `--facebook` |  | color_definitions.scss | 1 | `#{$facebook}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--cas` |  | color_definitions.scss | 2 | `#{$cas}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--twitter` |  | color_definitions.scss | 4 | `#{$twitter}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--github` |  | color_definitions.scss | 2 | `#{$github}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
+| `--discord` |  | color_definitions.scss | 3 | `#{$discord}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
 
 ## open
 
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
 | `--quaternary` |  | color_definitions.scss | 5 | `#{$quaternary}` | No intent for it; 5 uses. |
+| `--header_background` |  | color_definitions.scss | 12 | `#{$header_background}` | Header color scheme; needs its own decision. |
+| `--header_primary` |  | color_definitions.scss | 11 | `#{$header_primary}` | Header color scheme; needs its own decision. |
+| `--header_primary-low` |  | color_definitions.scss | 6 | `#{$header_primary-low}` | Header color scheme; needs its own decision. |
+| `--header_primary-low-mid` |  | color_definitions.scss | 6 | `#{$header_primary-low-mid}` | Header color scheme; needs its own decision. |
+| `--header_primary-medium` |  | color_definitions.scss | 10 | `#{$header_primary-medium}` | Header color scheme; needs its own decision. |
+| `--header_primary-high` |  | color_definitions.scss | 11 | `#{$header_primary-high}` | Header color scheme; needs its own decision. |
+| `--header_primary-very-high` |  | color_definitions.scss | 1 | `#{$header_primary-very-high}` | Header color scheme; needs its own decision. |
 | `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | No intent for it; 1 use. |
 | `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |
 | `--wiki` |  | color_definitions.scss | 2 | `#{$wiki}` | Wiki post color in topic-post.scss; needs an owner (Post?). |
-| `--google` |  | color_definitions.scss | 0 | `#{$google}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--google-hover` |  | color_definitions.scss | 0 | `#{$google-hover}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--instagram` |  | color_definitions.scss | 0 | `#{$instagram}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--instagram-hover` |  | color_definitions.scss | 0 | `#{$instagram-hover}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--facebook` |  | color_definitions.scss | 1 | `#{$facebook}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--facebook-hover` |  | color_definitions.scss | 0 | `#{$facebook-hover}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--cas` |  | color_definitions.scss | 2 | `#{$cas}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--twitter` |  | color_definitions.scss | 4 | `#{$twitter}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--github` |  | color_definitions.scss | 2 | `#{$github}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--github-hover` |  | color_definitions.scss | 0 | `#{$github-hover}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--discord` |  | color_definitions.scss | 3 | `#{$discord}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
-| `--discord-hover` |  | color_definitions.scss | 0 | `#{$discord-hover}` | Login provider brand color: LoginButtons component token? Brand names are not roles. |
 | `--gold` |  | color_definitions.scss | 2 | `#{$gold}` | Badge tier color: needs an owner and tier words. |
 | `--silver` |  | color_definitions.scss | 2 | `#{$silver}` | Badge tier color: needs an owner and tier words. |
 | `--bronze` |  | color_definitions.scss | 2 | `#{$bronze}` | Badge tier color: needs an owner and tier words. |

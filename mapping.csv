@@ -100,6 +100,14 @@ old_name,new_name,type,defined_in,value,uses,notes
 --danger,,split,color_definitions.scss,#{$danger},254,"Target depends on each use: color-text-danger, color-icon-danger, color-background-danger, color-border-danger. Stays as a base alias."
 --success,,split,color_definitions.scss,#{$success},138,"Target depends on each use: color-text-success, color-icon-success, color-background-success, color-border-success. Stays as a base alias."
 --love,,split,color_definitions.scss,#{$love},16,"Target depends on each use: color-icon-love, color-background-love. Stays as a base alias."
+--header_background,,open,color_definitions.scss,#{$header_background},12,Header color scheme; needs its own decision.
+--header_primary,,open,color_definitions.scss,#{$header_primary},11,Header color scheme; needs its own decision.
+--header_background-rgb,,drop,color_definitions.scss,#{hexToRGB($header_background)},2,No -rgb twins: uses become color-mix().
+--header_primary-low,,open,color_definitions.scss,#{$header_primary-low},6,Header color scheme; needs its own decision.
+--header_primary-low-mid,,open,color_definitions.scss,#{$header_primary-low-mid},6,Header color scheme; needs its own decision.
+--header_primary-medium,,open,color_definitions.scss,#{$header_primary-medium},10,Header color scheme; needs its own decision.
+--header_primary-high,,open,color_definitions.scss,#{$header_primary-high},11,Header color scheme; needs its own decision.
+--header_primary-very-high,,open,color_definitions.scss,#{$header_primary-very-high},1,Header color scheme; needs its own decision.
 --d-selected,--d-sys-color-background-default-selected,rename,color_definitions.scss,#{$selected},36,
 --d-selected-text-color,--d-sys-color-text-default-selected,rename,color_definitions.scss,var(--primary),10,
 --d-selected-hover,--d-sys-color-background-default-selected-hovered,rename,color_definitions.scss,#{$selected-hover},1,
@@ -192,18 +200,25 @@ old_name,new_name,type,defined_in,value,uses,notes
 --hljs-symbol,--d-comp-CodeBlock-symbol-color-text,rename,color_definitions.scss,#{$hljs-symbol},1,highlight.js token type as a part of CodeBlock.
 --hljs-variable,--d-comp-CodeBlock-variable-color-text,rename,color_definitions.scss,#{$hljs-variable},1,highlight.js token type as a part of CodeBlock.
 --hljs-string,--d-comp-CodeBlock-string-color-text,rename,color_definitions.scss,#{$hljs-string},2,highlight.js token type as a part of CodeBlock.
---google,,open,color_definitions.scss,#{$google},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
---google-hover,,open,color_definitions.scss,#{$google-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
---instagram,,open,color_definitions.scss,#{$instagram},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
---instagram-hover,,open,color_definitions.scss,#{$instagram-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
---facebook,,open,color_definitions.scss,#{$facebook},1,Login provider brand color: LoginButtons component token? Brand names are not roles.
---facebook-hover,,open,color_definitions.scss,#{$facebook-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
---cas,,open,color_definitions.scss,#{$cas},2,Login provider brand color: LoginButtons component token? Brand names are not roles.
---twitter,,open,color_definitions.scss,#{$twitter},4,Login provider brand color: LoginButtons component token? Brand names are not roles.
---github,,open,color_definitions.scss,#{$github},2,Login provider brand color: LoginButtons component token? Brand names are not roles.
---github-hover,,open,color_definitions.scss,#{$github-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
---discord,,open,color_definitions.scss,#{$discord},3,Login provider brand color: LoginButtons component token? Brand names are not roles.
---discord-hover,,open,color_definitions.scss,#{$discord-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--google,,drop,color_definitions.scss,#{$google},0,Unused brand color.
+--google-hover,,drop,color_definitions.scss,#{$google-hover},0,Unused brand color.
+--instagram,,drop,color_definitions.scss,#{$instagram},0,Unused brand color.
+--instagram-hover,,drop,color_definitions.scss,#{$instagram-hover},0,Unused brand color.
+--facebook,,base,color_definitions.scss,#{$facebook},1,"Brand color, fixed by the brand, not a design decision: base layer, not public."
+--facebook-hover,,drop,color_definitions.scss,#{$facebook-hover},0,Unused brand color.
+--cas,,base,color_definitions.scss,#{$cas},2,"Brand color, fixed by the brand, not a design decision: base layer, not public."
+--twitter,,base,color_definitions.scss,#{$twitter},4,"Brand color, fixed by the brand, not a design decision: base layer, not public."
+--github,,base,color_definitions.scss,#{$github},2,"Brand color, fixed by the brand, not a design decision: base layer, not public."
+--github-hover,,drop,color_definitions.scss,#{$github-hover},0,Unused brand color.
+--discord,,base,color_definitions.scss,#{$discord},3,"Brand color, fixed by the brand, not a design decision: base layer, not public."
+--discord-hover,,drop,color_definitions.scss,#{$discord-hover},0,Unused brand color.
+--discourse_id-text,,drop,color_definitions.scss,var(--d-button-primary-text-color),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
+--discourse_id-text-hover,,drop,color_definitions.scss,var(--d-button-primary-text-color--hover),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
+--discourse_id-background,,drop,color_definitions.scss,var(--d-button-primary-bg-color),2,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
+--discourse_id-background-hover,,drop,color_definitions.scss,var(--d-button-primary-bg-color--hover),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
+--discourse_id-icon,,drop,color_definitions.scss,var(--d-button-primary-icon-color),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
+--discourse_id-icon-hover,,drop,color_definitions.scss,var(--d-button-primary-icon-color--hover),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
+--discourse_id-border,,drop,color_definitions.scss,var(--d-button-border),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
 --gold,,open,color_definitions.scss,#{$gold},2,Badge tier color: needs an owner and tier words.
 --silver,,open,color_definitions.scss,#{$silver},2,Badge tier color: needs an owner and tier words.
 --bronze,,open,color_definitions.scss,#{$bronze},2,Badge tier color: needs an owner and tier words.
