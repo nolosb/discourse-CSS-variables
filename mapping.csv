@@ -230,7 +230,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --metadata-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-medium),1,Meta text is muted (settled rule); value moves from primary-medium.
 --d-badge-card-background-color,--d-comp-DBadgeCard-color-background,rename,color_definitions.scss,var(--secondary),1,ui-kit/d-badge-card.gjs.
 --mention-background-color,--d-sys-color-background-neutral,rename,color_definitions.scss,var(--primary-low),1,No component token: the mention mixin (mentions and hashtags) uses the system neutral fill.
---title-color,--d-sys-color-text-default,rename,color_definitions.scss,var(--primary),1,Same value as --primary; 1 use.
+--title-color,--d-sys-color-text-default,merge,color_definitions.scss,var(--primary),1,"var(--primary), while --d-sys-color-text-default comes from --token-color-text-default (var(--primary-900)); 1 use."
 --title-color--header,--d-comp-Header-color-text-default,rename,color_definitions.scss,var(--header_primary),1,Same value as --header_primary.
 --excerpt-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-high),1,primary-high vs muted's primary-800.
 --shadow-modal,--d-sys-shadow-dialog,rename,color_definitions.scss,"0 8px 60px rgba(0, 0, 0, #{$shadow-opacity-modal})",1,

@@ -4,8 +4,8 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 122 | Same value, one target. |
-| [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
+| [rename](#rename) | 121 | Same value, one target. |
+| [merge](#merge) | 24 | One target, the value changes: needs a visual check. |
 | [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
 | [split](#split) | 35 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
 | [drop](#drop) | 33 | Removed: unused, an `-rgb` twin, or replaced by another token (see notes). |
@@ -126,7 +126,6 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--table-border-color` | `--d-comp-Table-color-border` | color_definitions.scss | 7 | `var(--content-border-color)` |  |
 | `--d-badge-card-background-color` | `--d-comp-DBadgeCard-color-background` | color_definitions.scss | 1 | `var(--secondary)` | ui-kit/d-badge-card.gjs. |
 | `--mention-background-color` | `--d-sys-color-background-neutral` | color_definitions.scss | 1 | `var(--primary-low)` | No component token: the mention mixin (mentions and hashtags) uses the system neutral fill. |
-| `--title-color` | `--d-sys-color-text-default` | color_definitions.scss | 1 | `var(--primary)` | Same value as --primary; 1 use. |
 | `--title-color--header` | `--d-comp-Header-color-text-default` | color_definitions.scss | 1 | `var(--header_primary)` | Same value as --header_primary. |
 | `--shadow-modal` | `--d-sys-shadow-dialog` | color_definitions.scss | 1 | `0 8px 60px rgba(0, 0, 0, #{$shadow-opacity-modal})` |  |
 | `--shadow-card` | `--d-sys-shadow-raised` | color_definitions.scss | 18 | `0 4px 14px rgba(0, 0, 0, #{$shadow-opacity-card})` |  |
@@ -161,6 +160,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--success-low` | `--d-sys-color-background-success-subtlest` | color_definitions.scss | 31 | `#{$success-low}` | 80%, subtlest band. |
 | `--input-border-color` | `--d-sys-color-border-input` | color_definitions.scss | 7 | `var(--primary-400)` | primary-400 vs --token-color-border-input primary-300. |
 | `--metadata-color` | `--d-sys-color-text-muted` | color_definitions.scss | 1 | `var(--primary-medium)` | Meta text is muted (settled rule); value moves from primary-medium. |
+| `--title-color` | `--d-sys-color-text-default` | color_definitions.scss | 1 | `var(--primary)` | var(--primary), while --d-sys-color-text-default comes from --token-color-text-default (var(--primary-900)); 1 use. |
 | `--excerpt-color` | `--d-sys-color-text-muted` | color_definitions.scss | 1 | `var(--primary-high)` | primary-high vs muted's primary-800. |
 | `--shadow-composer` | `--d-sys-shadow-dialog` | color_definitions.scss | 2 | `0 -1px 40px rgba(0, 0, 0, #{$shadow-opacity-composer})` | 0 -1px 40px vs modal's 0 8px 60px. |
 | `--shadow-footer-nav` | `--d-sys-shadow-overflow` | color_definitions.scss | 3 | `0 0 2px 0 rgba(0, 0, 0, #{$shadow-opacity-footer-nav})` | Loses its 2px blur; open question. |
