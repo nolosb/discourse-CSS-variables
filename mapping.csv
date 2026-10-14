@@ -4,7 +4,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --d-button-border,--d-comp-DButton-border-width,merge,buttons.scss,1px solid transparent,11,"Split: width becomes border-width (1px); the color becomes --d-comp-DButton-color-border (transparent), which the kind tokens default to. Style (solid) stays in the CSS."
 --d-button-default-text-color,--d-comp-DButton-color-text-default,rename,buttons.scss,var(--primary),6,
 --d-button-default-text-color--hover,--d-comp-DButton-color-text-default-hovered,rename,buttons.scss,var(--secondary),7,
---d-button-default-bg-color,--d-comp-DButton-color-background-default,rename,buttons.scss,var(--primary-low),4,
+--d-button-default-bg-color,--d-comp-DButton-color-background-default,rename,buttons.scss,var(--primary-low),4,Stays a DButton token (themes change button kinds separately); its value becomes var(--d-sys-color-background-neutral).
 --d-button-default-bg-color--hover,--d-comp-DButton-color-background-default-hovered,rename,buttons.scss,var(--primary-medium),4,
 --d-button-default-icon-color,--d-comp-DButton-color-icon-default,rename,buttons.scss,var(--primary-high),6,
 --d-button-default-icon-color--hover,--d-comp-DButton-color-icon-default-hovered,rename,buttons.scss,var(--primary-low),2,
@@ -121,7 +121,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --highlight-rgb,,drop,color_definitions.scss,#{hexToRGB($highlight)},0,No -rgb twins: uses become color-mix() on the matching color token.
 --success-rgb,,drop,color_definitions.scss,#{hexToRGB($success)},0,No -rgb twins: uses become color-mix() on the matching color token.
 --primary-very-low,,split,color_definitions.scss,#{$primary-very-low},249,"Target depends on each use: color-background-sunken, color-border-muted. Stays as a base alias."
---primary-low,,split,color_definitions.scss,#{$primary-low},448,"Target depends on each use: color-border-default, color-background-default-pressed. Stays as a base alias."
+--primary-low,,split,color_definitions.scss,#{$primary-low},448,"Target depends on each use: color-border-default, color-background-neutral, color-background-default-pressed. Stays as a base alias."
 --primary-low-mid,,split,color_definitions.scss,#{$primary-low-mid},187,"Target depends on each use: color-text-default-disabled, color-border-strong, color-icon-faint. Stays as a base alias."
 --primary-medium,,split,color_definitions.scss,#{$primary-medium},773,"Target depends on each use: color-text-faint, color-icon-faint. Stays as a base alias."
 --primary-high,,split,color_definitions.scss,#{$primary-high},381,"Target depends on each use: color-text-muted, color-icon-muted. Stays as a base alias."
@@ -170,7 +170,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --success-medium,--d-sys-color-background-success-subtle,rename,color_definitions.scss,#{$success-medium},7,50%.
 --success-hover,--d-sys-color-background-success-hovered,rename,color_definitions.scss,#{$success-hover},4,
 --love-low,--d-sys-color-background-love-subtlest,rename,color_definitions.scss,#{$love-low},4,
---wiki,,open,color_definitions.scss,#{$wiki},2,Wiki post color in topic-post.scss; needs an owner (Post?).
+--wiki,--d-comp-PostMetaData-wiki-color-text,rename,color_definitions.scss,#{$wiki},2,Part of PostMetaData: one rule styles the wiki edit indicator and the last-wiki-edit date (two child components). Value is the CSS keyword green; see core fixes.
 --blend-primary-secondary-5,,base,color_definitions.scss,#{$blend-primary-secondary-5},4,Uses need mapping per use.
 --primary-med-or-secondary-med,,split,color_definitions.scss,#{$primary-med-or-secondary-med},43,Light/dark chooser: each use maps to a token whose value uses light-dark().
 --primary-med-or-secondary-high,,split,color_definitions.scss,#{$primary-med-or-secondary-high},11,Light/dark chooser: each use maps to a token whose value uses light-dark().
@@ -229,7 +229,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --table-border-color,--d-comp-Table-color-border,rename,color_definitions.scss,var(--content-border-color),7,
 --metadata-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-medium),1,Meta text is muted (settled rule); value moves from primary-medium.
 --d-badge-card-background-color,--d-comp-DBadgeCard-color-background,rename,color_definitions.scss,var(--secondary),1,ui-kit/d-badge-card.gjs.
---mention-background-color,,open,color_definitions.scss,var(--primary-low),1,Mixin for mentions in cooked content; needs a pattern owner (Mention?).
+--mention-background-color,--d-sys-color-background-neutral,rename,color_definitions.scss,var(--primary-low),1,No component token: the mention mixin (mentions and hashtags) uses the system neutral fill.
 --title-color,--d-sys-color-text-default,rename,color_definitions.scss,var(--primary),1,Same value as --primary; 1 use.
 --title-color--header,--d-comp-Header-color-text-default,rename,color_definitions.scss,var(--header_primary),1,Same value as --header_primary.
 --excerpt-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-high),1,primary-high vs muted's primary-800.

@@ -28,6 +28,7 @@ const EX = [
     ["--d-sys-color-background-default-pressed", "--token-color-surface-pressed"],
     ["--d-sys-color-background-default-selected", "--token-color-surface-selected, --d-selected"],
     ["--d-sys-color-background-default-selected-hovered", "--d-selected-hover"],
+    ["--d-sys-color-background-neutral", "--primary-low (mentions, hashtags, default buttons)"],
     ["--d-sys-color-background-raised", "--d-content-background"],
     ["--d-sys-color-background-sunken", "--primary-very-low"],
     ["--d-sys-color-background-overlay", "menu panels, dropdowns"],

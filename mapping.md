@@ -4,12 +4,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 116 | Same value, one target. |
+| [rename](#rename) | 118 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
-| [split](#split) | 32 | Target depends on each use; candidates in notes. |
-| [drop](#drop) | 33 | Unused, or `-rgb` twins. |
-| [base](#base) | 34 | Stays in the base layer. |
-| [open](#open) | 9 | Not covered by the scheme yet. |
+| [split](#split) | 32 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
+| [drop](#drop) | 33 | Removed: unused, an `-rgb` twin, or replaced by another token (see notes). |
+| [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
+| [open](#open) | 7 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -19,7 +19,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--d-button-transition` | `--d-comp-DButton-motion-transition` | buttons.scss | 8 | `none` |  |
 | `--d-button-default-text-color` | `--d-comp-DButton-color-text-default` | buttons.scss | 6 | `var(--primary)` |  |
 | `--d-button-default-text-color--hover` | `--d-comp-DButton-color-text-default-hovered` | buttons.scss | 7 | `var(--secondary)` |  |
-| `--d-button-default-bg-color` | `--d-comp-DButton-color-background-default` | buttons.scss | 4 | `var(--primary-low)` |  |
+| `--d-button-default-bg-color` | `--d-comp-DButton-color-background-default` | buttons.scss | 4 | `var(--primary-low)` | Stays a DButton token (themes change button kinds separately); its value becomes var(--d-sys-color-background-neutral). |
 | `--d-button-default-bg-color--hover` | `--d-comp-DButton-color-background-default-hovered` | buttons.scss | 4 | `var(--primary-medium)` |  |
 | `--d-button-default-icon-color` | `--d-comp-DButton-color-icon-default` | buttons.scss | 6 | `var(--primary-high)` |  |
 | `--d-button-default-icon-color--hover` | `--d-comp-DButton-color-icon-default-hovered` | buttons.scss | 2 | `var(--primary-low)` |  |
@@ -103,6 +103,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--success-medium` | `--d-sys-color-background-success-subtle` | color_definitions.scss | 7 | `#{$success-medium}` | 50%. |
 | `--success-hover` | `--d-sys-color-background-success-hovered` | color_definitions.scss | 4 | `#{$success-hover}` |  |
 | `--love-low` | `--d-sys-color-background-love-subtlest` | color_definitions.scss | 4 | `#{$love-low}` |  |
+| `--wiki` | `--d-comp-PostMetaData-wiki-color-text` | color_definitions.scss | 2 | `#{$wiki}` | Part of PostMetaData: one rule styles the wiki edit indicator and the last-wiki-edit date (two child components). Value is the CSS keyword green; see core fixes. |
 | `--hljs-attr` | `--d-comp-CodeBlock-attr-color-text` | color_definitions.scss | 2 | `#{$hljs-attr}` | highlight.js token type as a part of CodeBlock. |
 | `--hljs-attribute` | `--d-comp-CodeBlock-attribute-color-text` | color_definitions.scss | 2 | `#{$hljs-attribute}` | highlight.js token type as a part of CodeBlock. |
 | `--hljs-addition` | `--d-comp-CodeBlock-addition-color-text` | color_definitions.scss | 1 | `#{$hljs-addition}` | highlight.js token type as a part of CodeBlock. |
@@ -122,6 +123,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--content-border-color` | `--d-sys-color-border-default` | color_definitions.scss | 320 | `var(--primary-low)` | 320 uses. |
 | `--table-border-color` | `--d-comp-Table-color-border` | color_definitions.scss | 7 | `var(--content-border-color)` |  |
 | `--d-badge-card-background-color` | `--d-comp-DBadgeCard-color-background` | color_definitions.scss | 1 | `var(--secondary)` | ui-kit/d-badge-card.gjs. |
+| `--mention-background-color` | `--d-sys-color-background-neutral` | color_definitions.scss | 1 | `var(--primary-low)` | No component token: the mention mixin (mentions and hashtags) uses the system neutral fill. |
 | `--title-color` | `--d-sys-color-text-default` | color_definitions.scss | 1 | `var(--primary)` | Same value as --primary; 1 use. |
 | `--title-color--header` | `--d-comp-Header-color-text-default` | color_definitions.scss | 1 | `var(--header_primary)` | Same value as --header_primary. |
 | `--shadow-modal` | `--d-sys-shadow-dialog` | color_definitions.scss | 1 | `0 8px 60px rgba(0, 0, 0, #{$shadow-opacity-modal})` |  |
@@ -177,7 +179,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--header_primary-medium` |  | color_definitions.scss | 10 | `#{$header_primary-medium}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-text-faint, --d-comp-Header-color-icon-default-pressed. |
 | `--header_primary-high` |  | color_definitions.scss | 11 | `#{$header_primary-high}` | Header color scheme input, stays as a base alias. Uses map to --d-comp-Header-color-text-muted. |
 | `--primary-very-low` |  | color_definitions.scss | 249 | `#{$primary-very-low}` | Target depends on each use: color-background-sunken, color-border-muted. Stays as a base alias. |
-| `--primary-low` |  | color_definitions.scss | 448 | `#{$primary-low}` | Target depends on each use: color-border-default, color-background-default-pressed. Stays as a base alias. |
+| `--primary-low` |  | color_definitions.scss | 448 | `#{$primary-low}` | Target depends on each use: color-border-default, color-background-neutral, color-background-default-pressed. Stays as a base alias. |
 | `--primary-low-mid` |  | color_definitions.scss | 187 | `#{$primary-low-mid}` | Target depends on each use: color-text-default-disabled, color-border-strong, color-icon-faint. Stays as a base alias. |
 | `--primary-medium` |  | color_definitions.scss | 773 | `#{$primary-medium}` | Target depends on each use: color-text-faint, color-icon-faint. Stays as a base alias. |
 | `--primary-high` |  | color_definitions.scss | 381 | `#{$primary-high}` | Target depends on each use: color-text-muted, color-icon-muted. Stays as a base alias. |
@@ -283,7 +285,5 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |
-| `--wiki` |  | color_definitions.scss | 2 | `#{$wiki}` | Wiki post color in topic-post.scss; needs an owner (Post?). |
-| `--mention-background-color` |  | color_definitions.scss | 1 | `var(--primary-low)` | Mixin for mentions in cooked content; needs a pattern owner (Mention?). |
 | `--float-kit-arrow-stroke-color` |  | color_definitions.scss | 0 | `var(--primary-low)` | Used in an SVG icon and set by user-tips; owner of the float-kit arrow? |
 | `--float-kit-arrow-fill-color` |  | color_definitions.scss | 0 | `var(--secondary)` | Used in an SVG icon; owner of the float-kit arrow? |

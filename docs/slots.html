@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Slots · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=17">
+<link rel="stylesheet" href="docs.css?v=19">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -67,6 +67,13 @@
 
 <h2 id="owner"><span class="n">02</span>Owner</h2>
 <p>The Owner says whose token it is. System tokens have none: <code>--d-sys-</code> already means core.</p>
+<h3>When a component gets its own token</h3>
+<p>Only when a system token does not do the job:</p>
+<ul>
+  <li>its value has no system role, or</li>
+  <li>a theme needs to change it for this component alone, such as each DButton kind.</li>
+</ul>
+<p>Otherwise the component uses the system token directly: mentions and hashtags use <code>--d-sys-color-background-neutral</code>, not a mention token of their own. A theme that wants one component different can still set a system token in a scoped override.</p>
 <h3>Core components: from the file path</h3>
 <p>Class names in core are not reliable: <code>topic-list/item.gjs</code> exports <code>Item</code> and <code>header.gjs</code> exports <code>GlimmerHeader</code>. The path is unique and an agent can derive it: take the path under <code>app/components/</code> or <code>app/ui-kit/</code>, split on <code>/</code> and <code>-</code>, capitalize each word and join.</p>
 <div class="tbl"><table>
@@ -127,7 +134,7 @@
 <tbody>
 <tr><td>Prominence</td><td><code>default</code> <code>muted</code> <code>faint</code> <code>strong</code></td><td>How prominent neutral text, icons and borders are. Prominence, not purpose: one value serves all quieter text, such as meta text, captions and hints.</td></tr>
 <tr><td>Intent</td><td><span data-words="intents"></span></td><td>Meaning. The only system roles that take <a href="#variant">strength</a> (<code>danger-subtle</code>).</td></tr>
-<tr><td>Surface</td><td><code>raised</code> <code>sunken</code> <code>overlay</code> <code>inverse</code> <code>backdrop</code></td><td>Background levels and special surfaces: <code>inverse</code> for flipped light/dark areas, <code>backdrop</code> behind modals.</td></tr>
+<tr><td>Surface</td><td><code>neutral</code> <code>raised</code> <code>sunken</code> <code>overlay</code> <code>inverse</code> <code>backdrop</code></td><td>Background levels and special surfaces: <code>neutral</code> for gray fills such as mentions, hashtags and default buttons, <code>inverse</code> for flipped light/dark areas, <code>backdrop</code> behind modals.</td></tr>
 <tr><td>Purpose</td><td><code>link</code> <code>input</code></td><td>Specific jobs that need their own value.</td></tr>
 <tr><td>Shadow level</td><td><span data-words="categories.shadow.roles"></span></td><td>Elevation, lightest to strongest: an edge where content scrolls under (header, footer nav; one value, the header's 1px hairline), lifted off the page (cards), floating above content (dropdowns, tooltips), blocking the page (modals).</td></tr>
 <tr><td>Type style</td><td><code>body</code> <code>heading</code> <code>prose</code> <code>monospace</code> <code>none</code></td><td>Font family, line height and letter spacing per kind of text.</td></tr>
@@ -215,8 +222,8 @@
 <footer>Word lists: <a href="index.html"><code>vocabulary.json</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=17"></script>
-<script src="examples.js?v=17"></script>
-<script src="site.js?v=17"></script>
+<script src="grammar.js?v=19"></script>
+<script src="examples.js?v=19"></script>
+<script src="site.js?v=19"></script>
 </body>
 </html>

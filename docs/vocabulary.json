@@ -12,7 +12,7 @@
       "properties": {
         "text": { "roles": ["default", "muted", "faint", "inverse", "link", "accent", "danger", "success", "warning", "info"], "variant": "strength" },
         "icon": { "roles": ["default", "muted", "faint", "inverse", "accent", "danger", "success", "warning", "info", "love"], "variant": "strength" },
-        "background": { "roles": ["default", "raised", "sunken", "overlay", "input", "inverse", "backdrop", "highlight", "accent", "danger", "success", "warning", "info", "love"], "variant": "strength" },
+        "background": { "roles": ["default", "neutral", "raised", "sunken", "overlay", "input", "inverse", "backdrop", "highlight", "accent", "danger", "success", "warning", "info", "love"], "variant": "strength" },
         "border": { "roles": ["default", "muted", "strong", "input", "accent", "danger", "success", "warning"], "variant": "strength" },
         "outline": { "roles": ["default", "danger"] }
       }
@@ -91,6 +91,7 @@
     "DModal": ["header"],
     "NavPills": ["underline"],
     "PostMenu": ["button"],
+    "PostMetaData": ["wiki"],
     "Poll": ["bar"]
   },
   "kinds": {
