@@ -23,7 +23,8 @@ function loadVocabulary(voc) {
     axes: voc.axes,
     props,
     compExtraProps,
-    kinds: voc.kinds || {}
+    kinds: voc.kinds || {},
+    parts: voc.parts || {}
   };
   const all = new Set([...V.categories, ...V.sizes, ...V.steps, ...V.strength, ...V.weights, ...V.condition, ...V.interaction, ...V.axes]);
   for (const c in V.props) for (const p in V.props[c]) { if (p) all.add(p); V.props[c][p].roles.forEach(r => all.add(r)); }
@@ -32,18 +33,25 @@ function loadVocabulary(voc) {
   MULTI = new Set([...all].filter(w => w.includes("-")));
 }
 
-const VOCABULARY_URL = "vocabulary.json?v=10";
+const VOCABULARY_URL = "vocabulary.json?v=11";
 const vocabularyReady = typeof fetch === "function"
   ? fetch(VOCABULARY_URL).then(r => r.json()).then(loadVocabulary)
       .catch(e => { console.error(`Could not load ${VOCABULARY_URL}. Serve docs/ over HTTP (python3 -m http.server).`, e); throw e; })
   : Promise.resolve();
 
-// Kinds are registered per component: the core Owner, or Owner-Component in extensions.
-function kindsOf(segs) {
+// Kinds and parts are listed per component: the core Owner, or Owner-Component in
+// extensions. Kinds are closed; parts are free words, the list only names known ones.
+function ownerKey(segs) {
   const owner = segs.find(s => s.slot === "owner"), comp = segs.find(s => s.slot === "component");
-  if (!owner) return { key: null, kinds: [] };
-  const key = comp ? owner.w + "-" + comp.w : owner.w;
-  return { key, kinds: V.kinds[key] || [] };
+  return owner ? (comp ? owner.w + "-" + comp.w : owner.w) : null;
+}
+function kindsOf(segs) {
+  const key = ownerKey(segs);
+  return { key, kinds: (key && V.kinds[key]) || [] };
+}
+function partsOf(segs) {
+  const key = ownerKey(segs);
+  return (key && V.parts[key]) || [];
 }
 
 function takesStrength(role, isKind) {
@@ -105,6 +113,8 @@ function parseToken(raw) {
   if (isComp && words[i] && !V.categories.includes(words[i])) {
     if (ALL_CLOSED.has(words[i])) { out.errors.push(`"${words[i]}" is a vocabulary word and cannot be a part. A category must come first.`); push(words[i], "error", "part?"); }
     else {
+      if (!partsOf(out.segs).includes(words[i]))
+        out.notes.push(`"${words[i]}" is a new part of ${ownerKey(out.segs)}. Add it to parts in vocabulary.json.`);
       push(words[i], "part");
       if (kindsOf(out.segs).kinds.includes(words[i]))
         out.notes.push(`"${words[i]}" reads as a part here. If it is the component's kind, it belongs in the role slot after the property.`);
@@ -217,7 +227,7 @@ function nextOptions(base, layer, names) {
   if (last.slot === "owner" || last.slot === "component" || last.slot === "part") {
     let o = [];
     if (last.slot === "owner" && layer !== "comp") o = o.concat(opt(nextSegOf(["component"]), "component"));
-    if (last.slot !== "part") o = o.concat(opt(nextSegOf(["part"]), "part"));
+    if (last.slot !== "part") o = o.concat(opt([...new Set(partsOf(segs).concat(nextSegOf(["part"])))], "part"));
     return o.concat(cats);
   }
   const catSeg = segs.find(s => s.slot === "category");

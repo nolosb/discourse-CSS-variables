@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=10">
+<link rel="stylesheet" href="docs.css?v=11">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -60,7 +60,7 @@
 <tr><td class="key c-prefix">prefix</td><td>lowercase</td><td>no</td><td>yes</td><td>layer table</td></tr>
 <tr><td class="key c-owner">Owner</td><td>PascalCase</td><td>no</td><td>yes, except in sys</td><td>derived from file path or extension name</td></tr>
 <tr><td class="key c-owner">Component</td><td>PascalCase</td><td>no</td><td>no, extensions only</td><td>derived from the extension's component path</td></tr>
-<tr><td class="key c-part">part</td><td>lowercase</td><td>no</td><td>no, max one, not in sys</td><td>free word that is on no other list</td></tr>
+<tr><td class="key c-part">part</td><td>lowercase</td><td>no</td><td>no, max one, not in sys</td><td>free word that is on no other list; known parts are listed in <a href="vocabulary.json"><code>vocabulary.json</code></a></td></tr>
 <tr><td class="key c-category">category</td><td>lowercase</td><td>no</td><td>yes</td><td>9 words</td></tr>
 <tr><td class="key c-property">property</td><td>lowercase</td><td>yes (<code>line-height</code>, <code>max-inline</code>)</td><td>per category</td><td>per category</td></tr>
 <tr><td class="key c-role">role</td><td>lowercase</td><td>yes (<code>inline-end</code>)</td><td>per property</td><td>per property; in components, the component's kind</td></tr>
@@ -118,8 +118,8 @@
 <footer>Source of truth: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=10"></script>
-<script src="examples.js?v=10"></script>
-<script src="site.js?v=10"></script>
+<script src="grammar.js?v=11"></script>
+<script src="examples.js?v=11"></script>
+<script src="site.js?v=11"></script>
 </body>
 </html>

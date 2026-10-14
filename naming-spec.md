@@ -51,7 +51,7 @@ Design consequences that follow from these goals and apply everywhere:
 | `prefix` | lowercase | no | yes | §2 |
 | `Owner` | PascalCase | no | yes, except in sys | derived, §5 / §6 |
 | `Component` | PascalCase | no | no, extensions only | derived, §6 |
-| `part` | lowercase | no | no, max one, not in sys | free word, not on any other list |
+| `part` | lowercase | no | no, max one, not in sys | free word, not on any other list; known parts listed in `docs/vocabulary.json` |
 | `category` | lowercase | no | yes | §4.1 |
 | `property` | lowercase | yes (`line-height`, `max-inline`) | per category | §4.2 |
 | `role` | lowercase | yes (`inline-end`) | per property | §4.3 |
@@ -297,7 +297,9 @@ registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed
   cannot be told apart from a part.
 - **Part** (bounded flexibility): one lowercase word for an element inside the component
   that has no component file of its own (`DModal-header`, `PostMenu-button`). If the
-  element has its own file, use that Owner instead.
+  element has its own file, use that Owner instead. Parts are free words; the ones in use
+  are listed under `parts` in `docs/vocabulary.json` so agents reuse them, and a new part
+  gets added there in the same change.
 - A part is also used for a style the owner applies to many child components at once:
   `PostMenu-button` styles all 13 post menu buttons, which each have their own file. Use a
   child's own Owner only for tokens that apply to that one child.

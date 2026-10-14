@@ -85,6 +85,13 @@
     "interaction": ["hovered", "pressed", "focused"]
   },
   "patterns": ["Input", "NavPills", "Table"],
+  "parts": {
+    "DButton": ["count"],
+    "DModal": ["header"],
+    "NavPills": ["underline"],
+    "PostMenu": ["button"],
+    "Poll": ["bar"]
+  },
   "kinds": {
     "DButton": ["default", "primary", "danger", "success", "flat", "transparent", "close"]
   }
