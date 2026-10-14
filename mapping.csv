@@ -242,7 +242,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --shadow-footer-nav,--d-sys-shadow-overflow,merge,color_definitions.scss,"0 0 2px 0 rgba(0, 0, 0, #{$shadow-opacity-footer-nav})",3,Loses its 2px blur; open question.
 --shadow-focus-danger,,drop,color_definitions.scss,0 0 6px 0 var(--danger),0,Unused.
 --shadow-docked-composer,--d-sys-shadow-overflow,merge,color_definitions.scss,"0 4px 30px rgb(0, 0, 0, 0.15)",1,"Defined in core, used only by the AI plugin."
---float-kit-arrow-stroke-color,,open,color_definitions.scss,var(--primary-low),0,Used in an SVG icon and set by user-tips; owner of the float-kit arrow?
---float-kit-arrow-fill-color,,open,color_definitions.scss,var(--secondary),0,Used in an SVG icon; owner of the float-kit arrow?
+--float-kit-arrow-stroke-color,--d-comp-FloatKit-color-border,rename,color_definitions.scss,var(--primary-low),0,"Pattern FloatKit: menu and tooltip boxes and their arrow read it, so they change together. Default var(--d-sys-color-border-default). User tips set it in their scope."
+--float-kit-arrow-fill-color,--d-comp-FloatKit-color-background,rename,color_definitions.scss,var(--secondary),0,"Pattern FloatKit: menu and tooltip boxes and their arrow read it, so they change together. Default var(--d-sys-color-background-overlay). User tips set it in their scope."
 --topic-timeline-border-color,--d-comp-TopicTimeline-color-border,rename,color_definitions.scss,#{$tertiary-low-or-tertiary-high},1,
 --topic-timeline-handle-color,--d-comp-TopicTimelineScroller-color-background,rename,color_definitions.scss,"light-dark( var(--tertiary-400), var(--tertiary) )",1,Handle lives in topic-timeline/scroller.gjs; check.

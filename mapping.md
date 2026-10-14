@@ -4,12 +4,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 118 | Same value, one target. |
+| [rename](#rename) | 120 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
 | [split](#split) | 32 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
 | [drop](#drop) | 33 | Removed: unused, an `-rgb` twin, or replaced by another token (see notes). |
 | [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
-| [open](#open) | 7 | Not covered by the scheme yet. |
+| [open](#open) | 5 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -131,6 +131,8 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--shadow-dropdown` | `--d-sys-shadow-overlay` | color_definitions.scss | 30 | `0 2px 12px 0 rgba(0, 0, 0, #{$shadow-opacity-dropdown})` | menu-panel.scss redefines it locally with another value. |
 | `--shadow-menu-panel` | `--d-sys-shadow-overlay` | color_definitions.scss | 1 | `var(--shadow-dropdown)` |  |
 | `--shadow-header` | `--d-sys-shadow-overflow` | color_definitions.scss | 3 | `0 0 0 1px var(--content-border-color)` | The hairline is the overflow value. |
+| `--float-kit-arrow-stroke-color` | `--d-comp-FloatKit-color-border` | color_definitions.scss | 0 | `var(--primary-low)` | Pattern FloatKit: menu and tooltip boxes and their arrow read it, so they change together. Default var(--d-sys-color-border-default). User tips set it in their scope. |
+| `--float-kit-arrow-fill-color` | `--d-comp-FloatKit-color-background` | color_definitions.scss | 0 | `var(--secondary)` | Pattern FloatKit: menu and tooltip boxes and their arrow read it, so they change together. Default var(--d-sys-color-background-overlay). User tips set it in their scope. |
 | `--topic-timeline-border-color` | `--d-comp-TopicTimeline-color-border` | color_definitions.scss | 1 | `#{$tertiary-low-or-tertiary-high}` |  |
 | `--topic-timeline-handle-color` | `--d-comp-TopicTimelineScroller-color-background` | color_definitions.scss | 1 | `light-dark( var(--tertiary-400), var(--tertiary) )` | Handle lives in topic-timeline/scroller.gjs; check. |
 
@@ -285,5 +287,3 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |
-| `--float-kit-arrow-stroke-color` |  | color_definitions.scss | 0 | `var(--primary-low)` | Used in an SVG icon and set by user-tips; owner of the float-kit arrow? |
-| `--float-kit-arrow-fill-color` |  | color_definitions.scss | 0 | `var(--secondary)` | Used in an SVG icon; owner of the float-kit arrow? |

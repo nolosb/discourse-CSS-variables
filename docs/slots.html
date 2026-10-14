@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Slots · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=19">
+<link rel="stylesheet" href="docs.css?v=20">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -75,7 +75,7 @@
 </ul>
 <p>Otherwise the component uses the system token directly: mentions and hashtags use <code>--d-sys-color-background-neutral</code>, not a mention token of their own. A theme that wants one component different can still set a system token in a scoped override.</p>
 <h3>Core components: from the file path</h3>
-<p>Class names in core are not reliable: <code>topic-list/item.gjs</code> exports <code>Item</code> and <code>header.gjs</code> exports <code>GlimmerHeader</code>. The path is unique and an agent can derive it: take the path under <code>app/components/</code> or <code>app/ui-kit/</code>, split on <code>/</code> and <code>-</code>, capitalize each word and join.</p>
+<p>Class names in core are not reliable: <code>topic-list/item.gjs</code> exports <code>Item</code> and <code>header.gjs</code> exports <code>GlimmerHeader</code>. The path is unique and an agent can derive it: take the path under <code>app/components/</code>, <code>app/ui-kit/</code> or <code>float-kit/components/</code>, split on <code>/</code> and <code>-</code>, capitalize each word and join.</p>
 <div class="tbl"><table>
 <thead><tr><th>File</th><th>Owner</th></tr></thead>
 <tbody>
@@ -88,7 +88,7 @@
 </tbody></table></div>
 <ul>
   <li>The <code>D</code> comes from the <code>d-</code> file names in <code>ui-kit/</code>. Eight components outside ui-kit also start with <code>d-</code> (<code>d-navigation</code>, <code>d-section</code>, …), so <code>D</code> alone does not prove ui-kit.</li>
-  <li>Styles with no component file (global input styles, <code>.nav-pills</code>, tables) use a pattern name from <code>patterns</code>: <span data-words="patterns"></span>.</li>
+  <li>Styles with no component file, or shared by several (global input styles, <code>.nav-pills</code>, tables, the box and arrow of float-kit menus and tooltips), use a pattern name from <code>patterns</code>: <span data-words="patterns"></span>.</li>
 </ul>
 <h3>Extensions: from the extension name</h3>
 <p>PascalCase of the <code>name</code> in <code>about.json</code>, or of <code># name:</code> in <code>plugin.rb</code> with a leading <code>discourse-</code> removed: <code>Horizon</code>, <code>DiscoverySidebar</code>, <code>Chat</code>, <code>Reactions</code>, <code>Ai</code>. Bundled plugins are plugins: chat's <code class="old">--d-chat-input-bg-color</code> becomes <code class="new">--p-Chat-ChatComposer-color-background</code>.</p>
@@ -222,8 +222,8 @@
 <footer>Word lists: <a href="index.html"><code>vocabulary.json</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=19"></script>
-<script src="examples.js?v=19"></script>
-<script src="site.js?v=19"></script>
+<script src="grammar.js?v=20"></script>
+<script src="examples.js?v=20"></script>
+<script src="site.js?v=20"></script>
 </body>
 </html>

@@ -84,7 +84,7 @@
     "condition": ["selected", "checked", "current", "expanded", "disabled", "invalid", "visited", "read"],
     "interaction": ["hovered", "pressed", "focused"]
   },
-  "patterns": ["Input", "NavPills", "Table", "CodeBlock", "InlineCode"],
+  "patterns": ["Input", "NavPills", "Table", "CodeBlock", "InlineCode", "FloatKit"],
   "parts": {
     "CodeBlock": ["addition", "attr", "attribute", "comment", "deletion", "keyword", "name", "number", "punctuation", "string", "symbol", "tag", "title", "variable"],
     "DButton": ["count"],
