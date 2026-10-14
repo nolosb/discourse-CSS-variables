@@ -1,0 +1,233 @@
+old_name,new_name,type,defined_in,value,uses,notes
+--d-button-border-radius,--d-comp-DButton-border-radius,rename,buttons.scss,var(--d-border-radius),43,
+--d-button-transition,--d-comp-DButton-motion-transition,rename,buttons.scss,none,8,
+--d-button-border,,open,buttons.scss,1px solid transparent,11,Border shorthand (1px solid transparent); the grammar has no shorthand token. Split into border-width and color-border?
+--d-button-default-text-color,--d-comp-DButton-color-text-default,rename,buttons.scss,var(--primary),6,
+--d-button-default-text-color--hover,--d-comp-DButton-color-text-default-hovered,rename,buttons.scss,var(--secondary),7,
+--d-button-default-bg-color,--d-comp-DButton-color-background-default,rename,buttons.scss,var(--primary-low),4,
+--d-button-default-bg-color--hover,--d-comp-DButton-color-background-default-hovered,rename,buttons.scss,var(--primary-medium),4,
+--d-button-default-icon-color,--d-comp-DButton-color-icon-default,rename,buttons.scss,var(--primary-high),6,
+--d-button-default-icon-color--hover,--d-comp-DButton-color-icon-default-hovered,rename,buttons.scss,var(--primary-low),2,
+--d-button-default-border,--d-comp-DButton-color-border-default,open,buttons.scss,var(--d-button-border),5,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-default-border--hover,--d-comp-DButton-color-border-default-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-primary-text-color,--d-comp-DButton-color-text-primary,rename,buttons.scss,var(--secondary),5,
+--d-button-primary-text-color--hover,--d-comp-DButton-color-text-primary-hovered,rename,buttons.scss,var(--secondary),3,
+--d-button-primary-bg-color,--d-comp-DButton-color-background-primary,rename,buttons.scss,var(--tertiary),2,
+--d-button-primary-bg-color--hover,--d-comp-DButton-color-background-primary-hovered,rename,buttons.scss,var(--tertiary-hover),3,
+--d-button-primary-icon-color,--d-comp-DButton-color-icon-primary,rename,buttons.scss,var(--secondary),2,
+--d-button-primary-icon-color--hover,--d-comp-DButton-color-icon-primary-hovered,rename,buttons.scss,var(--secondary),2,
+--d-button-primary-border,--d-comp-DButton-color-border-primary,open,buttons.scss,var(--d-button-border),2,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-primary-border--hover,--d-comp-DButton-color-border-primary-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-danger-text-color,--d-comp-DButton-color-text-danger,rename,buttons.scss,var(--secondary),1,
+--d-button-danger-text-color--hover,--d-comp-DButton-color-text-danger-hovered,rename,buttons.scss,var(--secondary),1,
+--d-button-danger-bg-color,--d-comp-DButton-color-background-danger,rename,buttons.scss,var(--danger),1,
+--d-button-danger-bg-color--hover,--d-comp-DButton-color-background-danger-hovered,rename,buttons.scss,var(--danger-hover),2,
+--d-button-danger-icon-color,--d-comp-DButton-color-icon-danger,rename,buttons.scss,var(--danger-low),1,
+--d-button-danger-icon-color--hover,--d-comp-DButton-color-icon-danger-hovered,rename,buttons.scss,var(--danger-low),1,
+--d-button-danger-border,--d-comp-DButton-color-border-danger,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-danger-border--hover,--d-comp-DButton-color-border-danger-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-success-text-color,--d-comp-DButton-color-text-success,rename,buttons.scss,var(--secondary),1,
+--d-button-success-text-color--hover,--d-comp-DButton-color-text-success-hovered,rename,buttons.scss,var(--secondary),1,
+--d-button-success-bg-color,--d-comp-DButton-color-background-success,rename,buttons.scss,var(--success),1,
+--d-button-success-bg-color--hover,--d-comp-DButton-color-background-success-hovered,rename,buttons.scss,var(--success-hover),1,
+--d-button-success-icon-color,--d-comp-DButton-color-icon-success,rename,buttons.scss,var(--success-low),1,
+--d-button-success-icon-color--hover,--d-comp-DButton-color-icon-success-hovered,rename,buttons.scss,var(--success-low),1,
+--d-button-success-border,--d-comp-DButton-color-border-success,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-success-border--hover,--d-comp-DButton-color-border-success-hovered,open,buttons.scss,var(--d-button-border),1,"Value is the border shorthand (var(--d-button-border)), not a color; see --d-button-border."
+--d-button-flat-text-color,--d-comp-DButton-color-text-flat,rename,buttons.scss,var(--tertiary),0,
+--d-button-flat-text-color--hover,--d-comp-DButton-color-text-flat-hovered,rename,buttons.scss,var(--primary),1,
+--d-button-flat-icon-color,--d-comp-DButton-color-icon-flat,rename,buttons.scss,var(--primary-low-mid),1,
+--d-button-flat-icon-color--hover,--d-comp-DButton-color-icon-flat-hovered,rename,buttons.scss,var(--primary),1,
+--d-button-flat-bg-color,--d-comp-DButton-color-background-flat,rename,buttons.scss,transparent,1,
+--d-button-flat-bg-color--hover,--d-comp-DButton-color-background-flat-hovered,rename,buttons.scss,var(--d-hover),2,
+--d-button-flat-bg-color--focus,--d-comp-DButton-color-background-flat-focused,rename,buttons.scss,var(--d-hover),1,
+--d-button-flat-text-color--disabled,--d-comp-DButton-color-text-flat-disabled,rename,buttons.scss,var(--primary),0,
+--d-button-flat-close-text-color,--d-comp-DButton-color-text-close,rename,buttons.scss,var(--primary-high),0,
+--d-button-flat-close-bg-color,--d-comp-DButton-color-background-close,rename,buttons.scss,transparent,3,
+--d-button-flat-close-icon-color,--d-comp-DButton-color-icon-close,rename,buttons.scss,var(--primary-high),1,
+--d-button-flat-close-icon-color--hover,--d-comp-DButton-color-icon-close-hovered,rename,buttons.scss,var(--primary),2,
+--d-button-transparent-text-color,--d-comp-DButton-color-text-transparent,rename,buttons.scss,var(--primary),2,
+--d-button-transparent-text-color--hover,--d-comp-DButton-color-text-transparent-hovered,rename,buttons.scss,var(--tertiary-hover),3,
+--d-button-transparent-icon-color,--d-comp-DButton-color-icon-transparent,rename,buttons.scss,var(--primary-high),1,
+--d-button-transparent-icon-color--hover,--d-comp-DButton-color-icon-transparent-hovered,rename,buttons.scss,var(--tertiary-hover),0,
+--token-color-text-default,--d-sys-color-text-default,rename,tokens.scss,var(--primary-900),14,
+--token-color-text-subtle,--d-sys-color-text-muted,rename,tokens.scss,var(--primary-800),21,
+--token-color-text-subtlest,--d-sys-color-text-faint,rename,tokens.scss,var(--primary-600),1,
+--token-color-text-accent,--d-sys-color-text-accent,rename,tokens.scss,"light-dark( var(--tertiary-800), var(--tertiary-300) )",1,
+--token-color-text-accent-bolder,--d-sys-color-text-accent-bold,rename,tokens.scss,"light-dark( var(--tertiary-900), var(--tertiary-200) )",0,
+--token-color-text-inverse,--d-sys-color-text-inverse,rename,tokens.scss,"light-dark(var(--secondary), var(--primary))",4,
+--token-color-icon-default,--d-sys-color-icon-default,rename,tokens.scss,var(--primary-800),3,
+--token-color-icon-subtle,--d-sys-color-icon-muted,rename,tokens.scss,var(--primary-500),2,
+--token-color-icon-subtlest,--d-sys-color-icon-faint,rename,tokens.scss,var(--primary-400),1,
+--token-color-icon-danger,--d-sys-color-icon-danger,rename,tokens.scss,var(--danger),2,
+--token-color-border-input,--d-sys-color-border-input,rename,tokens.scss,var(--primary-300),1,
+--token-color-border-default,--d-sys-color-border-default,rename,tokens.scss,var(--primary-low),13,Same value as --content-border-color.
+--token-color-border-focused,--d-sys-color-border-input-focused,rename,tokens.scss,var(--tertiary),16,Check the 16 uses are all inputs.
+--token-color-border-accent,--d-sys-color-border-accent,rename,tokens.scss,var(--tertiary-400),2,
+--token-color-surface,--d-sys-color-background-default,rename,tokens.scss,var(--secondary),6,
+--token-color-surface-hovered,--d-sys-color-background-default-hovered,merge,tokens.scss,var(--primary-100),18,Merges with --d-hover (different value).
+--token-color-surface-pressed,--d-sys-color-background-default-pressed,rename,tokens.scss,var(--primary-200),6,
+--token-color-surface-focused,--d-sys-color-background-default-focused,rename,tokens.scss,var(--primary-300),1,
+--token-color-background-input,--d-sys-color-background-input,rename,tokens.scss,var(--secondary),6,
+--token-color-surface-selected,--d-sys-color-background-default-selected,rename,tokens.scss,var(--d-selected),4,Same value as --d-selected.
+--token-color-background-accent-subtlest,--d-sys-color-background-accent-subtlest,rename,tokens.scss,var(--tertiary-200),4,"tertiary-200, 87%."
+--token-color-background-accent-subtlest-hovered,--d-sys-color-background-accent-subtlest-hovered,rename,tokens.scss,var(--tertiary-300),0,Unused.
+--token-color-background-accent-subtlest-pressed,--d-sys-color-background-accent-subtlest-pressed,rename,tokens.scss,var(--tertiary-400),0,Unused.
+--token-color-background-accent-subtler,--d-sys-color-background-accent-subtle,merge,tokens.scss,var(--tertiary-400),2,"tertiary-400, 74%: falls in the subtle band."
+--token-color-background-accent-subtler-hovered,,drop,tokens.scss,var(--tertiary-500),0,Unused; subtler merges into subtle.
+--token-color-background-accent-subtler-pressed,,drop,tokens.scss,var(--tertiary-600),0,Unused; subtler merges into subtle.
+--token-color-background-accent-subtle,--d-sys-color-background-accent-subtle,rename,tokens.scss,"light-dark( var(--tertiary-600), var(--tertiary) )",2,
+--token-color-background-accent-subtle-hovered,--d-sys-color-background-accent-subtle-hovered,rename,tokens.scss,var(--tertiary-700),0,Unused.
+--token-color-background-accent-subtle-pressed,--d-sys-color-background-accent-subtle-pressed,rename,tokens.scss,var(--tertiary-800),0,Unused.
+--token-color-background-accent-bolder,--d-sys-color-background-accent,rename,tokens.scss,var(--tertiary),8,"Value is --tertiary, the base step, not bold."
+--token-color-background-accent-bolder-hovered,,drop,tokens.scss,var(--tertiary-high),0,Unused; value --tertiary-high is lighter than the base.
+--token-color-background-accent-bolder-pressed,,drop,tokens.scss,var(--tertiary-very-high),0,Unused; --tertiary-very-high is never defined.
+--token-border-width,--d-sys-border-width-sm,rename,tokens.scss,1px,3,
+--token-radius-small,--d-sys-border-radius-sm,rename,tokens.scss,2px,7,
+--token-radius-normal,--d-sys-border-radius-md,rename,tokens.scss,4px,11,
+--token-radius-large,--d-sys-border-radius-lg,rename,tokens.scss,8px,1,
+--token-radius-full,--d-sys-border-radius-full,rename,tokens.scss,9999px,5,
+--token-font-weight-bold,--d-sys-font-weight-bold,rename,tokens.scss,650,4,
+--token-font-weight-semibold,--d-sys-font-weight-semibold,rename,tokens.scss,600,12,
+--token-font-weight-medium,--d-sys-font-weight-medium,rename,tokens.scss,500,0,
+--token-font-weight-regular,--d-sys-font-weight-regular,rename,tokens.scss,normal,3,
+--scheme-type,,base,color_definitions.scss,#{schemeType()},1,"color-scheme keyword, not a design token."
+--primary,,split,color_definitions.scss,#{$primary},483,"Target depends on each use: color-text-default, color-icon-default. Stays as a base alias."
+--secondary,,split,color_definitions.scss,#{$secondary},474,"Target depends on each use: color-background-default, color-text-inverse, color-icon-inverse. Stays as a base alias."
+--tertiary,,split,color_definitions.scss,#{$tertiary},491,"Target depends on each use: color-text-link, color-background-accent, color-border-accent, color-icon-accent. Stays as a base alias."
+--quaternary,,open,color_definitions.scss,#{$quaternary},5,No intent for it; 5 uses.
+--highlight,,base,color_definitions.scss,#{$highlight},8,Raw highlight color; backgrounds use --highlight-bg.
+--danger,,split,color_definitions.scss,#{$danger},254,"Target depends on each use: color-text-danger, color-icon-danger, color-background-danger, color-border-danger. Stays as a base alias."
+--success,,split,color_definitions.scss,#{$success},138,"Target depends on each use: color-text-success, color-icon-success, color-background-success, color-border-success. Stays as a base alias."
+--love,,split,color_definitions.scss,#{$love},16,"Target depends on each use: color-icon-love, color-background-love. Stays as a base alias."
+--d-selected,--d-sys-color-background-default-selected,rename,color_definitions.scss,#{$selected},36,
+--d-selected-text-color,--d-sys-color-text-default-selected,rename,color_definitions.scss,var(--primary),10,
+--d-selected-hover,--d-sys-color-background-default-selected-hovered,rename,color_definitions.scss,#{$selected-hover},1,
+--d-hover,--d-sys-color-background-default-hovered,merge,color_definitions.scss,#{$hover},53,Merges with --token-color-surface-hovered (different value).
+--always-black-rgb,,drop,color_definitions.scss,"0, 0, 0",13,No -rgb twins: uses become color-mix() on the matching color token.
+--primary-rgb,,drop,color_definitions.scss,#{hexToRGB($primary)},15,No -rgb twins: uses become color-mix() on the matching color token.
+--primary-low-rgb,,drop,color_definitions.scss,#{hexToRGB($primary-low)},3,No -rgb twins: uses become color-mix() on the matching color token.
+--primary-very-low-rgb,,drop,color_definitions.scss,#{hexToRGB($primary-very-low)},1,No -rgb twins: uses become color-mix() on the matching color token.
+--secondary-rgb,,drop,color_definitions.scss,#{hexToRGB($secondary)},30,No -rgb twins: uses become color-mix() on the matching color token.
+--tertiary-rgb,,drop,color_definitions.scss,#{hexToRGB($tertiary)},16,No -rgb twins: uses become color-mix() on the matching color token.
+--highlight-rgb,,drop,color_definitions.scss,#{hexToRGB($highlight)},0,No -rgb twins: uses become color-mix() on the matching color token.
+--success-rgb,,drop,color_definitions.scss,#{hexToRGB($success)},0,No -rgb twins: uses become color-mix() on the matching color token.
+--primary-very-low,,split,color_definitions.scss,#{$primary-very-low},249,"Target depends on each use: color-background-sunken, color-border-muted. Stays as a base alias."
+--primary-low,,split,color_definitions.scss,#{$primary-low},448,"Target depends on each use: color-border-default, color-background-default-pressed. Stays as a base alias."
+--primary-low-mid,,split,color_definitions.scss,#{$primary-low-mid},187,"Target depends on each use: color-text-default-disabled, color-border-strong, color-icon-faint. Stays as a base alias."
+--primary-medium,,split,color_definitions.scss,#{$primary-medium},773,"Target depends on each use: color-text-faint, color-icon-faint. Stays as a base alias."
+--primary-high,,split,color_definitions.scss,#{$primary-high},381,"Target depends on each use: color-text-muted, color-icon-muted. Stays as a base alias."
+--primary-very-high,,split,color_definitions.scss,#{$primary-very-high},19,Target depends on each use: color-text-default. Stays as a base alias.
+--primary-50,,base,color_definitions.scss,#{$primary-50},19,Numbered ramp; system tokens point at it.
+--primary-100,,base,color_definitions.scss,#{$primary-100},32,Numbered ramp; system tokens point at it.
+--primary-200,,base,color_definitions.scss,#{$primary-200},32,Numbered ramp; system tokens point at it.
+--primary-300,,base,color_definitions.scss,#{$primary-300},54,Numbered ramp; system tokens point at it.
+--primary-400,,base,color_definitions.scss,#{$primary-400},15,Numbered ramp; system tokens point at it.
+--primary-500,,base,color_definitions.scss,#{$primary-500},34,Numbered ramp; system tokens point at it.
+--primary-600,,base,color_definitions.scss,#{$primary-600},7,Numbered ramp; system tokens point at it.
+--primary-700,,base,color_definitions.scss,#{$primary-700},20,Numbered ramp; system tokens point at it.
+--primary-800,,base,color_definitions.scss,#{$primary-800},14,Numbered ramp; system tokens point at it.
+--primary-900,,base,color_definitions.scss,#{$primary-900},13,Numbered ramp; system tokens point at it.
+--secondary-low,,base,color_definitions.scss,#{$secondary-low},7,Uses need mapping per use.
+--secondary-medium,,base,color_definitions.scss,#{$secondary-medium},7,Uses need mapping per use.
+--secondary-high,,base,color_definitions.scss,#{$secondary-high},11,Uses need mapping per use.
+--secondary-very-high,,base,color_definitions.scss,#{$secondary-very-high},5,Uses need mapping per use.
+--tertiary-very-low,--d-sys-color-background-accent-subtlest,merge,color_definitions.scss,#{$tertiary-very-low},40,"90%, subtlest band."
+--tertiary-low,--d-sys-color-background-accent-subtlest,merge,color_definitions.scss,#{$tertiary-low},99,"85%, subtlest band; info backgrounds also use it (info-subtlest)."
+--tertiary-medium,--d-sys-color-background-accent-subtle,merge,color_definitions.scss,#{$tertiary-medium},31,50%; matches the subtle token in light mode only.
+--tertiary-high,--d-sys-color-background-accent,merge,color_definitions.scss,#{$tertiary-high},25,"20%, base band."
+--tertiary-hover,,split,color_definitions.scss,#{$tertiary-hover},30,"Target depends on each use: color-background-accent-hovered, color-text-link-hovered."
+--tertiary-25,,base,color_definitions.scss,#{$tertiary-25},2,Numbered ramp; system tokens point at it.
+--tertiary-50,,base,color_definitions.scss,#{$tertiary-50},8,Numbered ramp; system tokens point at it.
+--tertiary-100,,base,color_definitions.scss,#{$tertiary-100},7,Numbered ramp; system tokens point at it.
+--tertiary-200,,base,color_definitions.scss,#{$tertiary-200},5,Numbered ramp; system tokens point at it.
+--tertiary-300,,base,color_definitions.scss,#{$tertiary-300},4,Numbered ramp; system tokens point at it.
+--tertiary-400,,base,color_definitions.scss,#{$tertiary-400},7,Numbered ramp; system tokens point at it.
+--tertiary-500,,base,color_definitions.scss,#{$tertiary-500},3,Numbered ramp; system tokens point at it.
+--tertiary-600,,base,color_definitions.scss,#{$tertiary-600},3,Numbered ramp; system tokens point at it.
+--tertiary-700,,base,color_definitions.scss,#{$tertiary-700},2,Numbered ramp; system tokens point at it.
+--tertiary-800,,base,color_definitions.scss,#{$tertiary-800},3,Numbered ramp; system tokens point at it.
+--tertiary-900,,base,color_definitions.scss,#{$tertiary-900},2,Numbered ramp; system tokens point at it.
+--quaternary-low,,open,color_definitions.scss,#{$quaternary-low},1,No intent for it; 1 use.
+--highlight-bg,--d-sys-color-background-highlight,rename,color_definitions.scss,#{$highlight-bg},27,Also the warning-subtle value.
+--highlight-low,,open,color_definitions.scss,#{$highlight-low},6,Map by lightening like the other intents; formula not checked yet.
+--highlight-medium,,open,color_definitions.scss,#{$highlight-medium},7,Map by lightening like the other intents; formula not checked yet.
+--highlight-high,,open,color_definitions.scss,#{$highlight-high},10,Map by lightening like the other intents; formula not checked yet.
+--danger-low,--d-sys-color-background-danger-subtlest,rename,color_definitions.scss,#{$danger-low},58,90%. Also the icon color of danger buttons (DButton token).
+--danger-low-mid,--d-sys-color-background-danger-subtle,rename,color_definitions.scss,#{$danger-low-mid},12,50% with 70% opacity.
+--danger-medium,,split,color_definitions.scss,#{$danger-medium},22,"30%, base band: color-text-danger, color-border-danger, color-background-danger. Light mode gets slightly darker."
+--danger-hover,--d-sys-color-background-danger-hovered,rename,color_definitions.scss,#{$danger-hover},6,
+--success-very-low,--d-sys-color-background-success-subtlest,rename,color_definitions.scss,#{$success-very-low},1,90%.
+--success-low,--d-sys-color-background-success-subtlest,merge,color_definitions.scss,#{$success-low},31,"80%, subtlest band."
+--success-medium,--d-sys-color-background-success-subtle,rename,color_definitions.scss,#{$success-medium},7,50%.
+--success-hover,--d-sys-color-background-success-hovered,rename,color_definitions.scss,#{$success-hover},4,
+--love-low,--d-sys-color-background-love-subtlest,rename,color_definitions.scss,#{$love-low},4,
+--wiki,,open,color_definitions.scss,#{$wiki},2,Wiki post color in topic-post.scss; needs an owner (Post?).
+--blend-primary-secondary-5,,base,color_definitions.scss,#{$blend-primary-secondary-5},4,Uses need mapping per use.
+--primary-med-or-secondary-med,,split,color_definitions.scss,#{$primary-med-or-secondary-med},43,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--primary-med-or-secondary-high,,split,color_definitions.scss,#{$primary-med-or-secondary-high},11,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--primary-high-or-secondary-low,,split,color_definitions.scss,#{$primary-high-or-secondary-low},18,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--primary-low-mid-or-secondary-high,,split,color_definitions.scss,#{$primary-low-mid-or-secondary-high},6,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--primary-low-mid-or-secondary-low,,split,color_definitions.scss,#{$primary-low-mid-or-secondary-low},1,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--primary-or-primary-low-mid,,drop,color_definitions.scss,#{$primary-or-primary-low-mid},0,Unused light/dark chooser.
+--highlight-low-or-medium,,split,color_definitions.scss,#{$highlight-low-or-medium},4,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--tertiary-or-tertiary-low,,drop,color_definitions.scss,#{$tertiary-or-tertiary-low},0,Unused light/dark chooser.
+--tertiary-low-or-tertiary-high,,split,color_definitions.scss,#{$tertiary-low-or-tertiary-high},1,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--tertiary-med-or-tertiary,,split,color_definitions.scss,#{$tertiary-med-or-tertiary},7,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--secondary-or-primary,,split,color_definitions.scss,#{$secondary-or-primary},5,Light/dark chooser: each use maps to a token whose value uses light-dark().
+--tertiary-or-white,,drop,color_definitions.scss,#{$tertiary-or-white},0,Unused light/dark chooser.
+--facebook-or-white,,drop,color_definitions.scss,#{$facebook-or-white},0,Unused light/dark chooser.
+--twitter-or-white,,drop,color_definitions.scss,#{$twitter-or-white},0,Unused light/dark chooser.
+--hljs-attr,,open,color_definitions.scss,#{$hljs-attr},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-attribute,,open,color_definitions.scss,#{$hljs-attribute},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-addition,,open,color_definitions.scss,#{$hljs-addition},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-bg,,open,color_definitions.scss,#{$hljs-bg},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--inline-code-bg,,open,color_definitions.scss,#{$inline-code-bg},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-comment,,open,color_definitions.scss,#{$hljs-comment},3,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-deletion,,open,color_definitions.scss,#{$hljs-deletion},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-keyword,,open,color_definitions.scss,#{$hljs-keyword},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-title,,open,color_definitions.scss,#{$hljs-title},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-name,,open,color_definitions.scss,#{$hljs-name},3,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-punctuation,,open,color_definitions.scss,#{$hljs-punctuation},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-symbol,,open,color_definitions.scss,#{$hljs-symbol},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-variable,,open,color_definitions.scss,#{$hljs-variable},1,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--hljs-string,,open,color_definitions.scss,#{$hljs-string},2,Syntax highlighting colors: need a pattern owner (Code?) and roles that are not on any list.
+--google,,open,color_definitions.scss,#{$google},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--google-hover,,open,color_definitions.scss,#{$google-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--instagram,,open,color_definitions.scss,#{$instagram},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--instagram-hover,,open,color_definitions.scss,#{$instagram-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--facebook,,open,color_definitions.scss,#{$facebook},1,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--facebook-hover,,open,color_definitions.scss,#{$facebook-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--cas,,open,color_definitions.scss,#{$cas},2,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--twitter,,open,color_definitions.scss,#{$twitter},4,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--github,,open,color_definitions.scss,#{$github},2,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--github-hover,,open,color_definitions.scss,#{$github-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--discord,,open,color_definitions.scss,#{$discord},3,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--discord-hover,,open,color_definitions.scss,#{$discord-hover},0,Login provider brand color: LoginButtons component token? Brand names are not roles.
+--gold,,open,color_definitions.scss,#{$gold},2,Badge tier color: needs an owner and tier words.
+--silver,,open,color_definitions.scss,#{$silver},2,Badge tier color: needs an owner and tier words.
+--bronze,,open,color_definitions.scss,#{$bronze},2,Badge tier color: needs an owner and tier words.
+--d-link-color,--d-sys-color-text-link,rename,color_definitions.scss,var(--tertiary),3,
+--title-color--read,--d-comp-TopicListItem-color-text-read,rename,color_definitions.scss,var(--primary-medium),3,
+--content-border-color,--d-sys-color-border-default,rename,color_definitions.scss,var(--primary-low),320,320 uses.
+--input-border-color,--d-sys-color-border-input,merge,color_definitions.scss,var(--primary-400),7,primary-400 vs --token-color-border-input primary-300.
+--table-border-color,--d-comp-Table-color-border,rename,color_definitions.scss,var(--content-border-color),7,
+--metadata-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-medium),1,Meta text is muted (settled rule); value moves from primary-medium.
+--d-badge-card-background-color,,open,color_definitions.scss,var(--secondary),1,Used in user-badges.scss; no badge-card component file. Owner?
+--mention-background-color,,open,color_definitions.scss,var(--primary-low),1,Mixin for mentions in cooked content; needs a pattern owner (Mention?).
+--title-color,--d-sys-color-text-default,rename,color_definitions.scss,var(--primary),1,Same value as --primary; 1 use.
+--title-color--header,,open,color_definitions.scss,var(--header_primary),1,"Header title color, value from the header color scheme; owner Header?"
+--excerpt-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-high),1,primary-high vs muted's primary-800.
+--shadow-modal,--d-sys-shadow-dialog,rename,color_definitions.scss,"0 8px 60px rgba(0, 0, 0, #{$shadow-opacity-modal})",1,
+--shadow-composer,--d-sys-shadow-dialog,merge,color_definitions.scss,"0 -1px 40px rgba(0, 0, 0, #{$shadow-opacity-composer})",2,0 -1px 40px vs modal's 0 8px 60px.
+--shadow-card,--d-sys-shadow-raised,rename,color_definitions.scss,"0 4px 14px rgba(0, 0, 0, #{$shadow-opacity-card})",18,
+--shadow-dropdown,--d-sys-shadow-overlay,rename,color_definitions.scss,"0 2px 12px 0 rgba(0, 0, 0, #{$shadow-opacity-dropdown})",30,menu-panel.scss redefines it locally with another value.
+--shadow-menu-panel,--d-sys-shadow-overlay,rename,color_definitions.scss,var(--shadow-dropdown),1,
+--shadow-header,--d-sys-shadow-overflow,rename,color_definitions.scss,0 0 0 1px var(--content-border-color),3,The hairline is the overflow value.
+--shadow-footer-nav,--d-sys-shadow-overflow,merge,color_definitions.scss,"0 0 2px 0 rgba(0, 0, 0, #{$shadow-opacity-footer-nav})",3,Loses its 2px blur; open question.
+--shadow-focus-danger,,drop,color_definitions.scss,0 0 6px 0 var(--danger),0,Unused.
+--shadow-docked-composer,--d-sys-shadow-overflow,merge,color_definitions.scss,"0 4px 30px rgb(0, 0, 0, 0.15)",1,"Defined in core, used only by the AI plugin."
+--float-kit-arrow-stroke-color,,open,color_definitions.scss,var(--primary-low),0,Used in an SVG icon and set by user-tips; owner of the float-kit arrow?
+--float-kit-arrow-fill-color,,open,color_definitions.scss,var(--secondary),0,Used in an SVG icon; owner of the float-kit arrow?
+--topic-timeline-border-color,--d-comp-TopicTimeline-color-border,rename,color_definitions.scss,#{$tertiary-low-or-tertiary-high},1,
+--topic-timeline-handle-color,--d-comp-TopicTimelineScroller-color-background,rename,color_definitions.scss,"light-dark( var(--tertiary-400), var(--tertiary) )",1,Handle lives in topic-timeline/scroller.gjs; check.
