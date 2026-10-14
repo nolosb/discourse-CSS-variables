@@ -4,12 +4,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 120 | Same value, one target. |
+| [rename](#rename) | 122 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
-| [split](#split) | 33 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
+| [split](#split) | 35 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
 | [drop](#drop) | 33 | Removed: unused, an `-rgb` twin, or replaced by another token (see notes). |
-| [base](#base) | 35 | Stays in the base layer; nothing that uses it changes. |
-| [open](#open) | 3 | Not covered by the scheme yet. |
+| [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
+| [open](#open) | 0 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -95,7 +95,9 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--d-selected` | `--d-sys-color-background-default-selected` | color_definitions.scss | 36 | `#{$selected}` |  |
 | `--d-selected-text-color` | `--d-sys-color-text-default-selected` | color_definitions.scss | 10 | `var(--primary)` |  |
 | `--d-selected-hover` | `--d-sys-color-background-default-selected-hovered` | color_definitions.scss | 1 | `#{$selected-hover}` |  |
-| `--highlight-bg` | `--d-sys-color-background-highlight` | color_definitions.scss | 27 | `#{$highlight-bg}` | Also the warning-subtle value. |
+| `--highlight-bg` | `--d-sys-color-background-highlight-subtlest` | color_definitions.scss | 27 | `#{$highlight-bg}` | 70%: highlight's faintest tint, so subtlest (other intents' subtlest is 80–93%; yellow needs more strength). Warning borrows it: warning-subtlest. |
+| `--highlight-low` | `--d-sys-color-background-highlight-subtlest` | color_definitions.scss | 6 | `#{$highlight-low}` | Identical value to --highlight-bg in both modes. |
+| `--highlight-medium` | `--d-sys-color-background-highlight-subtle` | color_definitions.scss | 7 | `#{$highlight-medium}` | 50%: the next step after --highlight-bg. |
 | `--danger-low` | `--d-sys-color-background-danger-subtlest` | color_definitions.scss | 58 | `#{$danger-low}` | 90%. Also the icon color of danger buttons (DButton token). |
 | `--danger-low-mid` | `--d-sys-color-background-danger-subtle` | color_definitions.scss | 12 | `#{$danger-low-mid}` | 50% with 70% opacity. |
 | `--danger-hover` | `--d-sys-color-background-danger-hovered` | color_definitions.scss | 6 | `#{$danger-hover}` |  |
@@ -172,6 +174,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--secondary` |  | color_definitions.scss | 474 | `#{$secondary}` | Target depends on each use: color-background-default, color-text-inverse, color-icon-inverse. Stays as a base alias. |
 | `--tertiary` |  | color_definitions.scss | 491 | `#{$tertiary}` | Target depends on each use: color-text-link, color-background-accent, color-border-accent, color-icon-accent. Stays as a base alias. |
 | `--quaternary` |  | color_definitions.scss | 5 | `#{$quaternary}` | Color scheme input with no shared meaning, stays as a base alias. The themes grid placeholder keeps the raw scheme color; the engagement chart (admin dashboard), the ad plugin and the subscriptions plugin get their own tokens in the full mapping. |
+| `--highlight` |  | color_definitions.scss | 8 | `#{$highlight}` | Scheme input, stays as a base alias. Post and rich editor backgrounds map to --d-sys-color-background-highlight (base step); the toast text and form-kit border uses get mapped in the full mapping. |
 | `--danger` |  | color_definitions.scss | 254 | `#{$danger}` | Target depends on each use: color-text-danger, color-icon-danger, color-background-danger, color-border-danger. Stays as a base alias. |
 | `--success` |  | color_definitions.scss | 138 | `#{$success}` | Target depends on each use: color-text-success, color-icon-success, color-background-success, color-border-success. Stays as a base alias. |
 | `--love` |  | color_definitions.scss | 16 | `#{$love}` | Target depends on each use: color-icon-love, color-background-love. Stays as a base alias. |
@@ -188,6 +191,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--primary-high` |  | color_definitions.scss | 381 | `#{$primary-high}` | Target depends on each use: color-text-muted, color-icon-muted. Stays as a base alias. |
 | `--primary-very-high` |  | color_definitions.scss | 19 | `#{$primary-very-high}` | Target depends on each use: color-text-default. Stays as a base alias. |
 | `--tertiary-hover` |  | color_definitions.scss | 30 | `#{$tertiary-hover}` | Target depends on each use: color-background-accent-hovered, color-text-link-hovered. |
+| `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Darker than the base: core uses (admin settings, edit-category border) map to --d-sys-color-background-highlight-bold; the AI and voice plugins use it as amber text and get their own tokens in the full mapping. |
 | `--danger-medium` |  | color_definitions.scss | 22 | `#{$danger-medium}` | 30%, base band: color-text-danger, color-border-danger, color-background-danger. Light mode gets slightly darker. |
 | `--primary-med-or-secondary-med` |  | color_definitions.scss | 43 | `#{$primary-med-or-secondary-med}` | Light/dark chooser: each use maps to a token whose value uses light-dark(). |
 | `--primary-med-or-secondary-high` |  | color_definitions.scss | 11 | `#{$primary-med-or-secondary-high}` | Light/dark chooser: each use maps to a token whose value uses light-dark(). |
@@ -245,7 +249,6 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
 | `--scheme-type` |  | color_definitions.scss | 1 | `#{schemeType()}` | color-scheme keyword, not a design token. |
-| `--highlight` |  | color_definitions.scss | 8 | `#{$highlight}` | Raw highlight color; backgrounds use --highlight-bg. |
 | `--header_primary-very-high` |  | color_definitions.scss | 1 | `#{$header_primary-very-high}` | Header color scheme step, stays as a base alias; no header use, only the styleguide. |
 | `--primary-50` |  | color_definitions.scss | 19 | `#{$primary-50}` | Numbered ramp; system tokens point at it. |
 | `--primary-100` |  | color_definitions.scss | 32 | `#{$primary-100}` | Numbered ramp; system tokens point at it. |
@@ -284,6 +287,3 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
-| `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
-| `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
-| `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Slots · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=20">
+<link rel="stylesheet" href="docs.css?v=21">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -142,7 +142,7 @@
 </tbody></table></div>
 <ul>
   <li>A system token always describes a purpose or level, never a UI component: <code class="right">shadow-overlay</code>, not <code class="wrong">shadow-dropdown</code>. The one exception is <code>input</code>, because form fields share one look across every component that has them.</li>
-  <li><code>accent</code> replaces <code>tertiary</code>. <code>warning</code> and <code>info</code> have no color of their own in core yet: warnings borrow the highlight color (<code>--highlight-bg</code>) and info borrows the accent (<code>--tertiary-low</code>, so <code>info-subtlest</code>). Their tokens can start with those values and get their own colors when the base colors are redesigned.</li>
+  <li><code>accent</code> replaces <code>tertiary</code>. <code>warning</code> and <code>info</code> have no color of their own in core yet: warnings borrow the highlight tint (<code>--highlight-bg</code>, so <code>warning-subtlest</code>) and info borrows the accent (<code>--tertiary-low</code>, so <code>info-subtlest</code>). Their tokens can start with those values and get their own colors when the base colors are redesigned.</li>
 </ul>
 <h3>In components: kinds</h3>
 <p>A component's kind takes the role slot: <code>--d-comp-DButton-color-background-primary-hovered</code>. Kinds are a closed list per component under <code>kinds</code>; the checker rejects any other word.</p>
@@ -178,7 +178,7 @@
 <tr><td></td><td>the standard intent color, no suffix</td><td><code>--d-sys-color-background-danger</code></td></tr>
 <tr><td><code>bold</code></td><td>stronger than the base</td><td><code>--d-sys-color-background-accent-bold</code></td></tr>
 </tbody></table></div>
-<p>Today's shades map by how far core lightens them toward the page background: 80–93% is <code>subtlest</code>, 40–74% is <code>subtle</code>, 0–30% is the base. <code>-hover</code> shades are the <code>hovered</code> state, not a strength. <code>bold</code> has no value in core yet. Each old variable's target is in <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/mapping.md"><code>mapping.md</code></a>.</p>
+<p>Today's shades map by how far core lightens them toward the page background: 80–93% is <code>subtlest</code>, 40–74% is <code>subtle</code>, 0–30% is the base. Highlight is the exception: its faintest tint (<code>--highlight-bg</code>, 70%) is <code>subtlest</code>, because yellow needs more strength to show on a light background. The steps keep their order per intent; their values may differ between intents. <code>-hover</code> shades are the <code>hovered</code> state, not a strength. <code>bold</code> has no value in core yet. Each old variable's target is in <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/mapping.md"><code>mapping.md</code></a>.</p>
 <h3>Space steps</h3>
 <p>Spacing counts 4px units, the same as core's <code>--space-N</code> today, so every current value keeps a step: <code>--d-sys-space-padding-5</code> is 20px. Spacing needs finer steps than size words give, like most larger systems (Tailwind, Polaris, Atlassian, Primer).</p>
 <div class="tbl"><table>
@@ -222,8 +222,8 @@
 <footer>Word lists: <a href="index.html"><code>vocabulary.json</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=20"></script>
-<script src="examples.js?v=20"></script>
-<script src="site.js?v=20"></script>
+<script src="grammar.js?v=21"></script>
+<script src="examples.js?v=21"></script>
+<script src="site.js?v=21"></script>
 </body>
 </html>
