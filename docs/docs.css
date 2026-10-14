@@ -248,7 +248,8 @@ code.new { color: var(--accent-dark); background: var(--accent-tint); }
 @media (max-width: 640px) { .ex { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- vocabulary.json ---------- */
-.body.wide { max-width: none; }
+/* same left edge as the centered 1200px pages, but runs to the right edge of the window */
+.body.wide { max-width: none; margin: 0; padding-left: max(24px, calc((100vw - 1200px) / 2 + 24px)); }
 .body.wide main { max-width: none; }
 .json { font: 13px/1.6 var(--f-mono); color: var(--text-2); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .json .j-line { display: inline-block; scroll-margin-top: calc(var(--header-h) + 16px); }
