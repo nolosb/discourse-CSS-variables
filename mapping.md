@@ -6,10 +6,10 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 |---|---:|---|
 | [rename](#rename) | 120 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
-| [split](#split) | 32 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
+| [split](#split) | 33 | Stays in the base layer too, but each use moves to a new token; candidates in notes. |
 | [drop](#drop) | 33 | Removed: unused, an `-rgb` twin, or replaced by another token (see notes). |
-| [base](#base) | 34 | Stays in the base layer; nothing that uses it changes. |
-| [open](#open) | 5 | Not covered by the scheme yet. |
+| [base](#base) | 35 | Stays in the base layer; nothing that uses it changes. |
+| [open](#open) | 3 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -171,6 +171,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--primary` |  | color_definitions.scss | 483 | `#{$primary}` | Target depends on each use: color-text-default, color-icon-default. Stays as a base alias. |
 | `--secondary` |  | color_definitions.scss | 474 | `#{$secondary}` | Target depends on each use: color-background-default, color-text-inverse, color-icon-inverse. Stays as a base alias. |
 | `--tertiary` |  | color_definitions.scss | 491 | `#{$tertiary}` | Target depends on each use: color-text-link, color-background-accent, color-border-accent, color-icon-accent. Stays as a base alias. |
+| `--quaternary` |  | color_definitions.scss | 5 | `#{$quaternary}` | Color scheme input with no shared meaning, stays as a base alias. The themes grid placeholder keeps the raw scheme color; the engagement chart (admin dashboard), the ad plugin and the subscriptions plugin get their own tokens in the full mapping. |
 | `--danger` |  | color_definitions.scss | 254 | `#{$danger}` | Target depends on each use: color-text-danger, color-icon-danger, color-background-danger, color-border-danger. Stays as a base alias. |
 | `--success` |  | color_definitions.scss | 138 | `#{$success}` | Target depends on each use: color-text-success, color-icon-success, color-background-success, color-border-success. Stays as a base alias. |
 | `--love` |  | color_definitions.scss | 16 | `#{$love}` | Target depends on each use: color-icon-love, color-background-love. Stays as a base alias. |
@@ -271,6 +272,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--tertiary-700` |  | color_definitions.scss | 2 | `#{$tertiary-700}` | Numbered ramp; system tokens point at it. |
 | `--tertiary-800` |  | color_definitions.scss | 3 | `#{$tertiary-800}` | Numbered ramp; system tokens point at it. |
 | `--tertiary-900` |  | color_definitions.scss | 2 | `#{$tertiary-900}` | Numbered ramp; system tokens point at it. |
+| `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | Only the styleguide uses it. |
 | `--blend-primary-secondary-5` |  | color_definitions.scss | 4 | `#{$blend-primary-secondary-5}` | Uses need mapping per use. |
 | `--facebook` |  | color_definitions.scss | 1 | `#{$facebook}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
 | `--cas` |  | color_definitions.scss | 2 | `#{$cas}` | Brand color, fixed by the brand, not a design decision: base layer, not public. |
@@ -282,8 +284,6 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Old | New | File | Uses | Value | Notes |
 |---|---|---|---:|---|---|
-| `--quaternary` |  | color_definitions.scss | 5 | `#{$quaternary}` | No intent for it; 5 uses. |
-| `--quaternary-low` |  | color_definitions.scss | 1 | `#{$quaternary-low}` | No intent for it; 1 use. |
 | `--highlight-low` |  | color_definitions.scss | 6 | `#{$highlight-low}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |

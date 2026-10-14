@@ -95,7 +95,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --primary,,split,color_definitions.scss,#{$primary},483,"Target depends on each use: color-text-default, color-icon-default. Stays as a base alias."
 --secondary,,split,color_definitions.scss,#{$secondary},474,"Target depends on each use: color-background-default, color-text-inverse, color-icon-inverse. Stays as a base alias."
 --tertiary,,split,color_definitions.scss,#{$tertiary},491,"Target depends on each use: color-text-link, color-background-accent, color-border-accent, color-icon-accent. Stays as a base alias."
---quaternary,,open,color_definitions.scss,#{$quaternary},5,No intent for it; 5 uses.
+--quaternary,,split,color_definitions.scss,#{$quaternary},5,"Color scheme input with no shared meaning, stays as a base alias. The themes grid placeholder keeps the raw scheme color; the engagement chart (admin dashboard), the ad plugin and the subscriptions plugin get their own tokens in the full mapping."
 --highlight,,base,color_definitions.scss,#{$highlight},8,Raw highlight color; backgrounds use --highlight-bg.
 --danger,,split,color_definitions.scss,#{$danger},254,"Target depends on each use: color-text-danger, color-icon-danger, color-background-danger, color-border-danger. Stays as a base alias."
 --success,,split,color_definitions.scss,#{$success},138,"Target depends on each use: color-text-success, color-icon-success, color-background-success, color-border-success. Stays as a base alias."
@@ -156,7 +156,7 @@ old_name,new_name,type,defined_in,value,uses,notes
 --tertiary-700,,base,color_definitions.scss,#{$tertiary-700},2,Numbered ramp; system tokens point at it.
 --tertiary-800,,base,color_definitions.scss,#{$tertiary-800},3,Numbered ramp; system tokens point at it.
 --tertiary-900,,base,color_definitions.scss,#{$tertiary-900},2,Numbered ramp; system tokens point at it.
---quaternary-low,,open,color_definitions.scss,#{$quaternary-low},1,No intent for it; 1 use.
+--quaternary-low,,base,color_definitions.scss,#{$quaternary-low},1,Only the styleguide uses it.
 --highlight-bg,--d-sys-color-background-highlight,rename,color_definitions.scss,#{$highlight-bg},27,Also the warning-subtle value.
 --highlight-low,,open,color_definitions.scss,#{$highlight-low},6,Map by lightening like the other intents; formula not checked yet.
 --highlight-medium,,open,color_definitions.scss,#{$highlight-medium},7,Map by lightening like the other intents; formula not checked yet.
