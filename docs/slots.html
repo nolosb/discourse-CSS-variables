@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Slots · Discourse CSS Variables</title>
-<link rel="stylesheet" href="docs.css?v=13">
+<link rel="stylesheet" href="docs.css?v=14">
 <script>try{var m=localStorage.getItem("dcv-theme");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);}catch(e){}</script>
 </head>
 <body>
@@ -39,6 +39,13 @@
 </tbody></table></div>
 <p>The order is fixed. Slots can be left out but never moved. PascalCase marks the owner; everything else is lowercase. Words with a hyphen, such as <code>line-height</code> or <code>inline-end</code>, fill one slot, so <code>font-line-height-body</code> has four segments but three slots.</p>
 <div class="formula">--d-sys-{category}[-{property}][-{role}][-{variant}][-{state}]<br>--d-comp-{Owner}[-{part}]-{category}[-{property}][-{role}][-{variant}][-{state}]<br>--{t|tc|p}-{Owner}[-{Component}][-{part}]-{category}…</div>
+<p>A name can be split into slots without knowing the CSS behind it:</p>
+<ol>
+  <li>The prefix tells the layer.</li>
+  <li>PascalCase segments are owners and components. The case change is the boundary, so <code>TopicListItem</code> never needs a rule about where the name ends.</li>
+  <li>The first lowercase segment is a category if it is in <code>categories</code>, otherwise it is a part.</li>
+  <li>The remaining segments are matched left to right against the lists allowed for that category: property, then role (or the component's kind or axis), then variant, then states. Role and variant lists do not overlap: <code>muted</code> and <code>faint</code> are roles, <code>subtle</code> and <code>subtlest</code> are strength steps.</li>
+</ol>
 
 <h2 id="prefix"><span class="n">01</span>prefix</h2>
 <p>The prefix says which layer a name belongs to.</p>
@@ -201,11 +208,11 @@
   <li>A shadow token names the job, not the technique: <code>shadow-overflow</code> holds a 1px hairline even though it is drawn with <code>box-shadow</code>.</li>
 </ul>
 
-<footer>Word lists: <a href="index.html"><code>vocabulary.json</code></a> · Spec: <a href="https://github.com/nolosb/discourse-CSS-variables/blob/main/naming-spec.md"><code>naming-spec.md</code></a></footer>
+<footer>Word lists: <a href="index.html"><code>vocabulary.json</code></a></footer>
 </main>
 </div>
-<script src="grammar.js?v=13"></script>
-<script src="examples.js?v=13"></script>
-<script src="site.js?v=13"></script>
+<script src="grammar.js?v=14"></script>
+<script src="examples.js?v=14"></script>
+<script src="site.js?v=14"></script>
 </body>
 </html>

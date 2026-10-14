@@ -1,5 +1,5 @@
 {
-  "description": "Closed word lists for Discourse CSS variable names. Single source for the docs site, the checker and the lint rule. Rules: naming-spec.md.",
+  "description": "Closed word lists for Discourse CSS variable names. Single source for the docs site, the checker and the lint rule. How the words combine: docs/slots.html.",
   "prefixes": {
     "d-sys": "system",
     "d-comp": "core component",

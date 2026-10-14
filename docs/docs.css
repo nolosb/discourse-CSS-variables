@@ -126,7 +126,7 @@ h2 .n { font-family: var(--f-mono); font-size: 13px; font-weight: 400; letter-sp
 h3 { font-size: 17px; font-weight: 700; margin: 32px 0 8px; }
 h2 + h3 { margin-top: 0; }
 p { margin: 0 0 16px; }
-ul { padding-left: 18px; margin: 0 0 16px; }
+ul, ol { padding-left: 18px; margin: 0 0 16px; }
 li { margin-bottom: 10px; }
 li:last-child { margin-bottom: 0; }
 .muted { color: var(--text-2); }
