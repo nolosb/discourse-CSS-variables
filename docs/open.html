@@ -21,7 +21,6 @@
 <thead><tr><th>Topic</th><th>Situation</th><th>To decide</th></tr></thead>
 <tbody>
 <tr><td>Base layer</td><td>Which prefix the palette and raw scales get, and whether they are exposed as custom properties at all.</td><td>Whatever it becomes, <code>--primary</code> and the other old names keep resolving as aliases.</td></tr>
-<tr><td>Strength gaps</td><td>Danger has <code>-medium</code> (14 uses) and <code>-low-mid</code> (8 uses), which have no strength step.</td><td>Map them to <code>subtle</code> or the base, or add a step.</td></tr>
 <tr><td>Runtime values</td><td>JavaScript writes about 15 variables while the page runs: layout measurements (<code>--header-offset</code>, <code>--composer-height</code>), per-element values (<code>--slider-x</code>) and category colors (<code>--category-badge-color</code>). They are not design decisions and themes cannot override them, so they stay outside the token scheme.</td><td>A dedicated prefix such as <code>--d-rt-</code> would only be needed to recognize them without the list.</td></tr>
 <tr><td>Component kinds</td><td>The checker accepts any word as a component kind (<code>DButton</code> <code>primary</code>), so typos pass.</td><td>List each component's kinds in a shared vocabulary file the checker and lint rule read.</td></tr>
 </tbody></table></div>

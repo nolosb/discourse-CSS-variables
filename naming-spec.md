@@ -171,7 +171,7 @@ Roles fall into these groups:
 Intent words (proposed): `accent`, `danger`, `success`, `warning`, `info`,
 `highlight`, `love`. `accent` replaces `tertiary`; `warning` and `info`
 have no color of their own in core yet: today warnings borrow the highlight color
-(`--highlight-bg`) and info borrows the accent (`--tertiary-low`). Their tokens can start
+(`--highlight-bg`) and info borrows the accent (`--tertiary-low`, so `info-subtlest`). Their tokens can start
 with those values and get their own colors when the base colors are redesigned. `love` stays because likes are a Discourse concept.
 
 A system token always describes a purpose or level, never a UI component (proposed):
@@ -198,16 +198,33 @@ Strength steps, faintest to strongest:
 
 | Step | Looks like | Example | Today |
 |---|---|---|---|
-| `subtlest` | faintest tint | `--d-sys-color-background-accent-subtlest` | `--tertiary-very-low` |
-| `subtle` | light tint, e.g. a banner background | `--d-sys-color-background-danger-subtle` | `--danger-low` |
-| | the standard intent color, no suffix | `--d-sys-color-background-danger` | `--danger` |
-| `bold` | strongest, solid fill | `--d-sys-color-background-accent-bold` | `--token-color-background-accent-bolder` |
+| `subtlest` | faintest tint, e.g. a banner background | `--d-sys-color-background-danger-subtlest` | `--danger-low` |
+| `subtle` | mid tint | `--d-sys-color-background-danger-subtle` | `--danger-low-mid` |
+| | the standard intent color, no suffix | `--d-sys-color-background-danger` | `--danger`, `--danger-medium` |
+| `bold` | stronger than the base | `--d-sys-color-background-accent-bold` | none today |
 
-Only accent has a near-complete ramp in core today (`--tertiary-very-low` … `-very-high`,
-plus `-25` … `-900`). Danger and success have about two steps (`-low`, `-medium`,
-`-low-mid`), love has one (`-low`). `warning` and `info` have no ramp of their own; they borrow
-highlight and accent steps. The grid stays
-complete so names are predictable, but a token is only published when it has a value.
+Four steps, settled 2026-10-14. Current shades map by how far core lightens them toward
+the page background (`dark-light-diff`, light mode):
+
+| Step | Lightened | accent | success | danger | love |
+|---|---|---|---|---|---|
+| `subtlest` | 80–93% | `--tertiary-very-low`, `-low`, `-25` … `-300` | `--success-very-low`, `-low` | `--danger-low` | `--love-low` |
+| `subtle` | 40–74% | `--tertiary-medium`, `-400` … `-700` | `--success-medium` | `--danger-low-mid` | |
+| base | 0–30% | `--tertiary`, `-high`, `-800`, `-900` | `--success` | `--danger`, `-medium` | `--love` |
+| `bold` | darker | | | | |
+
+- `-hover` shades (`--tertiary-hover`, `--danger-hover`, `--success-hover`) are the
+  `hovered` state, not a strength.
+- `bold` has no value in core today: `--token-color-background-accent-bolder` is just
+  `--tertiary`. It stays in the grammar and is published once a design gives it a value.
+- Merging changes some colors: accent and success `-low` (85%/80%) move to the 90% tint,
+  and danger `-medium` (30%) moves to the base. Half of the danger `-medium` uses are
+  already `light-dark(var(--danger-medium), var(--danger))`, so dark mode is unchanged.
+- The table is for tints. Each property has its own token, so text, border and background
+  of one step can hold different values (`--token-color-text-accent` is `--tertiary-800`).
+- `warning` borrows `--highlight-bg` (70%, so `subtle`); `info` borrows accent steps.
+  The grid stays complete so names are predictable, but a token is only published when it
+  has a value.
 
 ### 4.5 States
 
@@ -378,13 +395,15 @@ registered **pattern name** in PascalCase (`Input`, `NavPills`, `Table`), listed
 --d-sys-color-background-accent-bold-hovered
 --d-sys-color-background-danger
 --d-sys-color-background-danger-hovered
+--d-sys-color-background-danger-subtlest
 --d-sys-color-background-danger-subtle
 --d-sys-color-background-danger-bold
 --d-sys-color-background-success
+--d-sys-color-background-success-subtlest
 --d-sys-color-background-success-subtle
 --d-sys-color-background-warning-subtle
---d-sys-color-background-info-subtle
---d-sys-color-background-love-subtle
+--d-sys-color-background-info-subtlest
+--d-sys-color-background-love-subtlest
 ```
 
 **Color, border and outline**
@@ -571,6 +590,5 @@ Only questions the draft does not answer yet.
 | Topic | Situation | To decide |
 |---|---|---|
 | Base layer | Which prefix the palette and raw scales get, and whether they are exposed as custom properties at all. | Whatever it becomes, `--primary` and the other old names keep resolving as aliases. |
-| Strength gaps | Danger has `-medium` (14 uses) and `-low-mid` (8 uses), which have no strength step. | Map them to `subtle` or the base, or add a step. |
 | Runtime values | JavaScript writes about 15 variables while the page runs: layout measurements (`--header-offset`, `--composer-height`), per-element values (`--slider-x`) and category colors (`--category-badge-color`). They are not design decisions and themes cannot override them, so they stay outside the token scheme. | A dedicated prefix such as `--d-rt-` would only be needed to recognize them without the list. |
 | Component kinds | The checker accepts any word as a component kind (`DButton` `primary`), so typos pass. | List each component's kinds in `vocabulary.json` for the checker and lint rule. |

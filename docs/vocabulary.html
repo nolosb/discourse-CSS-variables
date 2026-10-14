@@ -59,7 +59,7 @@
 </tbody></table></div>
 <p>If a property has roles, the role is always written, and the neutral one is <code>default</code>.</p>
 <p>A system token always describes a purpose or level, never a UI component: <code class="right">shadow-overlay</code>, not <code class="wrong">shadow-dropdown</code>. The one exception is <code>input</code>, because form fields share one look across every component that has them.</p>
-<p><b>Intent words today:</b> <code>accent</code> <code>danger</code> <code>success</code> <code>warning</code> <code>info</code> <code>highlight</code> <code>love</code>. <code>accent</code> replaces <code>tertiary</code>. <code>warning</code> and <code>info</code> have no color of their own in core yet. Today warnings borrow the highlight color (<code>--highlight-bg</code>) and info borrows the accent (<code>--tertiary-low</code>). Their tokens can start with those values and get their own colors when the base colors are redesigned.</p>
+<p><b>Intent words today:</b> <code>accent</code> <code>danger</code> <code>success</code> <code>warning</code> <code>info</code> <code>highlight</code> <code>love</code>. <code>accent</code> replaces <code>tertiary</code>. <code>warning</code> and <code>info</code> have no color of their own in core yet. Today warnings borrow the highlight color (<code>--highlight-bg</code>) and info borrows the accent (<code>--tertiary-low</code>, so <code>info-subtlest</code>). Their tokens can start with those values and get their own colors when the base colors are redesigned.</p>
 
 
 <h3 id="roles-by-property">Roles by property</h3>
@@ -85,12 +85,27 @@
 <div class="tbl"><table>
 <thead><tr><th>Step</th><th>Looks like</th><th>Example</th><th>Today</th></tr></thead>
 <tbody>
-<tr><td><code>subtlest</code></td><td>faintest tint</td><td><code>--d-sys-color-background-accent-subtlest</code></td><td><code>--tertiary-very-low</code></td></tr>
-<tr><td><code>subtle</code></td><td>light tint, e.g. a banner background</td><td><code>--d-sys-color-background-danger-subtle</code></td><td><code>--danger-low</code></td></tr>
-<tr><td></td><td>the standard intent color, no suffix</td><td><code>--d-sys-color-background-danger</code></td><td><code>--danger</code></td></tr>
-<tr><td><code>bold</code></td><td>strongest, solid fill</td><td><code>--d-sys-color-background-accent-bold</code></td><td><code>--token-color-background-accent-bolder</code></td></tr>
+<tr><td><code>subtlest</code></td><td>faintest tint, e.g. a banner background</td><td><code>--d-sys-color-background-danger-subtlest</code></td><td><code>--danger-low</code></td></tr>
+<tr><td><code>subtle</code></td><td>mid tint</td><td><code>--d-sys-color-background-danger-subtle</code></td><td><code>--danger-low-mid</code></td></tr>
+<tr><td></td><td>the standard intent color, no suffix</td><td><code>--d-sys-color-background-danger</code></td><td><code>--danger</code>, <code>--danger-medium</code></td></tr>
+<tr><td><code>bold</code></td><td>stronger than the base</td><td><code>--d-sys-color-background-accent-bold</code></td><td>none today</td></tr>
 </tbody></table></div>
-<p>Only accent has a near-complete ramp in core today. Danger and success have about two steps, love has one. <code>warning</code> and <code>info</code> have no ramp of their own; they borrow highlight and accent steps. The grid stays complete so names are predictable, but a token is only published when it has a value.</p>
+<p>Current shades map by how far core lightens them toward the page background (light mode):</p>
+<div class="tbl"><table>
+<thead><tr><th>Step</th><th>Lightened</th><th>accent</th><th>success</th><th>danger</th><th>love</th></tr></thead>
+<tbody>
+<tr><td><code>subtlest</code></td><td>80–93%</td><td><code>--tertiary-very-low</code>, <code>-low</code>, <code>-25</code> to <code>-300</code></td><td><code>--success-very-low</code>, <code>-low</code></td><td><code>--danger-low</code></td><td><code>--love-low</code></td></tr>
+<tr><td><code>subtle</code></td><td>40–74%</td><td><code>--tertiary-medium</code>, <code>-400</code> to <code>-700</code></td><td><code>--success-medium</code></td><td><code>--danger-low-mid</code></td><td></td></tr>
+<tr><td>base</td><td>0–30%</td><td><code>--tertiary</code>, <code>-high</code>, <code>-800</code>, <code>-900</code></td><td><code>--success</code></td><td><code>--danger</code>, <code>-medium</code></td><td><code>--love</code></td></tr>
+<tr><td><code>bold</code></td><td>darker</td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+<ul>
+  <li><code>-hover</code> shades (<code>--tertiary-hover</code>, <code>--danger-hover</code>, <code>--success-hover</code>) are the <code>hovered</code> state, not a strength.</li>
+  <li><code>bold</code> has no value in core today: <code>--token-color-background-accent-bolder</code> is just <code>--tertiary</code>. It is published once a design gives it a value.</li>
+  <li>Merging changes some colors: accent and success <code>-low</code> move to the 90% tint, and danger <code>-medium</code> moves to the base (half of its uses already switch to <code>--danger</code> in dark mode).</li>
+  <li>The table is for tints. Text, border and background of one step are separate tokens and can hold different values.</li>
+  <li><code>warning</code> borrows <code>--highlight-bg</code> (70%, so <code>subtle</code>); <code>info</code> borrows accent steps. The grid stays complete so names are predictable, but a token is only published when it has a value.</li>
+</ul>
 
 <h3 id="space-scale">Space scale</h3>
 <p>Spacing counts 4px units, the same as core's <code>--space-N</code> today, so every current value keeps a step: <code>--d-sys-space-padding-5</code> is 20px.</p>
