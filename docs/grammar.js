@@ -34,7 +34,7 @@ function loadVocabulary(voc) {
   MULTI = new Set([...all].filter(w => w.includes("-")));
 }
 
-const VOCABULARY_URL = "vocabulary.json?v=16";
+const VOCABULARY_URL = "vocabulary.json?v=17";
 const vocabularyReady = typeof fetch === "function"
   ? fetch(VOCABULARY_URL).then(r => r.text()).then(t => { VOCABULARY_TEXT = t; loadVocabulary(JSON.parse(t)); })
       .catch(e => {

@@ -4,12 +4,12 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 
 | Type | Rows | Meaning |
 |---|---:|---|
-| [rename](#rename) | 115 | Same value, one target. |
+| [rename](#rename) | 116 | Same value, one target. |
 | [merge](#merge) | 23 | One target, the value changes: needs a visual check. |
-| [split](#split) | 29 | Target depends on each use; candidates in notes. |
+| [split](#split) | 32 | Target depends on each use; candidates in notes. |
 | [drop](#drop) | 33 | Unused, or `-rgb` twins. |
 | [base](#base) | 34 | Stays in the base layer. |
-| [open](#open) | 13 | Not covered by the scheme yet. |
+| [open](#open) | 9 | Not covered by the scheme yet. |
 
 ## rename
 
@@ -121,6 +121,7 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--title-color--read` | `--d-comp-TopicListItem-color-text-read` | color_definitions.scss | 3 | `var(--primary-medium)` |  |
 | `--content-border-color` | `--d-sys-color-border-default` | color_definitions.scss | 320 | `var(--primary-low)` | 320 uses. |
 | `--table-border-color` | `--d-comp-Table-color-border` | color_definitions.scss | 7 | `var(--content-border-color)` |  |
+| `--d-badge-card-background-color` | `--d-comp-DBadgeCard-color-background` | color_definitions.scss | 1 | `var(--secondary)` | ui-kit/d-badge-card.gjs. |
 | `--title-color` | `--d-sys-color-text-default` | color_definitions.scss | 1 | `var(--primary)` | Same value as --primary; 1 use. |
 | `--title-color--header` | `--d-comp-Header-color-text-default` | color_definitions.scss | 1 | `var(--header_primary)` | Same value as --header_primary. |
 | `--shadow-modal` | `--d-sys-shadow-dialog` | color_definitions.scss | 1 | `0 8px 60px rgba(0, 0, 0, #{$shadow-opacity-modal})` |  |
@@ -192,6 +193,9 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--tertiary-low-or-tertiary-high` |  | color_definitions.scss | 1 | `#{$tertiary-low-or-tertiary-high}` | Light/dark chooser: each use maps to a token whose value uses light-dark(). |
 | `--tertiary-med-or-tertiary` |  | color_definitions.scss | 7 | `#{$tertiary-med-or-tertiary}` | Light/dark chooser: each use maps to a token whose value uses light-dark(). |
 | `--secondary-or-primary` |  | color_definitions.scss | 5 | `#{$secondary-or-primary}` | Light/dark chooser: each use maps to a token whose value uses light-dark(). |
+| `--gold` |  | color_definitions.scss | 2 | `#{$gold}` | Raw metal color stays as a base alias. Badge icon uses map to --d-comp-UserBadge-color-icon-gold (UserBadge kind gold); the admin dashboard trust-level labels borrow it and get their own tokens in the full mapping. |
+| `--silver` |  | color_definitions.scss | 2 | `#{$silver}` | Raw metal color stays as a base alias. Badge icon uses map to --d-comp-UserBadge-color-icon-silver (UserBadge kind silver); the admin dashboard trust-level labels borrow it and get their own tokens in the full mapping. |
+| `--bronze` |  | color_definitions.scss | 2 | `#{$bronze}` | Raw metal color stays as a base alias. Badge icon uses map to --d-comp-UserBadge-color-icon-bronze (UserBadge kind bronze); the admin dashboard trust-level labels borrow it and get their own tokens in the full mapping. |
 
 ## drop
 
@@ -280,10 +284,6 @@ Generated from `mapping.csv`; edit the CSV, not this file. Core `main` at `00961
 | `--highlight-medium` |  | color_definitions.scss | 7 | `#{$highlight-medium}` | Map by lightening like the other intents; formula not checked yet. |
 | `--highlight-high` |  | color_definitions.scss | 10 | `#{$highlight-high}` | Map by lightening like the other intents; formula not checked yet. |
 | `--wiki` |  | color_definitions.scss | 2 | `#{$wiki}` | Wiki post color in topic-post.scss; needs an owner (Post?). |
-| `--gold` |  | color_definitions.scss | 2 | `#{$gold}` | Badge tier color: needs an owner and tier words. |
-| `--silver` |  | color_definitions.scss | 2 | `#{$silver}` | Badge tier color: needs an owner and tier words. |
-| `--bronze` |  | color_definitions.scss | 2 | `#{$bronze}` | Badge tier color: needs an owner and tier words. |
-| `--d-badge-card-background-color` |  | color_definitions.scss | 1 | `var(--secondary)` | Used in user-badges.scss; no badge-card component file. Owner? |
 | `--mention-background-color` |  | color_definitions.scss | 1 | `var(--primary-low)` | Mixin for mentions in cooked content; needs a pattern owner (Mention?). |
 | `--float-kit-arrow-stroke-color` |  | color_definitions.scss | 0 | `var(--primary-low)` | Used in an SVG icon and set by user-tips; owner of the float-kit arrow? |
 | `--float-kit-arrow-fill-color` |  | color_definitions.scss | 0 | `var(--secondary)` | Used in an SVG icon; owner of the float-kit arrow? |

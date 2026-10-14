@@ -219,16 +219,16 @@ old_name,new_name,type,defined_in,value,uses,notes
 --discourse_id-icon,,drop,color_definitions.scss,var(--d-button-primary-icon-color),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
 --discourse_id-icon-hover,,drop,color_definitions.scss,var(--d-button-primary-icon-color--hover),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
 --discourse_id-border,,drop,color_definitions.scss,var(--d-button-border),1,"Points at DButton primary; the Discourse ID button uses DButton primary tokens, with a scoped override if a theme wants it different."
---gold,,open,color_definitions.scss,#{$gold},2,Badge tier color: needs an owner and tier words.
---silver,,open,color_definitions.scss,#{$silver},2,Badge tier color: needs an owner and tier words.
---bronze,,open,color_definitions.scss,#{$bronze},2,Badge tier color: needs an owner and tier words.
+--gold,,split,color_definitions.scss,#{$gold},2,Raw metal color stays as a base alias. Badge icon uses map to --d-comp-UserBadge-color-icon-gold (UserBadge kind gold); the admin dashboard trust-level labels borrow it and get their own tokens in the full mapping.
+--silver,,split,color_definitions.scss,#{$silver},2,Raw metal color stays as a base alias. Badge icon uses map to --d-comp-UserBadge-color-icon-silver (UserBadge kind silver); the admin dashboard trust-level labels borrow it and get their own tokens in the full mapping.
+--bronze,,split,color_definitions.scss,#{$bronze},2,Raw metal color stays as a base alias. Badge icon uses map to --d-comp-UserBadge-color-icon-bronze (UserBadge kind bronze); the admin dashboard trust-level labels borrow it and get their own tokens in the full mapping.
 --d-link-color,--d-sys-color-text-link,rename,color_definitions.scss,var(--tertiary),3,
 --title-color--read,--d-comp-TopicListItem-color-text-read,rename,color_definitions.scss,var(--primary-medium),3,
 --content-border-color,--d-sys-color-border-default,rename,color_definitions.scss,var(--primary-low),320,320 uses.
 --input-border-color,--d-sys-color-border-input,merge,color_definitions.scss,var(--primary-400),7,primary-400 vs --token-color-border-input primary-300.
 --table-border-color,--d-comp-Table-color-border,rename,color_definitions.scss,var(--content-border-color),7,
 --metadata-color,--d-sys-color-text-muted,merge,color_definitions.scss,var(--primary-medium),1,Meta text is muted (settled rule); value moves from primary-medium.
---d-badge-card-background-color,,open,color_definitions.scss,var(--secondary),1,Used in user-badges.scss; no badge-card component file. Owner?
+--d-badge-card-background-color,--d-comp-DBadgeCard-color-background,rename,color_definitions.scss,var(--secondary),1,ui-kit/d-badge-card.gjs.
 --mention-background-color,,open,color_definitions.scss,var(--primary-low),1,Mixin for mentions in cooked content; needs a pattern owner (Mention?).
 --title-color,--d-sys-color-text-default,rename,color_definitions.scss,var(--primary),1,Same value as --primary; 1 use.
 --title-color--header,--d-comp-Header-color-text-default,rename,color_definitions.scss,var(--header_primary),1,Same value as --header_primary.

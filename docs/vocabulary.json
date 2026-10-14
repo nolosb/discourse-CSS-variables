@@ -94,6 +94,7 @@
     "Poll": ["bar"]
   },
   "kinds": {
-    "DButton": ["default", "primary", "danger", "success", "flat", "transparent", "close"]
+    "DButton": ["default", "primary", "danger", "success", "flat", "transparent", "close"],
+    "UserBadge": ["gold", "silver", "bronze"]
   }
 }
